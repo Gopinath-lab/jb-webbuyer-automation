@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false" preserve-order="true">
+	<listeners></listeners>
+	<test name="Test">
+		<parameter name="url" value="https://qa.jinglebid.com/login" />
+		<parameter name="username" value="9994607380" />
+		<parameter name="password" value="Gopi@123" />
+		<classes>
+			<class name="com.tests.LoginTest" />
+			<class name="com.tests.ProfileTest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
