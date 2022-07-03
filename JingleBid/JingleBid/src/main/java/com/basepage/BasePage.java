@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
 
 /**
- * The Class BasePage every Page should extend this class.
+ * Second The Class BasePage every Page should extend this class.
  *
  */
 public class BasePage {

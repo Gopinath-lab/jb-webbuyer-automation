@@ -10,5 +10,5 @@
 			<class name="com.tests.LoginTest" />
 			<class name="com.tests.ProfileTest" />
 		</classes>
-	</test> <!-- Test check -->
+	</test> <!-- Test check second commit-->
 </suite> <!-- Suite -->
