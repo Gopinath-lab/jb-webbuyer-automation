@@ -23,7 +23,7 @@ public class BasePage {
 	/**
 	 * Instantiates a new base page.
 	 *
-	 * @param driver the driver
+	 * @param driver the driver commit check
 	 */
 	public BasePage(WebDriver driver) {
 		super();
