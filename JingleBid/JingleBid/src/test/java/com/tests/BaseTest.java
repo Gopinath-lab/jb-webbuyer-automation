@@ -2,6 +2,8 @@ package com.tests;
 
 import java.util.concurrent.TimeUnit;
 
+//import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -57,7 +59,7 @@ public class BaseTest {
 		LoggerUtil.info("Number of testcases Passed : " + passed);
 		LoggerUtil.info("Number of testcases Failed : " + failed);
 		LoggerUtil.info("Number of testcases Skipped  : " + skipped);
-		boolean mailSent = EmailConfig.ReportEmail(); // MailUtil.sendMail(total, passed, failed, skipped);
+		// boolean mailSent = EmailConfig.ReportEmail(); // MailUtil.sendMail(total, passed, failed, skipped);
 		LoggerUtil.info("************************** Test Execution Finished ************************************");
 	}
 

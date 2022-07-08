@@ -11,11 +11,11 @@ import com.pages.ProfilePage;
 public class ProfileTest extends BaseTest{
 	
 	
-	@Parameters({ "url", "username", "password" })
+	//@Parameters({ "url", "username", "password" })
 	@Test
-	public void profilepage(String url, String username, String password) throws Exception {
+	public void profilepage() throws Exception {
 		LoginPage	loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL(url).login(username,password);
+		loginPage.launchURL().login();
 		ProfilePage profilepage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilepage.profileupdate();
 	}

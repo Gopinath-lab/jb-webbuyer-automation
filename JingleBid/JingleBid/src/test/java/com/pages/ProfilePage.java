@@ -29,7 +29,7 @@ public class ProfilePage extends BasePage {
 	public ProfilePage(WebDriver driver) {
 		super(driver);
 		seleniumHelper = new SeleniumHelper(driver);
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Faker faker = new Faker();
 
