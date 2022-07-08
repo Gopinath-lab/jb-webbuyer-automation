@@ -1,9 +1,9 @@
-package com.tests;
+package com.tests; 
 
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.factory.PageinstancesFactory;
+import com.helper.SeleniumHelper;
 import com.pages.LoginPage;
 
 /**
@@ -15,11 +15,19 @@ import com.pages.LoginPage;
 @Test(testName = "Login Test", description = "Validating Login Functionality")
 public class LoginTest extends BaseTest {
 
-	@Parameters({ "url", "username", "password" })
 	@Test
-	public void loginPage(String url, String username, String password) throws Exception {
+	public void loginPage() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL(url).login(username, password);
+		loginPage.launchURL().login();
+		Thread.sleep(4000);
+		loginPage.signout();
+		Thread.sleep(3000);
+		loginPage.viewProfile().LoginwithOTP();
+		Thread.sleep(3000);
+		loginPage.signout();
+		Thread.sleep(2000);
+		loginPage.viewProfile().passwordRecovery();
+		
 	}
 
 }

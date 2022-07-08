@@ -3,12 +3,11 @@
 <suite name="Suite" parallel="false" preserve-order="true">
 	<listeners></listeners>
 	<test name="Test">
-		<parameter name="url" value="https://qa.jinglebid.com/login" />
-		<parameter name="username" value="1122334455" />
-		<parameter name="password" value="Auto@123" />
+	
 		<classes>
-			<class name="com.tests.LoginTest" />
-			<class name="com.tests.ProfileTest" />
+			
+			<class name="com.tests.SampleSignUpTest" />
+			
 		</classes>
 	</test> <!-- Test check-->
 </suite> <!-- Suite -->
