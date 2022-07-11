@@ -318,7 +318,7 @@ public class SeleniumHelper {
 	/**
 	 * Text Box Helper Methods
 	 */
-	
+
 	public void backspace(WebElement element) {
 		try {
 			highlightWebElement(element);
@@ -327,7 +327,7 @@ public class SeleniumHelper {
 			LoggerUtil.error("Unable to do sendKeys on the Locator : " + element + " Value : ");
 		}
 	}
-	
+
 	public void sendKeys(WebElement element, String value) {
 		try {
 			highlightWebElement(element);
@@ -337,16 +337,15 @@ public class SeleniumHelper {
 		}
 	}
 
-	
 	public void clear(WebElement element) {
 		element.clear();
 
 	}
-	
-	public void clearWebField(WebElement element){
-	    while(!element.getAttribute("value").equals("")){
-	        element.sendKeys(Keys.BACK_SPACE);
-	    }
+
+	public void clearWebField(WebElement element) {
+		while (!element.getAttribute("value").equals("")) {
+			element.sendKeys(Keys.BACK_SPACE);
+		}
 	}
 
 	public String getText(WebElement element) {
@@ -370,7 +369,7 @@ public class SeleniumHelper {
 			LoggerUtil.error("Unable to clear and sendKeys on the Locator : " + element + " Value : " + value);
 		}
 	}
-	
+
 	public void sendKeysWithJS(WebElement element, String Text) {
 		highlightWebElement(element);
 		JavascriptExecutor js = (JavascriptExecutor) driver;

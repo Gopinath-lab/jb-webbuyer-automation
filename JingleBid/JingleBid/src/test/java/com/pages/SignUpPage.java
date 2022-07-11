@@ -20,61 +20,44 @@ public class SignUpPage extends BasePage{
 
 	SeleniumHelper seleniumHelper;
 	Constants constants;
+
 	@FindBy(xpath= "//div[@class='fs-11 fw-600 jingle-blue']")
 	public static WebElement signup;
-	
 	@FindBy(xpath = "//input[@id='name']")
 	public static WebElement name;
-	
 	@FindBy(xpath = "//input[@class='ant-select-selection-search-input']")
 	public static WebElement gender;
-	
 	@FindBy(xpath = "//input[@id='email']")
 	public static WebElement email;
-	
 	@FindBy(xpath = "(//div[@class='ant-select-item-option-content'])[2]")
 	public static WebElement genderValue;
-	
 	@FindBy(xpath = "//input[@id='phoneNumber']")
 	public static WebElement phone;
-	
 	@FindBy(xpath = "//input[@id='password']")
 	public static WebElement pass;
-	
 	@FindBy(xpath = "//input[@type='checkbox']")
 	public static WebElement accept;
-	
+//	@FindBy(xpath = "//div[text()='Phone Number Already Exists']")
+//	public static WebElement expectmsg;
 	@FindBy(xpath = "//button[@type='submit']")
 	public static WebElement submitbtn;
-	
 	@FindBy (xpath = "//input[@name='otpField01']")
 	public static WebElement otp;
-	
 	@FindBy(xpath = "//button[@type='submit']")
 	public static WebElement finishbutn;
-	
 	@FindBy (xpath = "//span[@class='dashboard-profile-name']")
 	public static WebElement profileName;
 	
-//	@FindBy(xpath = "(//div[@class='ant-dropdown-trigger'])[2]")
-//	public static WebElement menubtn;
-//	
-//	@FindBy(xpath = "//div[@class='logout-icon']")
-//	public static WebElement logoutbtn;
-//	
-//	@FindBy(xpath = "//span[@class='dashboard-profile-name']")
-//	public static WebElement prfle;
-
 	public SignUpPage(WebDriver driver) {
 		super(driver);
 		seleniumHelper = new SeleniumHelper(driver);
 	}
-	@BeforeClass
-	public SignUpPage launchURL() {
-			driver.get(TestProperties.getProperty("signup.url"));
-		return this;
 
+	public SignUpPage launchURL() {
+		driver.get(TestProperties.getProperty("login.url"));
+		return this;
 	}
+
 	@Test
 	public SignUpPage signUp() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(signup);
@@ -94,15 +77,5 @@ public class SignUpPage extends BasePage{
 		return this;
 	
 	}
-	
-	public SignUpPage logOut() throws InterruptedException {
-		
-//		seleniumHelper.clickOnWebElement(menubtn);
-//		seleniumHelper.clickOnWebElement(logoutbtn);
-//		Thread.sleep(1000);
-//		Assert.assertTrue(seleniumHelper.isElementDisplayed(prfle), "Logout successful");
-//		ReportUtil.addScreenShot(LogStatus.PASS, "Logout successful");
-		return this;
-			
-	}
-	}
+}	
+

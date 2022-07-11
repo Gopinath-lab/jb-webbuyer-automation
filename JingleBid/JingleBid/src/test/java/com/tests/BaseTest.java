@@ -2,8 +2,6 @@ package com.tests;
 
 import java.util.concurrent.TimeUnit;
 
-//import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,7 +15,6 @@ import org.testng.annotations.Listeners;
 import com.context.WebDriverContext;
 import com.listeners.LogListener;
 import com.listeners.ReportListener;
-import com.util.EmailConfig;
 import com.util.LoggerUtil;
 import com.util.TestProperties;
 
@@ -26,7 +23,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 /**
  * Every test class should extend this calss.
  *
- * @author Omprakash darsi
  */
 @Listeners({ ReportListener.class, LogListener.class })
 public class BaseTest {

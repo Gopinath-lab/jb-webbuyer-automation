@@ -3,15 +3,15 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.tests.PwdRecoveryTest">
+      <class name="com.tests.SignUpTest">
         <methods>
           <include name="wrapUp"/>
-          <include name="PwdRecoveryPage"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
+          <include name="SignUpPage"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.PwdRecoveryTest -->
+      </class> <!-- com.tests.SignUpTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

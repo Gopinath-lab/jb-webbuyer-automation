@@ -14,10 +14,6 @@ public class SignUpTest extends BaseTest{
 	@Test
 	public void SignUpPage ()throws Exception {
 		SignUpPage SignUpPage = PageinstancesFactory.getInstance(SignUpPage.class);
-		SignUpPage.launchURL().signUp().logOut();
-
-		
-		
-	
+		SignUpPage.launchURL().signUp();
 	}
 }

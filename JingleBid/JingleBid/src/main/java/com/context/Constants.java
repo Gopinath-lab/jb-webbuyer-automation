@@ -24,7 +24,7 @@ public class Constants {
 	/** The Constant CHROME_DRIVER_PATH. */
 	public final static String CHROME_DRIVER_PATH = WORKING_DIRECTORY + "/src/test/resources/drivers/chromedriver.exe";
 	
-	public static String MAIL_SUBJECT = "Jinglebid Web Automation Report";
+	public static String MAIL_SUBJECT = "Jinglebid Web Buyer Automation Report";
 
 
 }

@@ -15,7 +15,7 @@ public class ProfileTest extends BaseTest{
 	@Test
 	public void profilepage() throws Exception {
 		LoginPage	loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().login();
+		loginPage.launchURL().emailpasslogin();
 		ProfilePage profilepage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilepage.profileupdate();
 	}
