@@ -128,7 +128,7 @@ public class AutoBidPage extends BasePage {
 		seleniumHelper.SwitchToWindow(1);
 		seleniumHelper.waitForElement(paymentSuccessButton, 10);
 		seleniumHelper.clickOnWebElement(paymentSuccessButton);
-		seleniumHelper.switchToParentWindow();
+		seleniumHelper.switchToParentWindow(); 
 		seleniumHelper.clickOnWebElement(goToDealsButton);
 		seleniumHelper.isElementDisplayed(productinMyDeals);
 		seleniumHelper.clickOnWebElement(productinMyDeals);
