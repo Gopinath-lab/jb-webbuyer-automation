@@ -141,8 +141,6 @@ public class AutoBidPage extends BasePage {
 		return this;
 		
 	}
-	
-		
-	
 
+	
 }
