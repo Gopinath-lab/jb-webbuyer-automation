@@ -12,6 +12,6 @@ public class LoginTest extends BaseTest {
 	public void loginPage() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpasslogin();
-		Thread.sleep(4000);	loginPage.logout();
+		//Thread.sleep(4000);	loginPage.logout();
 			}
 	}

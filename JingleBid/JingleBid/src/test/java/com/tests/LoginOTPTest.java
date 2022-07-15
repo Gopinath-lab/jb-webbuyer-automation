@@ -14,7 +14,7 @@ public class LoginOTPTest {
 		@Test
 		public void loginPage() throws Exception {
 			LoginOTPPage loginPage = PageinstancesFactory.getInstance(LoginOTPPage.class);
-			loginPage.launchURL().LoginwithOTP();
+			loginPage.launchURL().loginwithOTP();
 				}
 		}
 

@@ -70,18 +70,18 @@ public class BaseTest {
 		ops.addArguments("--disable-notifications");
 		driver = new ChromeDriver(ops);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebDriverContext.setDriver(driver);
 	}
 
 	/**
 	 * Wrap up.
 	 */
-	@AfterClass
-	public void wrapUp() {
-		if (driver != null) {
-			driver.close();
-			driver.quit();
-		}
-	}
+//	@AfterClass
+//	public void wrapUp() {
+//		if (driver != null) {
+//			driver.close();
+//			driver.quit();
+//		}
+//	}
 }

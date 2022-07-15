@@ -41,7 +41,7 @@ public class LoginOTPPage extends BasePage {
 		return this;
 	}
 
-	public LoginOTPPage LoginwithOTP() {
+	public LoginOTPPage loginwithOTP() {
 		seleniumHelper.clickOnWebElement(phno);
 		seleniumHelper.sendKeys(phno, TestProperties.getProperty("signup.enterPhone"));
 		seleniumHelper.clickOnWebElement(loginOTPBtn);
@@ -57,8 +57,8 @@ public class LoginOTPPage extends BasePage {
 					"Login successful message is not displaying");
 			ReportUtil.addScreenShot(LogStatus.PASS, "Login with OTP Successfull!");
 			return this;
-		}
-		return this;
+		  }
+		  return this;
 	}
 
 }

@@ -69,7 +69,7 @@ public class LoginPage extends BasePage {
 		return this;
 	}
 
-	public void logout() {
+	public void logout() {	
 		seleniumHelper.clickOnWebElement(menubtn);
 		seleniumHelper.jsClick(logoutbtn);
 	}

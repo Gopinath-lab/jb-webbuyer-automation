@@ -651,4 +651,11 @@ public class SeleniumHelper {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
+	public WebElement getWebElementById(String id) {
+		return driver.findElement(By.id(id));
+	}
+
+	public WebElement getWebElementByName(String name) {
+		return driver.findElement(By.name(name));
+	}
 }

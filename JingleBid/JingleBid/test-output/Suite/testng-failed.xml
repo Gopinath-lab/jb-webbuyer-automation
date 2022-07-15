@@ -3,6 +3,15 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="com.tests.RecoverPassTest">
+        <methods>
+          <include name="recoverpassword"/>
+          <include name="wrapUp"/>
+          <include name="wrapAllUp"/>
+          <include name="setup"/>
+          <include name="globalSetup"/>
+        </methods>
+      </class> <!-- com.tests.RecoverPassTest -->
       <class name="com.tests.SignUpTest">
         <methods>
           <include name="wrapUp"/>
