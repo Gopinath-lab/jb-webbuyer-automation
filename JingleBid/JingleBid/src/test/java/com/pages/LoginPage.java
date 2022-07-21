@@ -17,11 +17,10 @@ import com.util.TestProperties;
 public class LoginPage extends BasePage {
 
 	SeleniumHelper seleniumHelper;
-	webelements loginPage = PageinstancesFactory.getInstance(webelements.class);
 
 	// Login with Email/Password WebElements
-//	@FindBy(xpath = "//span[contains(text(),'OR Email/Password Login?')]")
-//	public static WebElement emailpasslogin;
+	@FindBy(xpath = "//span[contains(text(),'OR Email/Password Login?')]")
+	public static WebElement emailpasslogin;
 	@FindBy(xpath = "//input[@id='email']")
 	public static WebElement uname;
 	@FindBy(xpath = "//input[@id='password']")
@@ -55,9 +54,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public LoginPage emailpasslogin() {
-		
-		seleniumHelper.clickOnWebElement(loginPage.emailpasslogin);
-		//seleniumHelper.clickOnWebElement(emailpasslogin);
+		seleniumHelper.clickOnWebElement(emailpasslogin);
 		seleniumHelper.sendKeys(uname, TestProperties.getProperty("login-username"));
 		seleniumHelper.sendKeys(pwd, TestProperties.getProperty("login-password"));
 		seleniumHelper.clickOnWebElement(logbtn);
@@ -67,7 +64,7 @@ public class LoginPage extends BasePage {
 		return this;
 	}
 
-	public void logout() {	
+	public void logout() {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
