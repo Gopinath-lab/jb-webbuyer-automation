@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tests.AutoBidTest">
+      <class name="com.tests.DashboardTest">
         <methods>
-          <include name="AutoBidPage"/>
+          <include name="DashboardPage"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.AutoBidTest -->
+      </class> <!-- com.tests.DashboardTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

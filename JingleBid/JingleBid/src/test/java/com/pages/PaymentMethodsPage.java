@@ -15,22 +15,22 @@ public class PaymentMethodsPage extends BasePage {
 	SeleniumHelper seleniumHelper;
 	
 	@FindBy(xpath = "//button[@class='new-method has-tooltip false svelte-1u727jy']/div/div/div[text()='Netbanking']")
-	public WebElement netbankingButton;
+	private WebElement netbankingButton;
 	
 //	@FindBy(xpath = "(//div[@id='form-netbanking']/div/div/div/div)[2]")
-//	public WebElement hdfcNetBankingButton;
+//	private WebElement hdfcNetBankingButton;
 	
 	@FindBy(xpath = "//div[@id='form-netbanking']/div/div/div/div/label[@for='bank-radio-HDFC']")
-	public WebElement hdfcNetBankingButton;
+	private WebElement hdfcNetBankingButton;
 	
 	@FindBy(xpath = "//span[contains(text(), 'Pay')]/parent::div")
-	public WebElement payButton;
+	private WebElement payButton;
 	
 	@FindBy(xpath = "//button[text()='Success']")
-	public WebElement paymentSuccessButton;
+	private WebElement paymentSuccessButton;
 	
 	@FindBy(xpath = "//button[text()='Failure']")
-	public WebElement paymentFailureButton;
+	private WebElement paymentFailureButton;
 	
 	public PaymentMethodsPage(WebDriver driver) {
 		super(driver);

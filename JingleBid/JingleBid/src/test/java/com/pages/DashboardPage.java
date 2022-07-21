@@ -1,0 +1,265 @@
+package com.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
+
+import com.basepage.BasePage;
+import com.helper.SeleniumHelper;
+import com.relevantcodes.extentreports.LogStatus;
+import com.util.ReportUtil;
+import com.util.TestProperties;
+
+public class DashboardPage extends BasePage{
+
+	SeleniumHelper seleniumHelper;
+	
+	String expectedTextinPlayStore="Jinglebid";
+	String expectedAboutUsURL="https://about-us.jinglebid.com/";
+	String expectedJingleBidTVURL = "https://www.youtube.com/results?search_query=JINGLEBID+TV";
+	String expectedJingleBidTvFooter = "Jinglebid TV";
+	String expectedPrivacyPolicyURL="https://qa.jinglebid.com/privacy-policy";
+	String expectedReturnRefundURL="https://qa.jinglebid.com/return-refund-policy";
+	
+	@FindBy(xpath = "//a[text()='Download the App']")
+	private WebElement downloadAppLink;
+	
+	@FindBy(xpath = "//span[text()='Install']")
+	private WebElement appInstallButton;
+	
+	@FindBy(xpath = "(//span[contains(text(),'Jinglebid')])[2]")
+	private WebElement actualTextinPlaystore;
+	
+	@FindBy(xpath= "//a[text()='About Us']/parent::div/a")
+	private WebElement aboutUslinkonTopofDashboard;
+	
+	@FindBy(xpath = "//a[text()='Jinglebid TV']")
+	private WebElement jingleBidTVIcon;
+	
+	@FindBy(xpath = "//div[@class='header-text']")
+	private WebElement jingleBidLogo;
+	
+	@FindBy(xpath = "//div[text()='ABOUT ']")
+	private WebElement aboutinBottomBanner;
+	
+	@FindBy(xpath = "//li[text()='Home']")
+	private WebElement homeButtoninFooter;
+	
+	@FindBy(xpath = "//a[text()='About Us']/parent::li/a")
+	private WebElement aboutUsInFooter;
+	
+	@FindBy(xpath = "//div[text()='Jinglebid TV']")
+	private WebElement jingleBidTvFooter;
+	
+	@FindBy(xpath = "//div[text()='Jinglebid TV']/parent::div/div[@class='footer-list']/ul/li/a")
+	private WebElement youtubeinFooter;
+	
+	@FindBy(xpath = "//div[text()='POLICY ']")
+	private WebElement policyinFooter;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Privacy')]")
+	private WebElement privacyPolicyButton;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Refund policy')]")
+	private WebElement refundReturnPolicyButton;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Conditions')]")
+	private WebElement termsandConditionsButton;
+	
+	@FindBy(xpath = "//div[contains(text(),'SOCIAL')]")
+	private WebElement socialinFooter;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Facebook')]")
+	private WebElement facebookIconFooter;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Twitter')]")
+	private WebElement twitterIconFooter;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Linked')]")
+	private WebElement linkedInIconFooter;
+	
+	@FindBy(xpath = "//div[@class='footer-list']/ul/a/li[contains(text(),'Instagram')]")
+	private WebElement instagramIconFooter;
+	
+	@FindBy(xpath = "//div[contains(text(),'Contact')]")
+	private WebElement contactUsInFooter;
+	
+	@FindBy(xpath = "//a[contains(@href,'mailto')]")
+	private WebElement emailInFooter;
+	
+	
+	public DashboardPage(WebDriver driver) {
+		super(driver);
+		seleniumHelper = new SeleniumHelper (driver);
+		
+	}
+	
+	public DashboardPage hyperlinks () {
+		seleniumHelper.clickOnWebElement(downloadAppLink);
+		seleniumHelper.SwitchToWindow(1);
+		
+		if (seleniumHelper.isElementDisplayed(appInstallButton)) {
+			Assert.assertEquals(actualTextinPlaystore.getText(), TestProperties.getProperty("expectedTextinPlayStore"));	
+			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Jinglebid app in PlayStore and Install button available");
+			seleniumHelper.switchToParentWithChildClose();
+		}
+		else {
+		ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Jinglebid app in PlayStore"); 
+		return this;
+		}
+		
+		
+		if (seleniumHelper.isElementDisplayed(aboutUslinkonTopofDashboard)) {
+			seleniumHelper.clickOnWebElement(aboutUslinkonTopofDashboard);
+			seleniumHelper.SwitchToWindow(1);
+			String actualAboutUsURL = driver.getCurrentUrl();
+			System.out.println(actualAboutUsURL);
+			Assert.assertEquals(actualAboutUsURL, TestProperties.getProperty("expectedAboutUsURL"));
+			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to AboutUs page ");
+			seleniumHelper.switchToParentWithChildClose();
+		}
+		
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to About Us page"); 
+			return this;
+			}
+		
+		if (seleniumHelper.isElementDisplayed(jingleBidTVIcon)) {
+			seleniumHelper.clickOnWebElement(jingleBidTVIcon);
+			seleniumHelper.SwitchToWindow(1);
+			String actualJingleBidTVURL = driver.getCurrentUrl();
+			Assert.assertEquals(actualJingleBidTVURL,TestProperties.getProperty("expectedJingleBidTVURL"));
+			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Youtube - JingleBid TV ");
+			seleniumHelper.switchToParentWithChildClose();
+		}
+			
+			else {
+				ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Youtube - JingleBid TV "); 
+				return this;
+				}		
+		if (seleniumHelper.isElementDisplayed(jingleBidLogo)) {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			Assert.assertEquals(jingleBidLogo.getText(),TestProperties.getProperty("expectedTextinPlayStore"));
+			seleniumHelper.highlightWebElement(jingleBidLogo);
+			ReportUtil.addScreenShot(LogStatus.PASS,"JingleBid Logo is displayed ");
+		}	
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Jingle Bid Logo is not displayed "); 
+			}
+		return this;	
+		}
+	
+	public DashboardPage bottomBannerAboutUs() {
+			seleniumHelper.scrollIntoView(aboutinBottomBanner);
+			if(seleniumHelper.isElementDisplayed(homeButtoninFooter)) {
+			seleniumHelper.clickOnWebElement(homeButtoninFooter);
+			ReportUtil.addScreenShot(LogStatus.PASS,"Home button working - Directed to home page");	
+		
+			}
+			
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			seleniumHelper.scrollIntoView(aboutinBottomBanner);
+			if(seleniumHelper.isElementDisplayed(aboutUsInFooter)) {
+				seleniumHelper.clickOnWebElement(aboutUsInFooter);
+				seleniumHelper.SwitchToWindow(1);
+				String actualAboutUsURL1 = driver.getCurrentUrl();
+				System.out.println(actualAboutUsURL1);
+				Assert.assertEquals(actualAboutUsURL1,TestProperties.getProperty("expectedAboutUsURL"));
+				ReportUtil.addScreenShot(LogStatus.PASS,"Directing to AboutUs page ");
+				seleniumHelper.switchToParentWithChildClose();
+		}
+		
+			return this;
+		}
+	public DashboardPage footerJingleBidTv() {
+				seleniumHelper.scrollIntoView(jingleBidTvFooter);
+			if (seleniumHelper.isElementDisplayed(youtubeinFooter)) { 
+			seleniumHelper.clickOnWebElement(youtubeinFooter);
+				seleniumHelper.SwitchToWindow(1);
+				Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedJingleBidTVURL"));
+				ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Youtube - JingleBid TV ");
+				seleniumHelper.switchToParentWithChildClose();
+			}			
+				return this;}
+	
+	public DashboardPage policyinFooter() {
+				seleniumHelper.scrollIntoView(policyinFooter);
+				if (seleniumHelper.isElementDisplayed(privacyPolicyButton)) {
+					seleniumHelper.clickOnWebElement(privacyPolicyButton);
+					seleniumHelper.SwitchToWindow(1);
+					Assert.assertEquals(driver.getCurrentUrl(),TestProperties.getProperty("expectedPrivacyPolicyURL"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Privacy Policy Page ");
+					seleniumHelper.switchToParentWithChildClose();		
+				}
+				if (seleniumHelper.isElementDisplayed(refundReturnPolicyButton)) {
+					seleniumHelper.clickOnWebElement(refundReturnPolicyButton);
+					seleniumHelper.SwitchToWindow(1);
+					Assert.assertEquals(driver.getCurrentUrl(),TestProperties.getProperty("expectedReturnRefundURL"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Return and Refund Policy Page ");
+					seleniumHelper.switchToParentWithChildClose();
+				}
+				if (seleniumHelper.isElementDisplayed(termsandConditionsButton)) {
+					seleniumHelper.clickOnWebElement(termsandConditionsButton);
+					seleniumHelper.SwitchToWindow(1);
+					Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedTermsandConditionsURL"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Terms and Conditions page");
+					seleniumHelper.switchToParentWithChildClose();
+				} return this;
+	}
+		public DashboardPage socialNetworkinFooter() throws Exception {
+				seleniumHelper.clickOnWebElement(jingleBidLogo);
+				seleniumHelper.scrollIntoView(socialinFooter);
+				if (seleniumHelper.isElementDisplayed(facebookIconFooter)) {
+					seleniumHelper.clickOnWebElement(facebookIconFooter);
+					seleniumHelper.SwitchToWindow(1);
+					Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedJBFacebookURL"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Facebook - JingleBid page");
+					seleniumHelper.switchToParentWithChildClose(); }
+				if (seleniumHelper.isElementDisplayed(twitterIconFooter)) {
+					seleniumHelper.scrollIntoView(socialinFooter);
+					seleniumHelper.clickOnWebElement(twitterIconFooter);
+					seleniumHelper.SwitchToWindow(1);
+					Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedJBTwitterURL"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Twitter - JingleBid page");
+					seleniumHelper.switchToParentWithChildClose();
+				}
+		
+				if(seleniumHelper.isElementDisplayed(linkedInIconFooter)) {
+					seleniumHelper.clickOnWebElement(linkedInIconFooter);
+					seleniumHelper.SwitchToWindow(1);
+					String actualURLContainstext = driver.getTitle();
+					Assert.assertTrue(actualURLContainstext.contains("Linked"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to LinkedIn page");
+					seleniumHelper.switchToParentWithChildClose();				
+				}
+				
+				if(seleniumHelper.isElementDisplayed(instagramIconFooter)) {
+					seleniumHelper.scrollIntoView(socialinFooter);
+					seleniumHelper.clickOnWebElement(instagramIconFooter);
+					seleniumHelper.SwitchToWindow(1);
+					Thread.sleep(3000);
+					String actualInstagramContains = driver.getTitle();
+					Assert.assertTrue(actualInstagramContains.contains("Instagram"));
+					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Instagram page");
+					seleniumHelper.switchToParentWithChildClose();
+				}	
+		return this;
+	}
+	
+		
+//		public DashboardPage contactUsFooter() {
+//			seleniumHelper.scrollIntoView(contactUsInFooter);
+//			if(seleniumHelper.isElementDisplayed(emailInFooter)) {
+//				seleniumHelper.clickOnWebElement(emailInFooter);
+//				emailInFooter.getAttribute();
+//				
+//				
+//			}
+//			
+//			return this;
+//		}
+	
+	}
+	
+		

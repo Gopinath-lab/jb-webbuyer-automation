@@ -17,27 +17,27 @@ public class RecoverPassword extends BasePage {
 
 	// Recover Password WebElements
 	@FindBy(xpath = "//span[contains(text(),'OR Email/Password Login?')]")
-	public static WebElement emailpasslogin;
+	private WebElement emailpasslogin;
 	@FindBy(xpath = "//span[text()='Recover Password']")
-	public WebElement recoverPwd;
+	private WebElement recoverPwd;
 	@FindBy(xpath = "//input[@name='phoneNumber']")
-	public WebElement recoverPwdenterphno;
+	private WebElement recoverPwdenterphno;
 	@FindBy(xpath = "//button[@id='sign-in-button']")
-	public WebElement recoverPwdSbmtbtn;
+	private WebElement recoverPwdSbmtbtn;
 	@FindBy(xpath = "//iframe[@title='recaptcha challenge expires in two minutes']")
-	public WebElement captcha;
+	private WebElement captcha;
 	@FindBy(xpath = "//input[@name='otpField01']")
-	public WebElement recoverypwdOTP;
+	private WebElement recoverypwdOTP;
 	@FindBy(xpath = "//button[@type='submit']")
-	public WebElement recoveryVerifyBtn;
+	private WebElement recoveryVerifyBtn;
 	@FindBy(xpath = "//input[@name='newPassword']")
-	public WebElement newPwd;
+	private WebElement newPwd;
 	@FindBy(xpath = "//input[@name='confirmPassword']")
-	public WebElement cnfrmPwd;
+	private WebElement cnfrmPwd;
 	@FindBy(xpath = "//span[text()='CHANGE PASSWORD']")
-	public WebElement pwdChangeBtn;
+	private WebElement pwdChangeBtn;
 	@FindBy(xpath = "//div[@class='ant-notification-notice notification-success ant-notification-notice-success ant-notification-notice-closable']")
-	public WebElement pwdchangednotice;
+	private WebElement pwdchangednotice;
 
 	public RecoverPassword(WebDriver driver) {
 		super(driver);

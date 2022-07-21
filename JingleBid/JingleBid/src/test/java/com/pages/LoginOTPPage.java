@@ -22,17 +22,17 @@ public class LoginOTPPage extends BasePage {
 	SeleniumHelper seleniumHelper;
 
 	@FindBy(xpath = "//span[contains(text(),'OR Email/Password Login?')]")
-	public static WebElement emailpasslogin;
+	private WebElement emailpasslogin;
 	@FindBy(xpath = "//input[@id='phoneNumber']")
-	public WebElement phno;
+	private WebElement phno;
 	@FindBy(xpath = "//button[@type='submit']")
-	public WebElement loginOTPBtn;
+	private WebElement loginOTPBtn;
 	@FindBy(xpath = "//iframe[@title='recaptcha challenge expires in two minutes']")
-	public WebElement captcha;
+	private WebElement captcha;
 	@FindBy(xpath = "//input[@name='otpField01']")
-	public WebElement otp;
+	private WebElement otp;
 	@FindBy(xpath = "//span[text()='SIGN IN']")
-	public WebElement signbtn;
+	private WebElement signbtn;
 	@FindBy(xpath = "//div[text()='Logged in Successfully']")
 	private WebElement loginsuccessful;
 

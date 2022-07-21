@@ -21,7 +21,7 @@ import com.util.TestProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * Every test class should extend this calss.
+ * Every test class should extend this class
  *
  */
 @Listeners({ ReportListener.class, LogListener.class })

@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.basepage.BasePage;
 import com.context.Constants;
+import com.github.javafaker.Faker;
 import com.helper.SeleniumHelper;
 import com.relevantcodes.extentreports.LogStatus;
 import com.util.ReportUtil;
@@ -22,31 +23,31 @@ public class SignUpPage extends BasePage{
 	Constants constants;
 
 	@FindBy(xpath= "//div[@class='fs-11 fw-600 jingle-blue']")
-	public static WebElement signup;
+	private   WebElement signup;
 	@FindBy(xpath = "//input[@id='name']")
-	public static WebElement name;
+	private   WebElement name;
 	@FindBy(xpath = "//input[@class='ant-select-selection-search-input']")
-	public static WebElement gender;
+	private   WebElement gender;
 	@FindBy(xpath = "//input[@id='email']")
-	public static WebElement email;
+	private   WebElement email;
 	@FindBy(xpath = "(//div[@class='ant-select-item-option-content'])[2]")
-	public static WebElement genderValue;
+	private   WebElement genderValue;
 	@FindBy(xpath = "//input[@id='phoneNumber']")
-	public static WebElement phone;
+	private   WebElement phone;
 	@FindBy(xpath = "//input[@id='password']")
-	public static WebElement pass;
+	private   WebElement pass;
 	@FindBy(xpath = "//input[@type='checkbox']")
-	public static WebElement accept;
+	private   WebElement accept;
 //	@FindBy(xpath = "//div[text()='Phone Number Already Exists']")
-//	public static WebElement expectmsg;
+//	private   WebElement expectmsg;
 	@FindBy(xpath = "//button[@type='submit']")
-	public static WebElement submitbtn;
+	private   WebElement submitbtn;
 	@FindBy (xpath = "//input[@name='otpField01']")
-	public static WebElement otp;
+	private   WebElement otp;
 	@FindBy(xpath = "//button[@type='submit']")
-	public static WebElement finishbutn;
+	private   WebElement finishbutn;
 	@FindBy (xpath = "//span[@class='dashboard-profile-name']")
-	public static WebElement profileName;
+	private   WebElement profileName;
 	
 	public SignUpPage(WebDriver driver) {
 		super(driver);
@@ -75,7 +76,8 @@ public class SignUpPage extends BasePage{
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(profileName), "SignUp successful");
 		ReportUtil.addScreenShot(LogStatus.PASS, "SignUp Successful");
 		return this;
-	
+		
+		
 	}
 }	
 

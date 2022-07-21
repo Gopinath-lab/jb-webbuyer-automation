@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="6" name="Test">
+  <test name="Test" parallel="methods" thread-count="5"  >
     <classes>
-      <class name="com.tests.LoginTest"/>
-      <class name="com.tests.LoginOTPTest"/>
-      <class name="com.tests.RecoverPassTest"/>
-      <class name="com.tests.SignUpTest"/>
-      <class name="com.tests.ProfileTest"/>
-      <class name="com.tests.SearchProductAndStartAuctionTest"/>
+      <class name="com.tests.AutoBidTest"/>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

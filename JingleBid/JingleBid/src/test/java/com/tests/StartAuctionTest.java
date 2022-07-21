@@ -21,9 +21,9 @@ public class StartAuctionTest extends BaseTest{
 		loginPage.launchURL().emailpasslogin();
 	
 		StartAuctionpage startAuction = PageinstancesFactory.getInstance(StartAuctionpage.class);
-		startAuction.searchAndStartAuction().goToHome();
+//		startAuction.searchAndStartAuction().goToHome();
 //		startAuction.startAuctionFromSpeciality().goToHome();
-//		startAuction.selectMainCategoryAndStartAuction().goToHome();		
+		startAuction.selectMainCategoryAndStartAuction().goToHome();		
 //		startAuction.selectFromAllProductDropDown();
 	}
 

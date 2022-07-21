@@ -25,98 +25,98 @@ public class StartAuctionpage extends BasePage{
 	SeleniumHelper seleniumHelper;
 	
 	@FindBy(xpath= "//input[@placeholder='Search Products']")
-	public WebElement searchProductInputBox;
+	private WebElement searchProductInputBox;
 	
 	@FindBy(xpath = "(//button[@type='button'])[3]")
-	public WebElement searchButton;
+	private WebElement searchButton;
 	
 	@FindBy(xpath = "(//h6[@class='search-product'])[1]")
-	public WebElement searchDropDownSelect;
+	private WebElement searchDropDownSelect;
 	
 	@FindBy(xpath = "//span[text()='SELECT PRODUCT']")
-	public WebElement selectProductButton;
+	private WebElement selectProductButton;
 	
 	@FindBy(xpath = "(//div[@class='ant-col ant-col-24 all-quantity'])[2]")
-	public WebElement emailVisibility;
+	private WebElement emailVisibility;
 	
 	@FindBy(xpath = "(//button[@class='ant-btn quantity-btn'])[1]")
-	public WebElement quantitySelect;
+	private WebElement quantitySelect;
 	
 	@FindBy(xpath = "//span[text() = 'Confirm']")
-	public WebElement confirmButton;
+	private WebElement confirmButton;
 	
 	@FindBy(xpath = "//div[@class='ant-notification-notice-message']")
-	public WebElement notificationBox;
+	private WebElement notificationBox;
 	
 	@FindBy(xpath = "//div[@class='text-center success-icon success-card']")
-	public WebElement requestSentNotification;
+	private WebElement requestSentNotification;
 	
 	//Specialty category WebElement
 	
 	@FindBy(xpath = "(//input[@id='image'])[1]")
-	public WebElement selectSpecialityStore;
+	private WebElement selectSpecialityStore;
 	
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[1]")
-	public WebElement  selectProductAfterSearch;
+	private WebElement  selectProductAfterSearch;
 
 	//WebElement for Add Address
 	
 	@FindBy(xpath = "//span[text()='Add Address']")
-	public WebElement addAddressIcon;
+	private WebElement addAddressIcon;
 	
 	@FindBy(id="country")
-	public WebElement selectCountry;
+	private WebElement selectCountry;
 	
 	@FindBy(xpath = "(//div[@class='rc-virtual-list-holder'])[1]")
-	public List <WebElement> countryDropDown;
+	private List <WebElement> countryDropDown;
 	
 	@FindBy(xpath = "//input[@name='userName']")
-	public WebElement addNewName;
+	private WebElement addNewName;
 	
 	@FindBy(xpath= "//input[@name='phoneNumber']")
-	public WebElement addNewPhoneNumber;
+	private WebElement addNewPhoneNumber;
 	
 	@FindBy(xpath ="//input[@name='pincode']")
-	public WebElement addNewPinCode;
+	private WebElement addNewPinCode;
 	
 	@FindBy(xpath = "//input[@name='buildingNumber']")
-	public WebElement addNewBuildingName;
+	private WebElement addNewBuildingName;
 	
 	@FindBy(xpath = "//input[@name='street']")
-	public WebElement addNewStreet;
+	private WebElement addNewStreet;
 	
 	@FindBy(xpath = "//input[@name='landmark']")
-	public WebElement addNewLandmark;
+	private WebElement addNewLandmark;
 	
 	@FindBy(xpath = "//input[@name='area']")
-	public WebElement addNewArea;
+	private WebElement addNewArea;
 	
 	@FindBy(xpath = "//input[@id='state']")
-	public WebElement addNewState;
+	private WebElement addNewState;
 	
 	@FindBy(xpath = "(//div[@class='rc-virtual-list-holder'])[2]")
-	public List <WebElement>  stateDropDownSelect;	
+	private List <WebElement>  stateDropDownSelect;	
 	
 	@FindBy(xpath = "//input[@id='city']")
-	public WebElement citySelect;
+	private WebElement citySelect;
 	
 //	@FindBy(xpath = "(//span[@class='ant-select-selection-item'])[2]")
-//	public WebElement citySelect;
+//	private WebElement citySelect;
 	
 //	@FindBy(xpath  = "(//div[@class='rc-virtual-list-holder'])[2]")
-//	public List <WebElement> cityDropDownList;
+//	private List <WebElement> cityDropDownList;
 	
 	@FindBy(xpath = "//div[text()='Chengalpattu']")
-	public WebElement cityDropDownList;
+	private WebElement cityDropDownList;
 	
 	@FindBy(xpath ="//span[text()='Save']")
-	public WebElement saveAddressButton;
+	private WebElement saveAddressButton;
 	
 	
 	//Go to home WebElement
 	
 	@FindBy(xpath="//button[@type='button' and @class='ant-btn ant-btn-primary success-modal-btn']")
-	public WebElement goToHomeButton;
+	private WebElement goToHomeButton;
 	
 	public StartAuctionpage(WebDriver driver) {
 		super(driver);
@@ -160,14 +160,14 @@ public class StartAuctionpage extends BasePage{
 
 		}
 		else {
-			System.out.println(notificationBox.getText() + "Hence order cannot be completed");
+			System.out.println(notificationBox.getText() + ". Hence order cannot be completed");
 			ReportUtil.addScreenShot(LogStatus.FAIL,"Email address not mentioned");
 		}
 		
 		seleniumHelper.clickOnWebElement(confirmButton);
 		if (seleniumHelper.isElementDisplayed(notificationBox)) {
 			Assert.assertTrue(true);
-			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
+			System.out.println(notificationBox.getText() + ".Hence cannot order a product");
 			ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
 		}
 		else {
