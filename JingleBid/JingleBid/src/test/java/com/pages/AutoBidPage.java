@@ -1,5 +1,7 @@
 package com.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -117,6 +119,7 @@ public class AutoBidPage extends BasePage {
 			System.out.println("No error while ordering product!");
 			ReportUtil.addScreenShot(LogStatus.PASS,"AutoBid started successfully!");
 		}
+		driver.switchTo().frame(0);
 		seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBox);
 		seleniumHelper.clickOnWebElement(acceptBidButton);
@@ -141,8 +144,4 @@ public class AutoBidPage extends BasePage {
 		return this;
 		
 	}
-	
-		
-	
-
 }

@@ -27,12 +27,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 @Listeners({ ReportListener.class, LogListener.class })
 public class BaseTest {
 
+	public String excelpath = System.getProperty("user.dir") + "\\exceldata\\excel1.xls";
+
 	/** The driver. */
 	protected WebDriver driver;
 
-	/**
-	 * Global setup.
-	 */
+	/** * Global setup. */
 	@BeforeSuite(alwaysRun = true)
 	public void globalSetup() {
 		LoggerUtil.info("************************** Test Execution Started ************************************");
@@ -55,13 +55,12 @@ public class BaseTest {
 		LoggerUtil.info("Number of testcases Passed : " + passed);
 		LoggerUtil.info("Number of testcases Failed : " + failed);
 		LoggerUtil.info("Number of testcases Skipped  : " + skipped);
-		// boolean mailSent = EmailConfig.ReportEmail(); // MailUtil.sendMail(total, passed, failed, skipped);
+		// boolean mailSent = EmailConfig.ReportEmail(); // MailUtil.sendMail(total,
+		// passed, failed, skipped);
 		LoggerUtil.info("************************** Test Execution Finished ************************************");
 	}
 
-	/**
-	 * Setup.
-	 */
+	/** * Setup. */
 	@BeforeClass
 	protected void setup() {
 //		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
@@ -74,14 +73,12 @@ public class BaseTest {
 		WebDriverContext.setDriver(driver);
 	}
 
-	/**
-	 * Wrap up.
-	 */
-//	@AfterClass
-//	public void wrapUp() {
-//		if (driver != null) {
-//			driver.close();
-//			driver.quit();
-//		}
+	/** * Wrap up. */
+////	@AfterClass
+////	public void wrapUp() {
+////		if (driver != null) {
+////			driver.close();
+////			driver.quit();
+////		}
 //	}
 }

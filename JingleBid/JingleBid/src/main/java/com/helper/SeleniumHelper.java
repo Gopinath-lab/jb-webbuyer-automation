@@ -38,15 +38,29 @@ public class SeleniumHelper {
 		this.driver = driver;
 	}
 
+	/**	 * Method to WebElement get	 */
+	
 	public WebElement getWebElement(String xpath) {
 		return driver.findElement(By.xpath(xpath));
 	}
+	
+	public WebElement getWebElementById(String id) {
+		return driver.findElement(By.id(id));
+	}
 
+	public WebElement getWebElementByName(String name) {
+		return driver.findElement(By.name(name));
+	}
+
+	/**	 * Method to highlight WebElement	 */
+	
 	public void highlightWebElement(WebElement element) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')",
 				element);
 	}
+
+	/**	 * Method to File Upload	 */
 
 	public void fileUpload(String filepath) throws AWTException {
 		Robot robot = new Robot();
@@ -67,9 +81,7 @@ public class SeleniumHelper {
 
 	}
 
-	/**
-	 * Method to handle alert
-	 */
+	/**	 * Method to handle alert	 */
 
 	public Alert getAlert() {
 		return driver.switchTo().alert();
@@ -121,9 +133,8 @@ public class SeleniumHelper {
 		driver.switchTo().defaultContent();
 	}
 
-	/**
-	 * Button Helper
-	 */
+	/** 	 * Button Click helper	 */
+	
 	public void clickOnWebElement(WebElement ele) {
 
 		try {
@@ -133,9 +144,8 @@ public class SeleniumHelper {
 		}
 	}
 
-	/**
-	 * Browser Helper methods
-	 */
+	/**	 * Browser Helper methods	 */
+	
 	public void goBack() {
 		driver.navigate().back();
 
@@ -181,9 +191,7 @@ public class SeleniumHelper {
 		switchToParentWindow();
 	}
 
-	/**
-	 * Checkbox or Radio button helper
-	 */
+	/**	 * Checkbox or Radio button helper	 */
 
 	public boolean isIselected(WebElement element) {
 		boolean flag = element.isSelected();
@@ -200,9 +208,7 @@ public class SeleniumHelper {
 			element.click();
 	}
 
-	/**
-	 * DropDownHelper helper
-	 */
+	/**	 * DropDownHelper helper	 */
 
 	public void SelectUsingVisibleText(WebElement element, String visibleText) {
 		Select select = new Select(element);
@@ -236,9 +242,7 @@ public class SeleniumHelper {
 		return valueList;
 	}
 
-	/**
-	 * Link Helper Methods
-	 */
+	/**	 * Link Helper Methods	 */
 
 	public void clickLink(String linkText) {
 		driver.findElement(By.linkText(linkText)).click();
@@ -253,9 +257,8 @@ public class SeleniumHelper {
 		return link;
 	}
 
-	/**
-	 * JavaScriptExecutor Helper Methods
-	 */
+	/**	 * JavaScriptExecutor Helper Methods	 */
+	
 	public Object executeScript(String script) {
 		JavascriptExecutor exe = (JavascriptExecutor) driver;
 		return exe.executeScript(script);
@@ -295,9 +298,8 @@ public class SeleniumHelper {
 		}
 	}
 
-	/**
-	 * Navigation Helper Methods
-	 */
+	/**	 * Navigation Helper Methods	 */
+	
 	public void navigateTo(String url) {
 		LoggerUtil.info("Navigate To - " + url);
 		driver.get(url);
@@ -315,9 +317,7 @@ public class SeleniumHelper {
 		return url;
 	}
 
-	/**
-	 * Text Box Helper Methods
-	 */
+	/**	 * Text Box Helper Methods	 */
 
 	public void backspace(WebElement element) {
 		try {
@@ -377,9 +377,8 @@ public class SeleniumHelper {
 		element.sendKeys(Text);
 	}
 
-	/**
-	 * Wait Helper Methods
-	 */
+	/**	 * Wait Helper Methods	 */
+	
 	@SuppressWarnings("deprecation")
 	public void waitForElement(WebElement element, int timeOutInSeconds) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -642,20 +641,14 @@ public class SeleniumHelper {
 			throw new Exception("Exception : Invalid Direction (only scroll \"top\" or \"end\")");
 	}
 
-	/**
-	 * Method to Explicitly wait for element to be enabled=click
-	 */
+	/**	 * Method to Explicitly wait for element to be enabled=click	 */
+	
 	public void waitForElementToBeClickable(WebElement element, String duration) {
 
 		WebDriverWait wait = (new WebDriverWait(driver, Integer.parseInt(duration) * 1000));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
-	public WebElement getWebElementById(String id) {
-		return driver.findElement(By.id(id));
-	}
 
-	public WebElement getWebElementByName(String name) {
-		return driver.findElement(By.name(name));
-	}
+
 }

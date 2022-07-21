@@ -5,6 +5,7 @@
     <classes>
       <class name="com.tests.AutoBidTest">
         <methods>
+          <include name="wrapUp"/>
           <include name="AutoBidPage"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>

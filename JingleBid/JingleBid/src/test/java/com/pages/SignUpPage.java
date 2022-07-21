@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import com.basepage.BasePage;
 import com.context.Constants;
@@ -37,8 +35,6 @@ public class SignUpPage extends BasePage{
 	public static WebElement pass;
 	@FindBy(xpath = "//input[@type='checkbox']")
 	public static WebElement accept;
-//	@FindBy(xpath = "//div[text()='Phone Number Already Exists']")
-//	public static WebElement expectmsg;
 	@FindBy(xpath = "//button[@type='submit']")
 	public static WebElement submitbtn;
 	@FindBy (xpath = "//input[@name='otpField01']")
@@ -58,24 +54,43 @@ public class SignUpPage extends BasePage{
 		return this;
 	}
 
-	@Test
-	public SignUpPage signUp() throws InterruptedException {
+
+	public SignUpPage signUp(String uname1, String email1, String phnumber1, String pwd1, String otp1) throws InterruptedException {
 		seleniumHelper.clickOnWebElement(signup);
-		seleniumHelper.sendKeys(name, TestProperties.getProperty("signup.userName"));
+		seleniumHelper.sendKeys(name, uname1);
 		seleniumHelper.clickOnWebElement(gender);	
 		seleniumHelper.clickOnWebElement(genderValue);
-		seleniumHelper.sendKeys(email, TestProperties.getProperty("signup.email"));
-		seleniumHelper.sendKeys(pass, TestProperties.getProperty("signup.password"));
-		seleniumHelper.sendKeys(phone, TestProperties.getProperty("signup.enterPhone"));
+		seleniumHelper.sendKeys(email, email1);
+		seleniumHelper.sendKeys(phone, phnumber1);
+		seleniumHelper.sendKeys(pass, pwd1);
 		seleniumHelper.clickOnWebElement(accept);
 		seleniumHelper.clickOnWebElement(submitbtn);
-		seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
+		seleniumHelper.sendKeys(otp, otp1);
 		seleniumHelper.clickOnWebElement(finishbutn);
 		Thread.sleep(1000);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(profileName), "SignUp successful");
 		ReportUtil.addScreenShot(LogStatus.PASS, "SignUp Successful");
 		return this;
-	
 	}
+
+//	// **--By use getproperty method--** //
+//	public SignUpPage signUp() throws InterruptedException {
+//		seleniumHelper.clickOnWebElement(signup);
+//		seleniumHelper.sendKeys(name, TestProperties.getProperty("signup.userName"));
+//		seleniumHelper.clickOnWebElement(gender);	
+//		seleniumHelper.clickOnWebElement(genderValue);
+//		seleniumHelper.sendKeys(email, TestProperties.getProperty("signup.email"));
+//		seleniumHelper.sendKeys(pass, TestProperties.getProperty("signup.password"));
+//		seleniumHelper.sendKeys(phone, TestProperties.getProperty("signup.enterPhone"));
+//		seleniumHelper.clickOnWebElement(accept);
+//		seleniumHelper.clickOnWebElement(submitbtn);
+//		seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
+//		seleniumHelper.clickOnWebElement(finishbutn);
+//		Thread.sleep(1000);
+//		Assert.assertTrue(seleniumHelper.isElementDisplayed(profileName), "SignUp successful");
+//		ReportUtil.addScreenShot(LogStatus.PASS, "SignUp Successful");
+//		return this;
+//	
+//	}
 }	
 
