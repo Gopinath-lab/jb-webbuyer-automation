@@ -272,11 +272,11 @@ public class StartAuctionpage extends BasePage {
 			Assert.assertTrue(true);
 			System.out.println(notificationBox.getText());
 			ReportUtil.addScreenShot(LogStatus.PASS,
-					"Product Ordered Successfully from Top Search all Products Drop-down!");
+					"Product Ordered Successfully from Speciality Store");
 		} else {
-			System.out.println("Error occured while ordering a product from All products dropdown!");
+			System.out.println("Error occured while ordering a product from Speciality Store!");
 			ReportUtil.addScreenShot(LogStatus.FAIL,
-					"Error occured while ordering a product from All products dropdown!");
+					"Error occured while ordering a product from Speciality Store!");
 		}
 		return this;
 	}
