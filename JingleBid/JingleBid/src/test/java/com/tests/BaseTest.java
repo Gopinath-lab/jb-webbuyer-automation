@@ -74,11 +74,11 @@ public class BaseTest {
 	}
 
 	/** * Wrap up. */
-////	@AfterClass
-////	public void wrapUp() {
-////		if (driver != null) {
-////			driver.close();
-////			driver.quit();
-////		}
-//	}
+	@AfterClass
+	public void wrapUp() {
+		if (driver != null) {
+			driver.close();
+			driver.quit();
+		}
+	}
 }

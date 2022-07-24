@@ -489,7 +489,7 @@ public class SeleniumHelper {
 	public boolean isElementDisplayed(WebElement ele) {
 		boolean flag = false;
 		try {
-			waitForElementVisible(ele, 20);
+			waitForElementVisible(ele, 50);
 			flag = ele.isDisplayed();
 			if (flag)
 				highlightWebElement(ele);
@@ -648,7 +648,4 @@ public class SeleniumHelper {
 		WebDriverWait wait = (new WebDriverWait(driver, Integer.parseInt(duration) * 1000));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-
-
-
 }

@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.basepage.BasePage;
-import com.factory.PageinstancesFactory;
 import com.github.javafaker.Faker;
 import com.helper.SeleniumHelper;
 import com.relevantcodes.extentreports.LogStatus;
