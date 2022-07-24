@@ -22,8 +22,6 @@ public class StartAuctionTest extends BaseTest{
 		startAuction.selectFromAllProductDropDown().goToHome();
 		startAuction.selectMainCategoryAndStartAuction().goToHome();
 		startAuction.startAuctionFromSpeciality().goToHome();
-				
-		
 	}
 
 }
