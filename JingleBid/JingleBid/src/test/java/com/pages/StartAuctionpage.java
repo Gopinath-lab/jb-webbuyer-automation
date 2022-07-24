@@ -1,17 +1,12 @@
 package com.pages;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.basepage.BasePage;
@@ -272,11 +267,11 @@ public class StartAuctionpage extends BasePage {
 			Assert.assertTrue(true);
 			System.out.println(notificationBox.getText());
 			ReportUtil.addScreenShot(LogStatus.PASS,
-					"Product Ordered Successfully from Top Search all Products Drop-down!");
+					"Product Ordered Successfully from Speciality Store");
 		} else {
-			System.out.println("Error occured while ordering a product from All products dropdown!");
+			System.out.println("Error occured while ordering a product from Speciality Store!");
 			ReportUtil.addScreenShot(LogStatus.FAIL,
-					"Error occured while ordering a product from All products dropdown!");
+					"Error occured while ordering a product from Speciality Store!");
 		}
 		return this;
 	}
