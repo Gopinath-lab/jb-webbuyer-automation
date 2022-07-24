@@ -22,17 +22,19 @@ public class LoginOTPPage extends BasePage {
 	SeleniumHelper seleniumHelper;
 
 	@FindBy(xpath = "//span[contains(text(),'OR Email/Password Login?')]")
-	private WebElement emailpasslogin;
+	public static WebElement emailpasslogin;
 	@FindBy(xpath = "//input[@id='phoneNumber']")
-	private WebElement phno;
+	public WebElement phno;
 	@FindBy(xpath = "//button[@type='submit']")
-	private WebElement loginOTPBtn;
+	public WebElement loginOTPBtn;
+	@FindBy(xpath = "//div[text()='Mobile Number Not Exist!']")
+	public WebElement numbernotexist;
 	@FindBy(xpath = "//iframe[@title='recaptcha challenge expires in two minutes']")
-	private WebElement captcha;
+	public WebElement captcha;
 	@FindBy(xpath = "//input[@name='otpField01']")
-	private WebElement otp;
+	public WebElement otp;
 	@FindBy(xpath = "//span[text()='SIGN IN']")
-	private WebElement signbtn;
+	public WebElement signbtn;
 	@FindBy(xpath = "//div[text()='Logged in Successfully']")
 	private WebElement loginsuccessful;
 
@@ -43,10 +45,15 @@ public class LoginOTPPage extends BasePage {
 
 	public LoginOTPPage loginwithOTP() {
 		seleniumHelper.clickOnWebElement(phno);
-		seleniumHelper.sendKeys(phno, TestProperties.getProperty("signup.enterPhone"));
+		seleniumHelper.sendKeys(phno, TestProperties.getProperty("login.num"));
 		seleniumHelper.clickOnWebElement(loginOTPBtn);
-		if (seleniumHelper.isElementDisplayed(captcha)) {
-			Assert.assertTrue(true);
+		if (seleniumHelper.isElementDisplayed(numbernotexist)) {
+			//Assert.assertTrue(false);
+			System.out.println("Entered number not Exist, So can't able to Login!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Entered number not Exist, So can't able to Login!");
+		}
+			else if (seleniumHelper.isElementDisplayed(captcha)) {
+			//Assert.assertTrue(true);
 			System.out.println("Google Image Captcha Interrupted, So can't able to Login!");
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Google Image Captcha Interrupted, So can't able to Login!");
 		} else {

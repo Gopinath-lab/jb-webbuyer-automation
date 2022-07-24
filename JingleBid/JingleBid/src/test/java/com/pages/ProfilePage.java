@@ -16,13 +16,13 @@ public class ProfilePage extends BasePage {
 	SeleniumHelper seleniumHelper;
 
 	@FindBy(xpath = "//p[contains(text(),'View Profile')]")
-	private static WebElement viewprofile;
+	public static WebElement viewprofile;
 	@FindBy(xpath = "//input[@id='User_Name']")
-	private static WebElement username;
+	public static WebElement username;
 	@FindBy(xpath = "//input[@id='Email_ID']")
-	private static WebElement emailid;
+	public static WebElement emailid;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary save-btn']")
-	private static WebElement lgbtn;
+	public static WebElement lgbtn;
 	@FindBy(xpath = "//div[text()='Updated Successfully']")
 	private WebElement updatesuccess;
 

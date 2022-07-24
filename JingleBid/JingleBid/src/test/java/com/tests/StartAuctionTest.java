@@ -1,15 +1,12 @@
 package com.tests;
 
 import java.awt.AWTException;
-
 import org.testng.annotations.Test;
-
 import com.factory.PageinstancesFactory;
-import com.pages.LoginOTPPage;
 import com.pages.LoginPage;
 import com.pages.StartAuctionpage;
 
-@Test(testName = "Search product and start auction", description = "Search product and start Auction Functionality")
+@Test(testName = "Start Auction", description = "Start Auction Functionality")
 
 public class StartAuctionTest extends BaseTest{
 	
@@ -21,10 +18,12 @@ public class StartAuctionTest extends BaseTest{
 		loginPage.launchURL().emailpasslogin();
 	
 		StartAuctionpage startAuction = PageinstancesFactory.getInstance(StartAuctionpage.class);
-//		startAuction.searchAndStartAuction().goToHome();
-//		startAuction.startAuctionFromSpeciality().goToHome();
-		startAuction.selectMainCategoryAndStartAuction().goToHome();		
-//		startAuction.selectFromAllProductDropDown();
+		startAuction.searchAndStartAuction().goToHome();
+		startAuction.selectFromAllProductDropDown().goToHome();
+		startAuction.selectMainCategoryAndStartAuction().goToHome();
+		startAuction.startAuctionFromSpeciality().goToHome();
+				
+		
 	}
 
 }

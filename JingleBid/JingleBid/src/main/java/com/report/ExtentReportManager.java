@@ -51,7 +51,6 @@ public class ExtentReportManager {
 	 *
 	 * @return the current test
 	 */
-	
 	public synchronized static ExtentTest getCurrentTest() {
 		return map.get(Thread.currentThread().getId());
 	}
