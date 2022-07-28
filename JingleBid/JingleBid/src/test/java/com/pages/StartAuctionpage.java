@@ -13,6 +13,7 @@ import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.basepage.BasePage;
 import com.helper.SeleniumHelper;
@@ -118,9 +119,32 @@ public class StartAuctionpage extends BasePage {
 	public WebElement confirmButton;
 	@FindBy(xpath = "//div[text()='Your Auction Request has been completed']")
 	public WebElement notificationBox;
+	@FindBy(xpath = "//div[text()='Auction Cancelled Succesfully']")
+	private WebElement auctionCancelled;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary success-modal-btn']")
 	public WebElement goToHomeButton;
-
+	@FindBy(xpath = "//div[@class='header-text']")
+	private WebElement jingleBidLogo;
+	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Auction')]")
+	private WebElement totalAuctionButton;
+	@FindBy(xpath = "(//p[@class='title-product product-title fs-10 text-black fw-600'])[1]")
+	private WebElement selectProductFromTotalAuction;
+	@FindBy(xpath = "//span[contains(text(),'Cancel')]/parent::button")
+	private WebElement cancelAuctionButton;
+	@FindBy(xpath = "(//label[@class='ant-radio-wrapper']/span/input)[2]")
+	private WebElement cancelJustTriedAppButton;
+	@FindBy(xpath = "(//label[@class='ant-radio-wrapper']/span/input)[1]")
+	private WebElement cancelGettinBetterDealButton;
+	@FindBy(xpath = "//label[@class='ant-radio-wrapper']/span/input)[3]")
+	private WebElement cancelChangedMind;
+	@FindBy(xpath = "(//label[@class='ant-radio-wrapper']/span/input)[4]")
+	private WebElement cancelOtherButton;
+	@FindBy(xpath = "//span[contains(text(),'Cancel')]//parent::div")
+	private WebElement cancelAuctionPopUp;
+	@FindBy(xpath = "//span[text()='Submit']/parent::button")
+	private WebElement submitButtonInCancelPopUp;
+	@FindBy(xpath = "//div[@class='ant-notification-notice-message']")
+	private WebElement notificationPopUp;
 	// ******************************************************************//
 
 	public StartAuctionpage(WebDriver driver) {
@@ -145,12 +169,12 @@ public class StartAuctionpage extends BasePage {
 //			Assert.assertTrue(true);
 			System.out.println("Email address visibility test passed:" + emailVisibility.getText());
 		} else {
-			System.out.println(notificationBox.getText() + "Hence order cannot be completed");
+			System.out.println(notificationPopUp.getText() + "Hence order cannot be completed");
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Email address not mentioned");
 		}
 		seleniumHelper.clickOnWebElement(confirmButton);
 		Thread.sleep(1000);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationBox),
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationPopUp),
 				"Error occured while ordering a product!");
 		ReportUtil.addScreenShot(LogStatus.PASS, "Product Searched and Ordered Successfully!");
 		return this;
@@ -174,7 +198,7 @@ public class StartAuctionpage extends BasePage {
 //			Assert.assertTrue(true);
 			System.out.println("Email address visibility test passed:" + emailVisibility.getText());
 		} else {
-			System.out.println(notificationBox.getText() + " - Error occured, Hence order cannot be placed");
+			System.out.println(notificationPopUp.getText() + " - Error occured, Hence order cannot be placed");
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Email address not mentioned");
 		}
 
@@ -232,7 +256,7 @@ public class StartAuctionpage extends BasePage {
 			// System.out.println("Email address visibility test passed:" +
 			// emailVisibility.getText());
 		} else {
-			System.out.println(notificationBox.getText() + " - Error occured, Hence order cannot be placed");
+			System.out.println(notificationPopUp.getText() + " - Error occured, Hence order cannot be placed");
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Email address not mentioned");
 		}
 		seleniumHelper.clickOnWebElement(confirmButton);
@@ -285,6 +309,22 @@ public class StartAuctionpage extends BasePage {
 
 	public StartAuctionpage goToHome() {
 		seleniumHelper.clickOnWebElement(goToHomeButton);
+		return this;
+	}
+	
+	public StartAuctionpage cancelAuction() {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalAuctionButton);
+		seleniumHelper.waitForElement(selectProductFromTotalAuction, 5);
+		seleniumHelper.clickOnWebElement(selectProductFromTotalAuction);
+		seleniumHelper.waitForElement(cancelAuctionButton, 10);
+		seleniumHelper.clickOnWebElement(cancelAuctionButton);
+	//	String actualTextinCancelPopUp = cancelAuctionPopUp.getText();
+	//	Assert.assertEquals(actualTextinCancelPopUp, TestProperties.getProperty("expectedTextinCancelAuctionPopUp"));
+		seleniumHelper.clickOnWebElement(cancelJustTriedAppButton);
+		seleniumHelper.clickOnWebElement(submitButtonInCancelPopUp);
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(auctionCancelled),"Auction has been cancelled Successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS,"Auction cancelled successfully");
 		return this;
 	}
 

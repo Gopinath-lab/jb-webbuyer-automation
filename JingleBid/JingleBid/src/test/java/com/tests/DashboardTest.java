@@ -18,8 +18,12 @@ public class DashboardTest extends BaseTest	{
 		loginPage.launchURL().emailpasslogin();
 		
 		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
-		dashboardPage.socialNetworkinFooter();
-		
+//		dashboardPage.hyperlinks().bottomBannerAboutUs().footerJingleBidTv().policyinFooter().socialNetworkinFooter();
+//		dashboardPage.contactUsFooter();
+//		dashboardPage.addressinFooter();
+	//	dashboardPage.chatboxIcon();
+		dashboardPage.totalAuction().totalDeals();
+		dashboardPage.productRequest();
 		
 	}
 

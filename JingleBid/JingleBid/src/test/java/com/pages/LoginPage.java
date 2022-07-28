@@ -62,8 +62,15 @@ public class LoginPage extends BasePage {
 		ReportUtil.addScreenShot(LogStatus.PASS, "Email/Pass Login Successfull!");
 		return this;
 	}
-
-	public void logout() {
+	public LoginPage emailpassLoginGeneral() {
+		seleniumHelper.clickOnWebElement(emailpasslogin);
+		seleniumHelper.sendKeys(uname, TestProperties.getProperty("login-username"));
+		seleniumHelper.sendKeys(pwd, TestProperties.getProperty("login-password"));
+		seleniumHelper.clickOnWebElement(logbtn);
+		return this;
+		
+	}
+	public LoginPage logout() {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
@@ -72,6 +79,7 @@ public class LoginPage extends BasePage {
 		}
 		seleniumHelper.clickOnWebElement(menudrop);
 		seleniumHelper.jsClick(logoutbtn);
+		return this;
 	}
 
 	// To return back to login page after signout

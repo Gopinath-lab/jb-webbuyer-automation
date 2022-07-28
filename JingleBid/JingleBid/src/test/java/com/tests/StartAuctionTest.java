@@ -15,13 +15,13 @@ public class StartAuctionTest extends BaseTest{
 	public void StartAuctionPage() throws AWTException, InterruptedException {
 		
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpasslogin();
+		loginPage.launchURL().emailpassLoginGeneral();
 	
 		StartAuctionpage startAuction = PageinstancesFactory.getInstance(StartAuctionpage.class);
-		startAuction.searchAndStartAuction().goToHome();
-		startAuction.selectFromAllProductDropDown().goToHome();
-		startAuction.selectMainCategoryAndStartAuction().goToHome();
-		startAuction.startAuctionFromSpeciality().goToHome();
+	//	startAuction.searchAndStartAuction().goToHome();
+	//	startAuction.selectFromAllProductDropDown().goToHome();
+	//	startAuction.selectMainCategoryAndStartAuction().goToHome();
+		startAuction.startAuctionFromSpeciality().goToHome().cancelAuction();
 	}
 
 }
