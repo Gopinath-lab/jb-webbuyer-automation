@@ -16,10 +16,10 @@ public class AutoBidTest extends BaseTest {
 	public void AutoBidPage () throws Exception {
 		
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpasslogin(); 
+		loginPage.launchURL().emailpassLoginGeneral();
 		
 		AutoBidPage autoBidPage = PageinstancesFactory.getInstance(AutoBidPage.class);
-		autoBidPage.searchAndStartAuctionInAutoBid();
+		autoBidPage.searchFromSpecialityStoreAndAutoBid();
 		
 //		PaymentMethodsPage paymentMethodsPage = PageinstancesFactory.getInstance(PaymentMethodsPage.class);
 //		paymentMethodsPage.netBankingPayment();

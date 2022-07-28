@@ -40,6 +40,7 @@ public class EmailConfig{
 			String Password = TestProperties.getProperty("mail.password");
 			String from = TestProperties.getProperty("mail.user");
 			String toAddress =TestProperties.getProperty("mail.to");
+			String ccAddress =TestProperties.getProperty("mail.cc");
 			String filename1 =  System.getProperty("user.dir") + "/ExtentReports/AutomationTestReport.html";
 			String mailSubject = Constants.MAIL_SUBJECT;
 			Properties props = System.getProperties();
@@ -54,10 +55,11 @@ public class EmailConfig{
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress( TestProperties.getProperty("mail.from")));
 			message.setRecipients(Message.RecipientType.TO, toAddress);
+			message.setRecipients(Message.RecipientType.CC, ccAddress);
 			message.setSubject(mailSubject + " | " + new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
 
 			BodyPart messageBodyPart = new MimeBodyPart();
-			messageBodyPart.setText("Our test suite has just finished its execution. Here is the summary report. Please download to view" );
+			messageBodyPart.setText("Dear Team," + '\n' + '\n' + "Pls, find the attached Automation Test Report Summary for your reference." +'\n' + '\n' + '\n'+ "Kindly, download to view the report" );
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(messageBodyPart);
 			

@@ -15,6 +15,7 @@ import org.testng.annotations.Listeners;
 import com.context.WebDriverContext;
 import com.listeners.LogListener;
 import com.listeners.ReportListener;
+import com.util.EmailConfig;
 import com.util.LoggerUtil;
 import com.util.TestProperties;
 
@@ -55,8 +56,7 @@ public class BaseTest {
 		LoggerUtil.info("Number of testcases Passed : " + passed);
 		LoggerUtil.info("Number of testcases Failed : " + failed);
 		LoggerUtil.info("Number of testcases Skipped  : " + skipped);
-		// boolean mailSent = EmailConfig.ReportEmail(); // MailUtil.sendMail(total,
-		// passed, failed, skipped);
+		 boolean mailSent = EmailConfig.ReportEmail(); // MailUtil.sendMail(total, passed, failed, skipped);
 		LoggerUtil.info("************************** Test Execution Finished ************************************");
 	}
 

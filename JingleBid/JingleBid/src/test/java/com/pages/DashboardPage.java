@@ -1,5 +1,10 @@
 package com.pages;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -89,17 +94,97 @@ public class DashboardPage extends BasePage{
 	private WebElement emailInFooter;
 	
 	
+	@FindBy(xpath = "//a[contains(@href,'tel')]")
+	private WebElement telephoneNoContact;
+	
+	@FindBy(xpath = "//div[contains(text(),'Registered Office Address ')]")
+	private WebElement addressInFooter;
+	
+	@FindBy(xpath = "//div[@class='footer-list cursor-fix']")
+	private WebElement jbAddress;
+	
+	@FindBy(xpath = "//iframe[@id='fc_widget']")
+	private WebElement chatBoxFrame;
+	
+	@FindBy(xpath = "//div[@id='chat-icon']")
+	private WebElement chatBoxIcon;
+	
+	@FindBy(xpath = "//div[@class='fc-conversation-view']")
+	private WebElement chatBox;
+	
+	@FindBy(xpath = "//div[@class='fc-conversation-view']/div/div/div/h1[contains(text(),'Inbox')]")
+	private WebElement inboxTextinChatBox;
+	
+	@FindBy(xpath = "//div[@class='d_hotline minimize ']")
+	private WebElement closeChatBox;
+	
+	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Auction')]")
+	private WebElement totalAuctionButton;
+	
+	@FindBy(xpath = "//div[@class='ant-card-head-wrapper']")
+	private WebElement totalAuctionandDealsheader;
+	
+	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Deals')]")
+	private WebElement totalDealsButton;
+	
+	@FindBy(xpath = "//span[@aria-label='file-text']")
+	private WebElement requestProductIcon;
+	
+	@FindBy(xpath = "//input[@id='Product_Name']")
+	private WebElement requestProductName;
+	
+	@FindBy(xpath = "//input[@id='Reference_Url']")
+	private WebElement requestProductURL;
+	
+	@FindBy(xpath = "//input[@id='Model_Number']")
+	private WebElement requestModelNo;
+	
+	@FindBy(xpath = "//button[@type='submit']")
+	private WebElement submitButton;
+	
+	@FindBy(xpath = "//div[text()=' Request Sent ']")
+	private WebElement requestSent;
+	
+	@FindBy(xpath = "//div[@class='ant-modal-content']")
+	private WebElement requestSentNotificationBox;
+	
 	public DashboardPage(WebDriver driver) {
 		super(driver);
 		seleniumHelper = new SeleniumHelper (driver);
 		
 	}
 	
+//	private void validateHyperlinks(WebElement webElement, WebElement validationData, String text) {
+//		if (seleniumHelper.isElementDisplayed(webElement)) {
+//			seleniumHelper.clickOnWebElement(webElement);
+//			seleniumHelper.SwitchToWindow(1);
+//			Assert.assertEquals(validationData.getText(), TestProperties.getProperty(text);	
+//		}
+//
+//	}
+	
 	public DashboardPage hyperlinks () {
-		seleniumHelper.clickOnWebElement(downloadAppLink);
-		seleniumHelper.SwitchToWindow(1);
+//		ArrayList<WebElement> hyperlinks= new ArrayList<WebElement>();
+//		hyperlinks.add(downloadAppLink);
+//		hyperlinks.add(aboutUslinkonTopofDashboard);
+//		hyperlinks.add(jingleBidTVIcon);
+//		
+//		ArrayList<WebElement> validationElement = new ArrayList<WebElement>();
+//		validationElement.add(actualTextinPlaystore);
+//		validationElement.add();
+//		
+//		ArrayList<String> validateText = new ArrayList<String>();
+//		
+//		for (int i = 0; i < hyperlinks.size(); i++) {
+//			validateHyperlinks(hyperlinks.get(i), validationElement.get(i), validateText.get(i));
+//			
+//		}	
 		
-		if (seleniumHelper.isElementDisplayed(appInstallButton)) {
+			
+	if (seleniumHelper.isElementDisplayed(downloadAppLink)){
+	seleniumHelper.clickOnWebElement(downloadAppLink);
+		seleniumHelper.SwitchToWindow(1);
+	if (seleniumHelper.isElementDisplayed(appInstallButton)) {
 			Assert.assertEquals(actualTextinPlaystore.getText(), TestProperties.getProperty("expectedTextinPlayStore"));	
 			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Jinglebid app in PlayStore and Install button available");
 			seleniumHelper.switchToParentWithChildClose();
@@ -147,7 +232,8 @@ public class DashboardPage extends BasePage{
 		else {
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Jingle Bid Logo is not displayed "); 
 			}
-		return this;	
+		}
+	return this;
 		}
 	
 	public DashboardPage bottomBannerAboutUs() {
@@ -247,19 +333,104 @@ public class DashboardPage extends BasePage{
 		return this;
 	}
 	
-		
-//		public DashboardPage contactUsFooter() {
-//			seleniumHelper.scrollIntoView(contactUsInFooter);
-//			if(seleniumHelper.isElementDisplayed(emailInFooter)) {
-//				seleniumHelper.clickOnWebElement(emailInFooter);
-//				emailInFooter.getAttribute();
-//				
-//				
-//			}
-//			
-//			return this;
-//		}
+
+		public DashboardPage contactUsFooter() throws Exception {
+			Robot bot = new Robot();
+			seleniumHelper.scrollIntoView(contactUsInFooter);
+			if(seleniumHelper.isElementDisplayed(emailInFooter)) {
+				seleniumHelper.clickOnWebElement(emailInFooter);
+				Thread.sleep(4000);	
+					bot.keyPress(KeyEvent.VK_ESCAPE);
+					bot.keyRelease(KeyEvent.VK_ESCAPE);
+					bot.keyPress(KeyEvent.VK_ALT);
+					bot.keyPress(KeyEvent.VK_F4);
+					bot.keyRelease(KeyEvent.VK_F4);
+					bot.keyRelease(KeyEvent.VK_ALT);
+				seleniumHelper.switchToParentWindow();
+				String actualAttributeinEmail = emailInFooter.getAttribute("href");
+				Assert.assertEquals(actualAttributeinEmail, TestProperties.getProperty("expectedAttributeinEmail"));
+				ReportUtil.addScreenShot(LogStatus.PASS,"Email ID is available in ContactUS");
+				
+			}
+			
+			if (seleniumHelper.isElementDisplayed(telephoneNoContact)) {
+				seleniumHelper.scrollIntoView(telephoneNoContact);
+				seleniumHelper.moveToElementAndClickOnIt(telephoneNoContact);
+				seleniumHelper.highlightWebElement(telephoneNoContact);
+				Thread.sleep(3000);
+				bot.keyPress(KeyEvent.VK_ESCAPE);
+				bot.keyRelease(KeyEvent.VK_ESCAPE);
+				String actualAttributeInTelephoneContact = telephoneNoContact.getAttribute("href");
+				Assert.assertEquals(actualAttributeInTelephoneContact, TestProperties.getProperty("expectedAttributeinTelephoneToContact"));
+				ReportUtil.addScreenShot(LogStatus.PASS,"Phone Number is available in ContactUs");	
+			}
+			return this;
+		}
 	
+		public DashboardPage addressinFooter() {
+			seleniumHelper.scrollIntoView(addressInFooter);
+			if(seleniumHelper.isElementDisplayed(jbAddress)) 
+				System.out.println("Registered Office Address = ' " + jbAddress.getText() + "'");
+			ReportUtil.addScreenShot(LogStatus.PASS,"Address is available in Registered Office Address");
+			return this;
+		}
+		
+		public DashboardPage chatboxIcon () {
+			driver.switchTo().frame(chatBoxFrame);
+			if(seleniumHelper.isElementDisplayed(chatBoxIcon)) {
+				seleniumHelper.moveToElementAndClickOnIt(chatBoxIcon);
+			//	String actualTextInChatBox = seleniumHelper.getText(inboxTextinChatBox);
+				Assert.assertTrue(seleniumHelper.isElementDisplayed(chatBox));
+				ReportUtil.addScreenShot(LogStatus.PASS,"ChatBox is present and is clickable");
+				seleniumHelper.clickOnWebElement(closeChatBox);
+				seleniumHelper.switchToParentWindow();
+			}
+			return this;
+		}
+		public DashboardPage totalAuction() throws InterruptedException {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			seleniumHelper.clickOnWebElement(totalAuctionButton);
+			String actualTextinTotalAuction = seleniumHelper.getText(totalAuctionandDealsheader);
+			Assert.assertEquals(actualTextinTotalAuction, TestProperties.getProperty("expectedTextinTotalAuction"));
+			seleniumHelper.highlightWebElement(totalAuctionandDealsheader);
+			Thread.sleep(2000);
+			ReportUtil.addScreenShot(LogStatus.PASS, "Total Auction page is clickable and directing to Total auctions page");			
+			return this;			
+		}
+		public DashboardPage totalDeals() throws InterruptedException {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			seleniumHelper.clickOnWebElement(totalDealsButton);
+			String actualTextinTotalDeals = seleniumHelper.getText(totalAuctionandDealsheader);
+			Assert.assertEquals(actualTextinTotalDeals, TestProperties.getProperty("expectedTextinTotalDeals"));
+			seleniumHelper.highlightWebElement(totalAuctionandDealsheader);
+			Thread.sleep(2000);
+			ReportUtil.addScreenShot(LogStatus.PASS, "Total Deals page is clickable and directing to Total Deals page");			
+			return this;
 	}
+		public DashboardPage productRequest() {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			seleniumHelper.clickOnWebElement(requestProductIcon);
+			seleniumHelper.clickOnWebElement(requestProductName);
+			requestProductName.sendKeys(TestProperties.getProperty("requestProductName"));
+			seleniumHelper.clickOnWebElement(requestProductURL);
+			requestProductURL.sendKeys(TestProperties.getProperty("productURL"));
+			seleniumHelper.clickOnWebElement(requestModelNo);
+			requestModelNo.sendKeys(TestProperties.getProperty("productModelNo"));
+			seleniumHelper.clickOnWebElement(submitButton);
+			if(seleniumHelper.isElementDisplayed(requestSentNotificationBox)) {
+			Assert.assertTrue(seleniumHelper.isElementDisplayed(requestSent));
+			ReportUtil.addScreenShot(LogStatus.PASS, "Product Request sent successfully");
+			}
+			else {
+			ReportUtil.addScreenShot(LogStatus.FAIL,"Product request is not successful");
+			}
+			return this;
+		}
+		
+		
+}
+	
+		
+
 	
 		

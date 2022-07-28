@@ -14,9 +14,9 @@ public class BuyNowTest extends BaseTest {
 				
 		BuyNowPage buyNowPage = PageinstancesFactory.getInstance(BuyNowPage.class);
 		
-//		buyNowPage.launchURL().searchProductandBuyNowWithNetBanking();	
+		buyNowPage.launchURL().searchProductandBuyNowWithNetBanking();	
 //		buyNowPage.launchURL().MainCategoryandBuyNowWithCardPayment();
-		buyNowPage.launchURL().selectFromAllProductDropDownandCODPayment();
+//		buyNowPage.launchURL().selectFromAllProductDropDownandCODPayment();
 //		buyNowPage.launchURL().specialityStoreandBuyNowWalletPayment();
 	
 	}

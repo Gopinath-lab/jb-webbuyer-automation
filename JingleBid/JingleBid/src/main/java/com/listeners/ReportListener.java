@@ -47,7 +47,7 @@ public class ReportListener implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		ReportUtil.addScreenShot(LogStatus.PASS, "Test Passed");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Test Completed");
 	}
 
 	@Override

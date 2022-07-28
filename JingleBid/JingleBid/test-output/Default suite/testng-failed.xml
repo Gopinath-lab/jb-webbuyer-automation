@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tests.StartAuctionTest">
+      <class name="com.tests.ProfileTest">
         <methods>
           <include name="wrapUp"/>
-          <include name="StartAuctionPage"/>
           <include name="wrapAllUp"/>
+          <include name="profilepage"/>
           <include name="setup"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.StartAuctionTest -->
+      </class> <!-- com.tests.ProfileTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
