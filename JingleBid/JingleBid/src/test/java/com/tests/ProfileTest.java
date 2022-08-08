@@ -10,10 +10,10 @@ import com.pages.ProfilePage;
 public class ProfileTest extends BaseTest{
 
 	@Test
-	public void profilepage() throws Exception {
+	public void ProfilePage() throws Exception {
 		LoginPage	loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
-		ProfilePage profilepage = PageinstancesFactory.getInstance(ProfilePage.class);
-		profilepage.profileImageUpload();
+		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
+		profilePage.profileupdate();
 	}
 	}

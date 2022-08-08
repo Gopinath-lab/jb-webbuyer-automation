@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,6 +36,9 @@ public class DashboardPage extends BasePage{
 	
 	@FindBy(xpath = "(//span[contains(text(),'Jinglebid')])[2]")
 	private WebElement actualTextinPlaystore;
+	
+	@FindBy(xpath = "//h3[contains(text(),'Why should you buy on Jinglebid?')]")
+	private WebElement actualtextinAboutUSPage;
 	
 	@FindBy(xpath= "//a[text()='About Us']/parent::div/a")
 	private WebElement aboutUslinkonTopofDashboard;
@@ -127,6 +131,11 @@ public class DashboardPage extends BasePage{
 	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Deals')]")
 	private WebElement totalDealsButton;
 	
+	@FindBy(xpath = "//img[@class='referral-img']")
+	private WebElement referralIcon;
+	@FindBy(xpath ="//span[@class='referral-code-head']/parent::div")
+	private WebElement referralCode;
+	
 	@FindBy(xpath = "//span[@aria-label='file-text']")
 	private WebElement requestProductIcon;
 	
@@ -153,47 +162,23 @@ public class DashboardPage extends BasePage{
 		seleniumHelper = new SeleniumHelper (driver);
 		
 	}
-	
-//	private void validateHyperlinks(WebElement webElement, WebElement validationData, String text) {
-//		if (seleniumHelper.isElementDisplayed(webElement)) {
-//			seleniumHelper.clickOnWebElement(webElement);
-//			seleniumHelper.SwitchToWindow(1);
-//			Assert.assertEquals(validationData.getText(), TestProperties.getProperty(text);	
-//		}
-//
-//	}
-	
-	public DashboardPage hyperlinks () {
-//		ArrayList<WebElement> hyperlinks= new ArrayList<WebElement>();
-//		hyperlinks.add(downloadAppLink);
-//		hyperlinks.add(aboutUslinkonTopofDashboard);
-//		hyperlinks.add(jingleBidTVIcon);
-//		
-//		ArrayList<WebElement> validationElement = new ArrayList<WebElement>();
-//		validationElement.add(actualTextinPlaystore);
-//		validationElement.add();
-//		
-//		ArrayList<String> validateText = new ArrayList<String>();
-//		
-//		for (int i = 0; i < hyperlinks.size(); i++) {
-//			validateHyperlinks(hyperlinks.get(i), validationElement.get(i), validateText.get(i));
-//			
-//		}	
-		
-			
+
+		///****IF ELSE Condition*****/////
+	public DashboardPage hyperlinks () {		
 	if (seleniumHelper.isElementDisplayed(downloadAppLink)){
 	seleniumHelper.clickOnWebElement(downloadAppLink);
 		seleniumHelper.SwitchToWindow(1);
-	if (seleniumHelper.isElementDisplayed(appInstallButton)) {
+		seleniumHelper.isElementDisplayed(appInstallButton);
 			Assert.assertEquals(actualTextinPlaystore.getText(), TestProperties.getProperty("expectedTextinPlayStore"));	
 			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Jinglebid app in PlayStore and Install button available");
 			seleniumHelper.switchToParentWithChildClose();
+	
 		}
 		else {
 		ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Jinglebid app in PlayStore"); 
 		return this;
 		}
-		
+	
 		
 		if (seleniumHelper.isElementDisplayed(aboutUslinkonTopofDashboard)) {
 			seleniumHelper.clickOnWebElement(aboutUslinkonTopofDashboard);
@@ -232,9 +217,9 @@ public class DashboardPage extends BasePage{
 		else {
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Jingle Bid Logo is not displayed "); 
 			}
+		return this;
 		}
-	return this;
-		}
+	
 	
 	public DashboardPage bottomBannerAboutUs() {
 			seleniumHelper.scrollIntoView(aboutinBottomBanner);
@@ -426,7 +411,24 @@ public class DashboardPage extends BasePage{
 			}
 			return this;
 		}
-		
+		public DashboardPage referral() {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			seleniumHelper.clickOnWebElement(referralIcon);
+			seleniumHelper.waitForElementVisible(referralCode, 10);
+			if(seleniumHelper.isElementDisplayed(referralCode)) {
+				String actualTextinReferralCode = referralCode.getText();
+				Assert.assertEquals(actualTextinReferralCode, TestProperties.getProperty("expectedTextinReferralCode"));
+				ReportUtil.addScreenShot(LogStatus.PASS,"Directing to referral page and referral coupon is available");
+			}
+			return this;
+		}
+		public DashboardPage validation () {
+			seleniumHelper.clickOnWebElement(aboutUslinkonTopofDashboard);
+			seleniumHelper.SwitchToWindow(1);	
+			WebElement texts = driver.findElement(By.xpath("//h3[contains(text(),'Why should you buy on Jinglebid?')]"));
+			System.out.println(texts.getText());
+			return this;
+		}
 		
 }
 	

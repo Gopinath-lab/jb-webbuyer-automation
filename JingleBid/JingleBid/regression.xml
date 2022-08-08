@@ -8,7 +8,7 @@
       <class name="com.tests.RecoverPassTest"/>
       <class name="com.tests.SignUpTest"/>
       <class name="com.tests.ProfileTest"/>
-      <class name="com.tests.SearchProductAndStartAuctionTest"/>
+      <class name="com.tests.DashboardTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

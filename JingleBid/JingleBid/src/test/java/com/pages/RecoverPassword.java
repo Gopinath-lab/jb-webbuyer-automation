@@ -1,5 +1,7 @@
 package com.pages;
 
+import javax.swing.plaf.ActionMapUIResource;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +38,7 @@ public class RecoverPassword extends BasePage {
 	public WebElement cnfrmPwd;
 	@FindBy(xpath = "//span[text()='CHANGE PASSWORD']")
 	public WebElement pwdChangeBtn;
-	@FindBy(xpath = "//div[@class='ant-notification-notice notification-success ant-notification-notice-success ant-notification-notice-closable']")
+	@FindBy(xpath = "//div[@class='ant-notification-notice-message']")
 	public WebElement pwdchangednotice;
 
 	public RecoverPassword(WebDriver driver) {
@@ -68,8 +70,16 @@ public class RecoverPassword extends BasePage {
 			seleniumHelper.sendKeys(cnfrmPwd, TestProperties.getProperty("confirmPassword"));
 			seleniumHelper.clickOnWebElement(pwdChangeBtn);
 			seleniumHelper.clickOnWebElement(pwdChangeBtn);
-			Assert.assertTrue(seleniumHelper.isElementDisplayed(pwdchangednotice), "Password changed successfully");
-			ReportUtil.addScreenShot(LogStatus.PASS, "Password changed successfully");
+			String expectedTextinPasswordChange = "Password changed successfully";
+			String actualTextinPwdChange = pwdchangednotice.getText();
+			Assert.assertEquals(actualTextinPwdChange, expectedTextinPasswordChange);
+			if (actualTextinPwdChange.equalsIgnoreCase(expectedTextinPasswordChange)){
+				//	Assert.assertEq(seleniumHelper.isElementDisplayed(pwdchangednotice), "Password changed successfully");
+			ReportUtil.addScreenShot(LogStatus.PASS, "Password changed successfully");}
+			else {
+				seleniumHelper.highlightWebElement(pwdchangednotice);
+				ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while changing password");
+			}
 
 			return this;
 		}

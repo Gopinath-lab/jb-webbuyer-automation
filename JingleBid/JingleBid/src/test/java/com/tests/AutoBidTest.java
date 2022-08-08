@@ -19,7 +19,10 @@ public class AutoBidTest extends BaseTest {
 		loginPage.launchURL().emailpassLoginGeneral();
 		
 		AutoBidPage autoBidPage = PageinstancesFactory.getInstance(AutoBidPage.class);
-		autoBidPage.searchFromSpecialityStoreAndAutoBid();
+		autoBidPage.searchFromMainCategoryAndAutoBid();
+		
+		PaymentMethodsPage paymentMethod = PageinstancesFactory.getInstance(PaymentMethodsPage.class);
+		paymentMethod.walletPaymentMethod();
 		
 //		PaymentMethodsPage paymentMethodsPage = PageinstancesFactory.getInstance(PaymentMethodsPage.class);
 //		paymentMethodsPage.netBankingPayment();
