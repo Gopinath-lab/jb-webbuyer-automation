@@ -51,6 +51,11 @@ public class LoginPage extends BasePage {
 		driver.get(TestProperties.getProperty("login.url"));
 		return this;
 	}
+	
+	public LoginPage launchURLDev() {
+		driver.get(TestProperties.getProperty("login.dev.url"));
+		return this;
+	}
 
 	public LoginPage emailpasslogin() {
 		seleniumHelper.clickOnWebElement(emailpasslogin);

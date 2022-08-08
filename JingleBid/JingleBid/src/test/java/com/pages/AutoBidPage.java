@@ -18,6 +18,9 @@ public class AutoBidPage extends BasePage {
 	
 	SeleniumHelper seleniumHelper;
 	
+	@FindBy(xpath = "//div[@class='header-text']")
+	private WebElement jingleBidLogo;
+	
 	@FindBy(xpath= "//input[@placeholder='Search Products']")
 	private WebElement searchProductInputBox;
 	
@@ -61,13 +64,21 @@ public class AutoBidPage extends BasePage {
 	@FindBy(xpath ="//div[@class='ant-modal-body']")
 	public WebElement bidValueAcceptanceNotice;
 	
-	@FindBy(xpath = "(//span[@class='ant-checkbox']/input[@class='ant-checkbox-input'])[2]")
-	public WebElement termsAndConditionsCheckBox;
+	@FindBy(xpath = "(//button[@class='ant-btn coupon-btn']//span)[1]")
+	private WebElement productCoupon;
+	
+	@FindBy(xpath ="//div[text()='View All']/parent::div")
+	private WebElement couponViewAll;
+	@FindBy(xpath = "//input[@placeholder='Enter the Coupon Code']")
+	private WebElement couponInputBox;
+	
+	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary apply-btn ml-30']/span")
+	private WebElement couponApplyButton;
 	
 	@FindBy(xpath = "//span[text()='Check this box to agree to our Terms & Conditions']/preceding-sibling::span/input")
 	private WebElement termsAndConditionsCheckBoxwithoutIndex;
 	
-	@FindBy(xpath = "//button[@class='ant-btn ant-btn-block accept-block-btn']/p")
+	@FindBy(xpath = "//p[@class='fs-14 cl-black']")
 	public WebElement acceptLowerPriceButton;
 	
 	@FindBy(xpath = "//span[text()='Cash on delivery']//preceding-sibling::span")
@@ -105,21 +116,33 @@ public class AutoBidPage extends BasePage {
 	@FindBy(xpath = "//div[@id='form-netbanking']/div/div/div/div/label[@for='bank-radio-HDFC']")
 	public WebElement hdfcNetBankingButton;
 	
+//	@FindBy(xpath = "//div[@class='mchild item-inner svelte-wp9tn']/parent::label")
+//	public List <WebElement> netBankingOptions ;
+	
 	@FindBy(xpath = "//div[text()='Card']/parent::div/parent::div")
 	private WebElement cardButton;
 
 	@FindBy(xpath="//input[@id='card_number']")
 	private WebElement enterCardNumber;
 
-	@FindBy(xpath = "//label[text()='Expiry']/parent::div/parent::div")
+	@FindBy(xpath = "//input[@id='card_expiry']")
 	private WebElement expiryDateOfCardNumber;
 
-	@FindBy(xpath = "//label[text()='CVV']/parent::div/parent::div")
+	@FindBy(xpath = "//input[@id='card_cvv']")
 	private WebElement cvvDetails;
 
-	@FindBy(xpath = "//button[@type='button' and @method='wallet']")
-	private WebElement walletPaymentButton;
+	@FindBy(xpath = "//input[@placeholder='OTP']")
+	private WebElement OTPenter;
+	
+	@FindBy(xpath = "//span[text()='Submit']/parent::button")
+	private WebElement submitButton;
+	
+//	@FindBy(xpath = "//button[@type='button' and @method='wallet']")
+//	private WebElement walletPaymentButton;
 
+	@FindBy(xpath = "//div[text()='Wallet']/parent::div/parent::div")
+	private WebElement walletPaymentButton;
+	
 	@FindBy(xpath = "//div[@class='border-list collapsable svelte-1fikkit']")
 	private List <WebElement> selectWalletButton;
 	
@@ -134,6 +157,7 @@ public class AutoBidPage extends BasePage {
 	
 	@FindBy(xpath = "//h3[text()='Payment Details']/parent::div")
 	public WebElement paymentDetails;
+
 	
 	@FindBy(xpath = "(//div[@class='carousel-col']/div[text()='Mobile Accessories']/preceding-sibling::span)[2]")
 	private WebElement selectFromMainMenuCategory1;
@@ -160,7 +184,7 @@ public class AutoBidPage extends BasePage {
 		searchProductInputBox.sendKeys(Keys.ESCAPE);
 		searchProductInputBox.sendKeys(Keys.ENTER);
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
-		Thread.sleep(2000);
+		seleniumHelper.hardWait(2000);
 		searchProductInputBox.sendKeys(Keys.ESCAPE);
 		seleniumHelper.waitForElementVisible(getBestPriceButton, 10);
 		seleniumHelper.clickOnWebElement(getBestPriceButton);
@@ -174,50 +198,27 @@ public class AutoBidPage extends BasePage {
 		}
 		
 		seleniumHelper.clickOnWebElement(confirmButton);
-		if (seleniumHelper.isElementDisplayed(notificationBox)) {
+		if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
 			Assert.assertTrue(true);
 			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
 			ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
-			return this;
+			return this;	
 		}
-		else {
-			System.out.println("No error while ordering product!");
-			ReportUtil.addScreenShot(LogStatus.PASS,"AutoBid started successfully!");
+		seleniumHelper.moveToElementAndClickOnIt(acceptLowerPriceButton);
+		seleniumHelper.clickOnWebElement(productCoupon);
+		if (seleniumHelper.isElementDisplayed(notificationBox)) {
+			String actualTextinCouponNotification = notificationBox.getText();
+			Assert.assertEquals(actualTextinCouponNotification, "Coupon Applied SuccessFully!")	;
+			ReportUtil.addScreenShot(LogStatus.PASS, "Coupon Applied successfully!!");
 		}
-		driver.switchTo().frame(0);
-		seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 		seleniumHelper.clickOnWebElement(acceptBidButton);
-		Thread.sleep(3000);
-		if (seleniumHelper.isElementDisplayed(notificationBox)) 
-		{
-			System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
-			ReportUtil.addScreenShot(LogStatus.PASS, "Error occured while ordering");
-			return this;
-
-		}
-		driver.switchTo().frame(0);
-		seleniumHelper.clickOnWebElement(netbankingButton);
-		seleniumHelper.clickOnWebElement(hdfcNetBankingButton);
-		seleniumHelper.clickOnWebElement(payButton);
-		seleniumHelper.SwitchToWindow(1);
-		seleniumHelper.waitForElement(paymentSuccessButton, 10);
-		seleniumHelper.clickOnWebElement(paymentSuccessButton);
-		seleniumHelper.switchToParentWindow(); 
-		seleniumHelper.clickOnWebElement(goToDealsButton);
-		seleniumHelper.isElementDisplayed(productinMyDeals);
-		seleniumHelper.clickOnWebElement(productinMyDeals);
-		Thread.sleep(2000);
-		seleniumHelper.highlightWebElement(orderedStatusDetail);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-		seleniumHelper.scrollIntoView(paymentDetails);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
-			
+		ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");	
 		return this;	
 	}
 	
 	public AutoBidPage searchFromMainCategoryAndAutoBid () throws InterruptedException {
-
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(1).click();
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
@@ -231,47 +232,25 @@ public class AutoBidPage extends BasePage {
 		}
 
 		seleniumHelper.clickOnWebElement(confirmButton);
-//		if (seleniumHelper.isElementDisplayed(notificationBox)) {
-//			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
-//			ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
-//		}
-//		else {
-//			System.out.println("No error while ordering product!");
-//			ReportUtil.addScreenShot(LogStatus.PASS,"AutoBid started successfully!");
-//		}
+		if (seleniumHelper.isElementDisplayed(notificationBox)) {
+			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
+			ReportUtil.addScreenShot(LogStatus.FAIL,"Error occurred while ordering a product!");
+			return this;
+		}
 		seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
+		seleniumHelper.hardWait(2000);
+		seleniumHelper.moveToElementAndClickOnIt(couponViewAll);
+		seleniumHelper.clickOnWebElement(couponInputBox);
+		seleniumHelper.sendKeys(couponInputBox, "4F1683BN");
+		seleniumHelper.clickOnWebElement(couponApplyButton);
+		if (seleniumHelper.isElementDisplayed(notificationBox)) {
+			String actualTextinCouponNotification = notificationBox.getText();
+			Assert.assertEquals(actualTextinCouponNotification, "Coupon Applied SuccessFully!")	;
+			ReportUtil.addScreenShot(LogStatus.PASS, "Coupon Applied successfully!!");
+		}
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 		seleniumHelper.clickOnWebElement(acceptBidButton);
-		Thread.sleep(4000);
-		if (seleniumHelper.isElementDisplayed(notificationBox)) 
-		{
-			System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
-			ReportUtil.addScreenShot(LogStatus.PASS, "Error occured while ordering");
-			return this;
-
-		}
-		driver.switchTo().frame(0);
-		seleniumHelper.clickOnWebElement(cardButton);
-		seleniumHelper.clickOnWebElement(enterCardNumber);
-		enterCardNumber.sendKeys(TestProperties.getProperty("CardNumber"));
-		seleniumHelper.clickOnWebElement(expiryDateOfCardNumber);
-		expiryDateOfCardNumber.sendKeys(TestProperties.getProperty("expiryDate"));
-		seleniumHelper.clickOnWebElement(cvvDetails);
-		cvvDetails.sendKeys(TestProperties.getProperty("cvvDetails"));
-		seleniumHelper.clickOnWebElement(payButton);
-		seleniumHelper.SwitchToWindow(1);
-		seleniumHelper.waitForElement(paymentSuccessButton, 10);
-		seleniumHelper.clickOnWebElement(paymentSuccessButton);
-		seleniumHelper.switchToParentWindow(); 
-		seleniumHelper.clickOnWebElement(goToDealsButton);
-		seleniumHelper.isElementDisplayed(productinMyDeals);
-		seleniumHelper.clickOnWebElement(productinMyDeals);
-		Thread.sleep(2000);
-		seleniumHelper.highlightWebElement(orderedStatusDetail);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-		seleniumHelper.scrollIntoView(paymentDetails);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
-
+		ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
 		return this;
 	}
 
@@ -288,45 +267,26 @@ public class AutoBidPage extends BasePage {
 			}
 
 			seleniumHelper.clickOnWebElement(confirmButton);
-//			if (seleniumHelper.isElementDisplayed(notificationBox)) {
-//				System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
-//				ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
-//			}
-//			else {
-//				System.out.println("No error while ordering product!");
-//				ReportUtil.addScreenShot(LogStatus.PASS,"AutoBid started successfully!");
-//			}
+			if (seleniumHelper.isElementDisplayed(notificationBox)) {
+				System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
+				ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
+				return this;
+			}
 			seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
+			seleniumHelper.clickOnWebElement(productCoupon);
+			if (seleniumHelper.isElementDisplayed(notificationBox)) {
+				String actualTextinCouponNotification = notificationBox.getText();
+				Assert.assertEquals(actualTextinCouponNotification, "Coupon Applied SuccessFully!")	;
+				ReportUtil.addScreenShot(LogStatus.PASS, "Coupon Applied successfully!!");
+			}
 			seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 			seleniumHelper.clickOnWebElement(acceptBidButton);
-			if (seleniumHelper.isElementDisplayed(notificationBox)) 
-			{
-				System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
-				ReportUtil.addScreenShot(LogStatus.PASS, "Error occured while ordering");
-				return this;
-
-			}
-			driver.switchTo().frame(0);
-			seleniumHelper.clickOnWebElement(walletPaymentButton);
-			selectWalletButton.get(1).click();
-			seleniumHelper.clickOnWebElement(payButton);
-			seleniumHelper.SwitchToWindow(1);
-			seleniumHelper.waitForElement(paymentSuccessButton, 10);
-			seleniumHelper.clickOnWebElement(paymentSuccessButton);
-			seleniumHelper.switchToParentWindow(); 
-			seleniumHelper.clickOnWebElement(goToDealsButton);
-			seleniumHelper.isElementDisplayed(productinMyDeals);
-			seleniumHelper.clickOnWebElement(productinMyDeals);
-			Thread.sleep(2000);
-			seleniumHelper.highlightWebElement(orderedStatusDetail);
-			Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-			seleniumHelper.scrollIntoView(paymentDetails);
-			ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
+			ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
 			return this;
 
 	}
 
-	public AutoBidPage allProductsDropDownAutoBidandCODPayment () throws InterruptedException {
+	public AutoBidPage allProductsDropDownAutoBid () throws InterruptedException {
 
 			seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 			seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);
@@ -348,28 +308,18 @@ public class AutoBidPage extends BasePage {
 			if (seleniumHelper.isElementDisplayed(notificationBox)) {
 				System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
 				ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
+				return this;
 			}
 			else {
-				System.out.println("No error while ordering product!");
-				ReportUtil.addScreenShot(LogStatus.PASS,"AutoBid started successfully!");
-			}
-
 			seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
-			seleniumHelper.waitForElementVisible(cashOnDeliveryButton, 10);
-			seleniumHelper.clickOnWebElement(cashOnDeliveryButton);
-			seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
-			seleniumHelper.clickOnWebElement(placeOrderButton);
-			seleniumHelper.waitForElementVisible(goToHomeButton, 5);
-			seleniumHelper.clickOnWebElement(goToHomeButton);
-			seleniumHelper.waitForElementVisible(totalDealsButton, 10);
-			seleniumHelper.clickOnWebElement(totalDealsButton);
-			seleniumHelper.isElementDisplayed(productinMyDeals);
-			seleniumHelper.clickOnWebElement(productinMyDeals);
-			Thread.sleep(2000);
-			seleniumHelper.highlightWebElement(orderedStatusDetail);
-			Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-			seleniumHelper.scrollIntoView(paymentDetails);
-			ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");			
-			return this;
+			seleniumHelper.clickOnWebElement(productCoupon);
+			if (seleniumHelper.isElementDisplayed(notificationBox)) {
+				String actualTextinCouponNotification = notificationBox.getText();
+				Assert.assertEquals(actualTextinCouponNotification, "Coupon Applied SuccessFully!")	;
+				ReportUtil.addScreenShot(LogStatus.PASS, "Coupon Applied successfully!!");
+			}
+			ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
+						return this;
 	}
+}
 }

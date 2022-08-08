@@ -3,6 +3,7 @@ package com.tests;
 import org.testng.annotations.Test;
 
 import com.factory.PageinstancesFactory;
+import com.pages.DashBoardPage1;
 import com.pages.DashboardPage;
 import com.pages.LoginPage;
 
@@ -15,15 +16,17 @@ public class DashboardTest extends BaseTest	{
 	public void DashboardPage () throws Exception{
 		
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpasslogin();
+		loginPage.launchURL().emailpassLoginGeneral();
 		
-		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
-//		dashboardPage.hyperlinks().bottomBannerAboutUs().footerJingleBidTv().policyinFooter().socialNetworkinFooter();
+		DashBoardPage1 dashboardPage = PageinstancesFactory.getInstance(DashBoardPage1.class);
+		dashboardPage.hyperlinks1();
+	//	dashboardPage.hyperlinks().bottomBannerAboutUs().footerJingleBidTv().policyinFooter().socialNetworkinFooter();
 //		dashboardPage.contactUsFooter();
 //		dashboardPage.addressinFooter();
-	//	dashboardPage.chatboxIcon();
-		dashboardPage.totalAuction().totalDeals();
-		dashboardPage.productRequest();
+//		dashboardPage.chatboxIcon();
+//		dashboardPage.totalAuction().totalDeals();
+//		dashboardPage.productRequest();
+//		dashboardPage.referral();
 		
 	}
 

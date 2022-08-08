@@ -121,6 +121,12 @@ public class BuyNowPage extends BasePage {
 	@FindBy(xpath = "//label[text()='CVV']/parent::div/parent::div")
 	private WebElement cvvDetails;
 	
+	@FindBy(xpath = "//input[@placeholder='OTP']")
+	private WebElement OTPenter;
+	
+	@FindBy(xpath = "//span[text()='Submit']/parent::button")
+	private WebElement submitButton;
+	
 	@FindBy(xpath = "//button[@type='button' and @method='wallet']")
 	private WebElement walletPaymentButton;
 	
@@ -173,21 +179,21 @@ public class BuyNowPage extends BasePage {
 			
 		}
 
-			public BuyNowPage searchProductandBuyNowWithNetBanking() throws InterruptedException {
+			public BuyNowPage searchProductandBuyNow() throws InterruptedException {
 				
 				seleniumHelper.clickOnWebElement(searchProductInputBox);
 				seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductforBuyNow"));
 				searchProductInputBox.sendKeys(Keys.ESCAPE);
 				searchProductInputBox.sendKeys(Keys.ENTER);
 				seleniumHelper.clickOnWebElement(selectProductAfterSearch);
-				Thread.sleep(2000);
+				seleniumHelper.hardWait(2000);
 				searchProductInputBox.sendKeys(Keys.ESCAPE);
 				seleniumHelper.clickOnWebElement(buyNowButton);
 				seleniumHelper.clickOnWebElement(quantitySelect);
 				seleniumHelper.clickOnWebElement(confirmButton);
 				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 				seleniumHelper.clickOnWebElement(placeOrderButton);
-				Thread.sleep(3000);
+				seleniumHelper.hardWait(3000);
 				if (seleniumHelper.isElementDisplayed(notificationBox)) 
 				{
 					System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
@@ -195,26 +201,10 @@ public class BuyNowPage extends BasePage {
 					return this;
 				
 				}
-				driver.switchTo().frame(0);
-				seleniumHelper.clickOnWebElement(netbankingButton);
-				seleniumHelper.clickOnWebElement(hdfcNetBankingButton);
-				seleniumHelper.clickOnWebElement(payButton);
-				seleniumHelper.SwitchToWindow(1);
-				seleniumHelper.waitForElement(paymentSuccessButton, 10);
-				seleniumHelper.clickOnWebElement(paymentSuccessButton);
-				seleniumHelper.switchToParentWindow(); 
-				seleniumHelper.clickOnWebElement(goToDealsButton);
-				seleniumHelper.isElementDisplayed(productinMyDeals);
-				seleniumHelper.clickOnWebElement(productinMyDeals);
-				Thread.sleep(2000);
-				seleniumHelper.highlightWebElement(orderedStatusDetail);
-				Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-				seleniumHelper.scrollIntoView(paymentDetails);
-				ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
 				return this;
 	}
 
-			public BuyNowPage MainCategoryandBuyNowWithCardPayment() throws InterruptedException {
+			public BuyNowPage MainCategoryandBuyNow() throws InterruptedException {
 				
 				seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 				dropDownProductSelect1.get(0).click();
@@ -224,7 +214,7 @@ public class BuyNowPage extends BasePage {
 				seleniumHelper.clickOnWebElement(confirmButton);
 				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 				seleniumHelper.clickOnWebElement(placeOrderButton);
-				Thread.sleep(4000);
+				seleniumHelper.hardWait(4000);
 				if (seleniumHelper.isElementDisplayed(notificationBox)) 
 				{
 					System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
@@ -232,31 +222,10 @@ public class BuyNowPage extends BasePage {
 					return this;
 				
 				}
-				driver.switchTo().frame(0);
-				seleniumHelper.clickOnWebElement(cardButton);
-				seleniumHelper.clickOnWebElement(enterCardNumber);
-				enterCardNumber.sendKeys(TestProperties.getProperty("CardNumber"));
-				seleniumHelper.clickOnWebElement(expiryDateOfCardNumber);
-				expiryDateOfCardNumber.sendKeys(TestProperties.getProperty("expiryDate"));
-				seleniumHelper.clickOnWebElement(cvvDetails);
-				cvvDetails.sendKeys(TestProperties.getProperty("cvvDetails"));
-				seleniumHelper.clickOnWebElement(payButton);
-				seleniumHelper.SwitchToWindow(1);
-				seleniumHelper.waitForElement(paymentSuccessButton, 10);
-				seleniumHelper.clickOnWebElement(paymentSuccessButton);
-				seleniumHelper.switchToParentWindow(); 
-				seleniumHelper.clickOnWebElement(goToDealsButton);
-				seleniumHelper.isElementDisplayed(productinMyDeals);
-				seleniumHelper.clickOnWebElement(productinMyDeals);
-				Thread.sleep(2000);
-				seleniumHelper.highlightWebElement(orderedStatusDetail);
-				Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-				seleniumHelper.scrollIntoView(paymentDetails);
-				ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");			
 				return this;		
 			}
 			
-			public BuyNowPage selectFromAllProductDropDownandCODPayment () throws InterruptedException {
+			public BuyNowPage selectFromAllProductDropDownandBuyNow () throws InterruptedException {
 				
 				seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 				seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);
@@ -267,33 +236,19 @@ public class BuyNowPage extends BasePage {
 				seleniumHelper.clickOnWebElement(buyNowButton);
 				seleniumHelper.clickOnWebElement(quantitySelect);
 				seleniumHelper.clickOnWebElement(confirmButton);
-				seleniumHelper.waitForElementVisible(cashOnDeliveryButton, 10);
-				seleniumHelper.clickOnWebElement(cashOnDeliveryButton);
-				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
-				seleniumHelper.clickOnWebElement(placeOrderButton);
-				seleniumHelper.waitForElementVisible(goToHomeButton, 5);
-				seleniumHelper.clickOnWebElement(goToHomeButton);
-				seleniumHelper.waitForElementVisible(totalDealsButton, 10);
-				seleniumHelper.clickOnWebElement(totalDealsButton);
-				seleniumHelper.isElementDisplayed(productinMyDeals);
-				seleniumHelper.clickOnWebElement(productinMyDeals);
-				Thread.sleep(2000);
-				seleniumHelper.highlightWebElement(orderedStatusDetail);
-				Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-				seleniumHelper.scrollIntoView(paymentDetails);
-				ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");			
+				
 				return this;
 				
 			}
 
-			public BuyNowPage specialityStoreandBuyNowWalletPayment () throws InterruptedException {
+			public BuyNowPage specialityStoreandBuyNow () throws InterruptedException {
 				seleniumHelper.clickOnWebElement(selectSpecialityStore);
 				seleniumHelper.clickOnWebElement(selectProductAfterSearch1);
 				seleniumHelper.clickOnWebElement(buyNowButton);
 				seleniumHelper.clickOnWebElement(confirmButton);
 				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 				seleniumHelper.clickOnWebElement(placeOrderButton);
-				Thread.sleep(3000);
+				seleniumHelper.hardWait(3000);
 				if (seleniumHelper.isElementDisplayed(notificationBox)) 
 				{
 					System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
@@ -301,21 +256,6 @@ public class BuyNowPage extends BasePage {
 					return this;
 				
 				}
-				seleniumHelper.clickOnWebElement(walletPaymentButton);
-				seleniumHelper.clickOnWebElement(selectPhonepeWalltet);
-				seleniumHelper.clickOnWebElement(payButton);
-				seleniumHelper.SwitchToWindow(1);
-				seleniumHelper.waitForElement(paymentSuccessButton, 10);
-				seleniumHelper.clickOnWebElement(paymentSuccessButton);
-				seleniumHelper.switchToParentWindow(); 
-				seleniumHelper.clickOnWebElement(goToDealsButton);
-				seleniumHelper.isElementDisplayed(productinMyDeals);
-				seleniumHelper.clickOnWebElement(productinMyDeals);
-				Thread.sleep(2000);
-				seleniumHelper.highlightWebElement(orderedStatusDetail);
-				Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
-				seleniumHelper.scrollIntoView(paymentDetails);
-				ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
 				return this;
 			}
 			

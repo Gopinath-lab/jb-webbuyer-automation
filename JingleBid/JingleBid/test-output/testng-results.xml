@@ -2,53 +2,35 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-07-28T15:39:37 IST" name="Default suite" finished-at="2022-07-28T15:39:47 IST" duration-ms="9041">
+  <suite started-at="2022-08-08T14:56:27 IST" name="Default suite" finished-at="2022-08-08T14:57:04 IST" duration-ms="36714">
     <groups>
     </groups>
-    <test started-at="2022-07-28T15:39:37 IST" name="Default test" finished-at="2022-07-28T15:39:47 IST" duration-ms="9041">
-      <class name="com.tests.ProfileTest">
-        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.ProfileTest@5d7148e2]" started-at="2022-07-28T15:39:37 IST" name="globalSetup" test-instance-name="Profile Test" finished-at="2022-07-28T15:39:37 IST" duration-ms="101" status="PASS">
+    <test started-at="2022-08-08T14:56:27 IST" name="Default test" finished-at="2022-08-08T14:57:04 IST" duration-ms="36714">
+      <class name="com.tests.DashboardTest">
+        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:56:27 IST" name="globalSetup" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:56:27 IST" duration-ms="128" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- globalSetup -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.ProfileTest@5d7148e2]" started-at="2022-07-28T15:39:37 IST" name="setup" test-instance-name="Profile Test" finished-at="2022-07-28T15:39:39 IST" duration-ms="1528" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:56:27 IST" name="setup" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:56:29 IST" duration-ms="1918" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="profilepage()[pri:0, instance:com.tests.ProfileTest@5d7148e2]" started-at="2022-07-28T15:39:39 IST" name="profilepage" description="Validating Profile Functionality" test-instance-name="Profile Test" finished-at="2022-07-28T15:39:42 IST" duration-ms="3013" status="FAIL">
-          <exception class="org.openqa.selenium.InvalidArgumentException">
+        <test-method signature="DashboardPage()[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:56:29 IST" name="DashboardPage" description="Verification and validation of Dashboard funcationalities" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:57:03 IST" duration-ms="34446" status="FAIL">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[invalid argument: File not found : /Users/Dell/Downloads/image.jpeg
-  (Session info: chrome=103.0.5060.134)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-A62QDBA', ip: '192.168.29.9', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 103.0.5060.134, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:56472}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 57da90633ab488b0801f4963276f564c]]>
+              <![CDATA[expected [Why should you buy on Jinglebid?] but found []]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.InvalidArgumentException: invalid argument: File not found : /Users/Dell/Downloads/image.jpeg
-  (Session info: chrome=103.0.5060.134)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-A62QDBA', ip: '192.168.29.9', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 103.0.5060.134, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:56472}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 57da90633ab488b0801f4963276f564c
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
-at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:106)
-at com.pages.ProfilePage.profileImageUpload(ProfilePage.java:76)
-at com.tests.ProfileTest.profilepage(ProfileTest.java:17)
+              <![CDATA[java.lang.AssertionError: expected [Why should you buy on Jinglebid?] but found []
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.failNotEquals(Assert.java:1037)
+at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+at org.testng.Assert.assertEquals(Assert.java:122)
+at org.testng.Assert.assertEquals(Assert.java:629)
+at org.testng.Assert.assertEquals(Assert.java:639)
+at com.pages.DashBoardPage1.validateHyperlinks(DashBoardPage1.java:176)
+at com.pages.DashBoardPage1.hyperlinks1(DashBoardPage1.java:204)
+at com.tests.DashboardTest.DashboardPage(DashboardTest.java:22)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -79,26 +61,22 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.InvalidArgumentException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- profilepage -->
-        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.ProfileTest@5d7148e2]" started-at="2022-07-28T15:39:42 IST" name="wrapUp" test-instance-name="Profile Test" finished-at="2022-07-28T15:39:47 IST" duration-ms="4302" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- wrapUp -->
-        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.ProfileTest@5d7148e2]" started-at="2022-07-28T15:39:47 IST" name="wrapAllUp" test-instance-name="Profile Test" finished-at="2022-07-28T15:39:47 IST" duration-ms="10" status="PASS">
+        </test-method> <!-- DashboardPage -->
+        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:57:04 IST" name="wrapAllUp" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:57:04 IST" duration-ms="22" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@7b6860f9]]>
+                <![CDATA[org.testng.TestRunner@75d982d3]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapAllUp -->
-      </class> <!-- com.tests.ProfileTest -->
+      </class> <!-- com.tests.DashboardTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

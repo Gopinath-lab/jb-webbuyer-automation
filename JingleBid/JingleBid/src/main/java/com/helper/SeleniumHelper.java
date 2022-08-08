@@ -489,7 +489,7 @@ public class SeleniumHelper {
 	public boolean isElementDisplayed(WebElement ele) {
 		boolean flag = false;
 		try {
-			waitForElementVisible(ele, 50);
+			waitForElementVisible(ele, 20);
 			flag = ele.isDisplayed();
 			if (flag)
 				highlightWebElement(ele);
@@ -501,6 +501,23 @@ public class SeleniumHelper {
 		return flag;
 	}
 
+	/**
+	 * Method to verify the element is displayed
+	 */
+	public boolean isElementDisplayedwithoutWait(WebElement ele) {
+		boolean flag = false;
+		try {
+			waitForElementVisible(ele, 5);
+			flag = ele.isDisplayed();
+			if (flag)
+				highlightWebElement(ele);
+		} catch (NoSuchElementException e) {
+			flag = false;
+		} catch (Exception e1) {
+			flag = false;
+		}
+		return flag;
+	}
 	public boolean isElementDisplayed(String xpath) {
 		boolean flag = false;
 		try {

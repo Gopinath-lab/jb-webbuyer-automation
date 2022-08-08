@@ -12,7 +12,6 @@ public class RecoverPassTest extends BaseTest {
 	public void recoverpassword() throws Exception {
 		RecoverPassword rcpass = PageinstancesFactory.getInstance(RecoverPassword.class);
 		rcpass.launchURL();
-		Thread.sleep(4000);
 		rcpass.passwordRecovery();
 	}
 }
