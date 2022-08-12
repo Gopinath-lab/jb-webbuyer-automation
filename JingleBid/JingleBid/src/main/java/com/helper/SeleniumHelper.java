@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -175,13 +176,14 @@ public class SeleniumHelper {
 
 	public void switchToParentWindow() {
 		LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
+		System.out.println("no of windows from parent method : "+windowsId);
 		driver.switchTo().window(windowsId.get(0));
 	}
 
 	public void switchToParentWithChildClose() {
 		switchToParentWindow();
 		LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
-
+		System.out.println("no of windows : "+windowsId);
 		for (int i = 1; i < windowsId.size(); i++) {
 			LoggerUtil.info(windowsId.get(i));
 			driver.switchTo().window(windowsId.get(i));
@@ -385,7 +387,7 @@ public class SeleniumHelper {
 		wait.ignoring(NoSuchElementException.class);
 		wait.ignoring(ElementNotVisibleException.class);
 		wait.ignoring(StaleElementReferenceException.class);
-		wait.pollingEvery(250, TimeUnit.MILLISECONDS);
+		wait.pollingEvery(Duration.ofSeconds(3));
 		wait.until(elementLocated(element));
 	}
 
@@ -507,7 +509,7 @@ public class SeleniumHelper {
 	public boolean isElementDisplayedwithoutWait(WebElement ele) {
 		boolean flag = false;
 		try {
-			waitForElementVisible(ele, 5);
+			waitForElementVisible(ele, 2);
 			flag = ele.isDisplayed();
 			if (flag)
 				highlightWebElement(ele);

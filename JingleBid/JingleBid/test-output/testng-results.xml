@@ -1,82 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="6" total="18" passed="12" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-08-08T14:56:27 IST" name="Default suite" finished-at="2022-08-08T14:57:04 IST" duration-ms="36714">
+  <suite started-at="2022-08-12T13:12:50 IST" name="Suite" finished-at="2022-08-12T13:20:19 IST" duration-ms="448733">
     <groups>
     </groups>
-    <test started-at="2022-08-08T14:56:27 IST" name="Default test" finished-at="2022-08-08T14:57:04 IST" duration-ms="36714">
+    <test started-at="2022-08-12T13:12:50 IST" name="Regression Test" finished-at="2022-08-12T13:20:19 IST" duration-ms="448733">
       <class name="com.tests.DashboardTest">
-        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:56:27 IST" name="globalSetup" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:56:27 IST" duration-ms="128" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- globalSetup -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:56:27 IST" name="setup" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:56:29 IST" duration-ms="1918" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.DashboardTest@5a56cdac]" started-at="2022-08-12T13:19:10 IST" name="setup" finished-at="2022-08-12T13:19:11 IST" duration-ms="1138" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="DashboardPage()[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:56:29 IST" name="DashboardPage" description="Verification and validation of Dashboard funcationalities" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:57:03 IST" duration-ms="34446" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [Why should you buy on Jinglebid?] but found []]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Why should you buy on Jinglebid?] but found []
-at org.testng.Assert.fail(Assert.java:99)
-at org.testng.Assert.failNotEquals(Assert.java:1037)
-at org.testng.Assert.assertEqualsImpl(Assert.java:140)
-at org.testng.Assert.assertEquals(Assert.java:122)
-at org.testng.Assert.assertEquals(Assert.java:629)
-at org.testng.Assert.assertEquals(Assert.java:639)
-at com.pages.DashBoardPage1.validateHyperlinks(DashBoardPage1.java:176)
-at com.pages.DashBoardPage1.hyperlinks1(DashBoardPage1.java:204)
-at com.tests.DashboardTest.DashboardPage(DashboardTest.java:22)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="DashboardPage()[pri:-2, instance:com.tests.DashboardTest@5a56cdac]" started-at="2022-08-12T13:19:11 IST" name="DashboardPage" description="Verification and validation of Dashboard icon funcationalities" finished-at="2022-08-12T13:20:04 IST" duration-ms="52794" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- DashboardPage -->
-        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.DashboardTest@f5acb9d]" started-at="2022-08-08T14:57:04 IST" name="wrapAllUp" test-instance-name="Dashboard verification" finished-at="2022-08-08T14:57:04 IST" duration-ms="22" status="PASS">
+        <test-method signature="TotalAuctionAndTotalDeals()[pri:-1, instance:com.tests.DashboardTest@5a56cdac]" started-at="2022-08-12T13:20:04 IST" name="TotalAuctionAndTotalDeals" description="Total auction and Total Deals functionality verification" finished-at="2022-08-12T13:20:12 IST" duration-ms="7743" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TotalAuctionAndTotalDeals -->
+        <test-method signature="NewProductRequest()[pri:1, instance:com.tests.DashboardTest@5a56cdac]" started-at="2022-08-12T13:20:12 IST" name="NewProductRequest" description="New Product request functionality verification" finished-at="2022-08-12T13:20:16 IST" duration-ms="3722" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- NewProductRequest -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.DashboardTest@5a56cdac]" started-at="2022-08-12T13:20:16 IST" name="wrapUp" finished-at="2022-08-12T13:20:19 IST" duration-ms="2860" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.DashboardTest -->
+      <class name="com.tests.LoginTest">
+        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.LoginTest@e15b7e8]" started-at="2022-08-12T13:12:50 IST" name="globalSetup" test-instance-name="Email/Password Login Test" finished-at="2022-08-12T13:12:50 IST" duration-ms="119" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- globalSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.LoginTest@e15b7e8]" started-at="2022-08-12T13:12:50 IST" name="setup" test-instance-name="Email/Password Login Test" finished-at="2022-08-12T13:12:52 IST" duration-ms="2095" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="loginPage()[pri:0, instance:com.tests.LoginTest@e15b7e8]" started-at="2022-08-12T13:12:52 IST" name="loginPage" description="Validating Email/Pass Login Functionality" test-instance-name="Email/Password Login Test" finished-at="2022-08-12T13:13:01 IST" duration-ms="8194" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginPage -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.LoginTest@e15b7e8]" started-at="2022-08-12T13:13:01 IST" name="wrapUp" test-instance-name="Email/Password Login Test" finished-at="2022-08-12T13:13:04 IST" duration-ms="2595" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.LoginTest@e15b7e8]" started-at="2022-08-12T13:20:19 IST" name="wrapAllUp" test-instance-name="Email/Password Login Test" finished-at="2022-08-12T13:23:06 IST" duration-ms="166085" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@75d982d3]]>
+                <![CDATA[org.testng.TestRunner@757f47f0]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapAllUp -->
-      </class> <!-- com.tests.DashboardTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- com.tests.LoginTest -->
+      <class name="com.tests.BuyNowTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.BuyNowTest@593aaf41]" started-at="2022-08-12T13:16:12 IST" name="setup" finished-at="2022-08-12T13:16:13 IST" duration-ms="1419" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="BuyNowSearchProducyUsingKeyword()[pri:-2, instance:com.tests.BuyNowTest@593aaf41]" started-at="2022-08-12T13:16:13 IST" name="BuyNowSearchProducyUsingKeyword" description="Search Product by &#039;keywordsearch&#039; and BuyNow with Netbanking payment - Functionality test" finished-at="2022-08-12T13:17:11 IST" duration-ms="58277" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyNowSearchProducyUsingKeyword -->
+        <test-method signature="BuyNowFromMainCategory()[pri:-1, instance:com.tests.BuyNowTest@593aaf41]" started-at="2022-08-12T13:17:11 IST" name="BuyNowFromMainCategory" description="Search Product from Main category and BuyNow with card payment - Functionality test" finished-at="2022-08-12T13:18:04 IST" duration-ms="52165" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyNowFromMainCategory -->
+        <test-method signature="BuyNowFromSpecialityStore()[pri:1, instance:com.tests.BuyNowTest@593aaf41]" started-at="2022-08-12T13:18:04 IST" name="BuyNowFromSpecialityStore" description="Search Product from Speciality Store and BuyNow with wallet payment - Functionality test" finished-at="2022-08-12T13:18:55 IST" duration-ms="51537" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyNowFromSpecialityStore -->
+        <test-method signature="BuyNowUsingCODOption()[pri:2, instance:com.tests.BuyNowTest@593aaf41]" started-at="2022-08-12T13:18:55 IST" name="BuyNowUsingCODOption" description="Search Product from All products dropdown and BuyNow with COD payment - Functionality test" finished-at="2022-08-12T13:19:07 IST" duration-ms="12036" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyNowUsingCODOption -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.BuyNowTest@593aaf41]" started-at="2022-08-12T13:19:08 IST" name="wrapUp" finished-at="2022-08-12T13:19:10 IST" duration-ms="2638" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.BuyNowTest -->
+      <class name="com.tests.AutoBidTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.AutoBidTest@485966cc]" started-at="2022-08-12T13:13:04 IST" name="setup" finished-at="2022-08-12T13:13:05 IST" duration-ms="1222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="AutoBidByKeywordSearch()[pri:-2, instance:com.tests.AutoBidTest@485966cc]" started-at="2022-08-12T13:13:05 IST" name="AutoBidByKeywordSearch" description="Search Product by &#039;keywordsearch&#039; and start AutoBid with Netbanking payment - Functionality test" finished-at="2022-08-12T13:14:03 IST" duration-ms="57641" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidByKeywordSearch -->
+        <test-method signature="AutoBidFromMainCategory()[pri:-1, instance:com.tests.AutoBidTest@485966cc]" started-at="2022-08-12T13:14:03 IST" name="AutoBidFromMainCategory" description="Search Product from Main category and start AutoBid with card payment - Functionality test" finished-at="2022-08-12T13:14:51 IST" duration-ms="47872" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidFromMainCategory -->
+        <test-method signature="AutoBidFromSpecialityStore()[pri:1, instance:com.tests.AutoBidTest@485966cc]" started-at="2022-08-12T13:14:51 IST" name="AutoBidFromSpecialityStore" description="Search Product from Speciality Store and start AutoBid with wallet payment - Functionality test" finished-at="2022-08-12T13:15:34 IST" duration-ms="43199" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidFromSpecialityStore -->
+        <test-method signature="AutoBidUsingCODOption()[pri:2, instance:com.tests.AutoBidTest@485966cc]" started-at="2022-08-12T13:15:34 IST" name="AutoBidUsingCODOption" description="Search Product from All products dropdown and start AutoBid with COD payment - Functionality test" finished-at="2022-08-12T13:16:11 IST" duration-ms="36711" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidUsingCODOption -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.AutoBidTest@485966cc]" started-at="2022-08-12T13:16:11 IST" name="wrapUp" finished-at="2022-08-12T13:16:12 IST" duration-ms="409" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.AutoBidTest -->
+    </test> <!-- Regression Test -->
+  </suite> <!-- Suite -->
 </testng-results>

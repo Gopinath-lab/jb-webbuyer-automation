@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,6 +54,9 @@ public class PaymentMethodsPage extends BasePage {
 
 	@FindBy(xpath = "//input[@id='card_cvv']")
 	private WebElement cvvDetails;
+	
+	@FindBy(xpath = "//span[@class='checkbox svelte-wpiw3q']")
+	private WebElement saveCardNumber;
 
 	@FindBy(xpath = "//input[@placeholder='OTP']")
 	private WebElement OTPenter;
@@ -69,7 +73,10 @@ public class PaymentMethodsPage extends BasePage {
 	@FindBy(xpath = "//button[@class=' radio-option slotted-radio']")
 	private List <WebElement> selectWalletButton;
 	
-	@FindBy(xpath = "//span[@id='footer-cta']")
+//	@FindBy(xpath ="//span[@id='footer-cta']//parent::div")
+//	public WebElement payButton;
+	
+	@FindBy(xpath ="//div[@id='footer']")
 	public WebElement payButton;
 	
 	@FindBy(xpath = "//button[text()='Success']")
@@ -131,6 +138,7 @@ public class PaymentMethodsPage extends BasePage {
 		seleniumHelper.hardWait(2000);
 		seleniumHelper.highlightWebElement(orderedStatusDetail);
 		seleniumHelper.waitForElementVisible(paymentMethodDetails,10);
+		seleniumHelper.hardWait(2000);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
 		seleniumHelper.scrollIntoView(paymentDetails);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
@@ -150,6 +158,7 @@ public class PaymentMethodsPage extends BasePage {
 			}	
 		}
 		Assert.assertTrue(elementClickwallet,"Verification - PhonePe option clicked");
+		seleniumHelper.isElementDisplayed(payButton);
 		seleniumHelper.clickOnWebElement(payButton);
 		seleniumHelper.SwitchToWindow(1);
 		seleniumHelper.waitForElement(paymentSuccessButton, 10);
@@ -161,6 +170,7 @@ public class PaymentMethodsPage extends BasePage {
 		seleniumHelper.hardWait(2000);
 		seleniumHelper.highlightWebElement(orderedStatusDetail);
 		seleniumHelper.scrollIntoView(paymentDetails);
+		seleniumHelper.hardWait(2000);
 		seleniumHelper.waitForElementVisible(paymentMethodDetails,10);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
@@ -176,20 +186,20 @@ public class PaymentMethodsPage extends BasePage {
 		expiryDateOfCardNumber.sendKeys(TestProperties.getProperty("expiryDate"));
 		seleniumHelper.clickOnWebElement(cvvDetails);
 		cvvDetails.sendKeys(TestProperties.getProperty("cvvDetails"));
+		seleniumHelper.clickOnWebElement(saveCardNumber);
 		seleniumHelper.clickOnWebElement(payButton);
 		seleniumHelper.SwitchToWindow(1);
 		seleniumHelper.clickOnWebElement(OTPenter);
 		seleniumHelper.sendKeys(OTPenter, TestProperties.getProperty("login.otp"));
 		seleniumHelper.clickOnWebElement(submitButton);
-//		seleniumHelper.waitForElement(paymentSuccessButton, 10);
-//		seleniumHelper.clickOnWebElement(paymentSuccessButton);
-		seleniumHelper.switchToParentWindow(); 
+		seleniumHelper.switchToParentWindow();
 		seleniumHelper.clickOnWebElement(goToDealsButton);
 		seleniumHelper.isElementDisplayed(productinMyDeals);
 		seleniumHelper.clickOnWebElement(productinMyDeals);
 		seleniumHelper.hardWait(2000);
 		seleniumHelper.highlightWebElement(orderedStatusDetail);
 		seleniumHelper.scrollIntoView(paymentDetails);
+		seleniumHelper.hardWait(2000);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
 		return this;
@@ -210,6 +220,7 @@ public class PaymentMethodsPage extends BasePage {
 		seleniumHelper.highlightWebElement(orderedStatusDetail);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
 		seleniumHelper.scrollIntoView(paymentDetails);
+		seleniumHelper.hardWait(2000);
 		seleniumHelper.waitForElementVisible(paymentMethodDetails,10);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");			
 

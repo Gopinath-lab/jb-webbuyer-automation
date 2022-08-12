@@ -66,9 +66,8 @@ public class BuyNowPage extends BasePage {
 	@FindBy(xpath = " //li[@class='ant-dropdown-menu-item ant-dropdown-menu-item-only-child']")
 	public List <WebElement> subCategorySelectProductDropDown;
 	
-	@FindBy(xpath = "(//input[@id='image'])[1]")
+	@FindBy(xpath = "//div[text()='Type A Section1']//parent::div//following-sibling::div//div[@class='carousel-image-container']")
 	private WebElement selectSpecialityStore;
-
 	
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[1]")
 	private WebElement  selectProductAfterSearch;
@@ -160,6 +159,8 @@ public class BuyNowPage extends BasePage {
 	@FindBy(xpath = "//div[@class='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-9 ant-col-lg-10 ant-col-xl-8']")
 	private WebElement orderedStatusDetail;
 
+	@FindBy(xpath = "//div[@class='header-text']")
+	private WebElement jingleBidLogo;
 	
 	public BuyNowPage(WebDriver driver) {
 		super(driver);
@@ -180,7 +181,7 @@ public class BuyNowPage extends BasePage {
 		}
 
 			public BuyNowPage searchProductandBuyNow() throws InterruptedException {
-				
+				seleniumHelper.clickOnWebElement(jingleBidLogo);
 				seleniumHelper.clickOnWebElement(searchProductInputBox);
 				seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductforBuyNow"));
 				searchProductInputBox.sendKeys(Keys.ESCAPE);
@@ -190,6 +191,7 @@ public class BuyNowPage extends BasePage {
 				searchProductInputBox.sendKeys(Keys.ESCAPE);
 				seleniumHelper.clickOnWebElement(buyNowButton);
 				seleniumHelper.clickOnWebElement(quantitySelect);
+				seleniumHelper.isElementDisplayed(confirmButton);
 				seleniumHelper.clickOnWebElement(confirmButton);
 				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 				seleniumHelper.clickOnWebElement(placeOrderButton);
@@ -205,16 +207,17 @@ public class BuyNowPage extends BasePage {
 	}
 
 			public BuyNowPage MainCategoryandBuyNow() throws InterruptedException {
-				
+				seleniumHelper.clickOnWebElement(jingleBidLogo);
 				seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 				dropDownProductSelect1.get(0).click();
 				seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 				seleniumHelper.clickOnWebElement(buyNowButton);
-				seleniumHelper.clickOnWebElement(quantitySelect);
+				seleniumHelper.isElementDisplayed(confirmButton);
+			//	seleniumHelper.clickOnWebElement(quantitySelect);
 				seleniumHelper.clickOnWebElement(confirmButton);
 				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 				seleniumHelper.clickOnWebElement(placeOrderButton);
-				seleniumHelper.hardWait(4000);
+				seleniumHelper.hardWait(2000);
 				if (seleniumHelper.isElementDisplayed(notificationBox)) 
 				{
 					System.out.println(notificationBox.getText() + "Hence, cannot complete the deal");
@@ -226,7 +229,7 @@ public class BuyNowPage extends BasePage {
 			}
 			
 			public BuyNowPage selectFromAllProductDropDownandBuyNow () throws InterruptedException {
-				
+				seleniumHelper.clickOnWebElement(jingleBidLogo);
 				seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 				seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);
 				seleniumHelper.moveToElementAndClickOnIt(categorySelectSelectDropDown);
@@ -235,16 +238,18 @@ public class BuyNowPage extends BasePage {
 				seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 				seleniumHelper.clickOnWebElement(buyNowButton);
 				seleniumHelper.clickOnWebElement(quantitySelect);
+				seleniumHelper.isElementDisplayed(confirmButton);
 				seleniumHelper.clickOnWebElement(confirmButton);
-				
 				return this;
 				
 			}
 
 			public BuyNowPage specialityStoreandBuyNow () throws InterruptedException {
+				seleniumHelper.clickOnWebElement(jingleBidLogo);
 				seleniumHelper.clickOnWebElement(selectSpecialityStore);
 				seleniumHelper.clickOnWebElement(selectProductAfterSearch1);
 				seleniumHelper.clickOnWebElement(buyNowButton);
+				seleniumHelper.isElementDisplayed(confirmButton);
 				seleniumHelper.clickOnWebElement(confirmButton);
 				seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 				seleniumHelper.clickOnWebElement(placeOrderButton);

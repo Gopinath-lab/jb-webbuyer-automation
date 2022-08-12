@@ -5,13 +5,17 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 
+import com.context.Constants;
 import com.context.WebDriverContext;
 import com.listeners.LogListener;
 import com.listeners.ReportListener;
@@ -63,7 +67,7 @@ public class BaseTest {
 	/** * Setup. */
 	@BeforeClass
 	protected void setup() {
-//		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
+		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions ops = new ChromeOptions();
 		ops.addArguments("--disable-notifications");
@@ -73,12 +77,23 @@ public class BaseTest {
 		WebDriverContext.setDriver(driver);
 	}
 
-	/** * Wrap up. */
-//	@AfterClass
-//	public void wrapUp() {
-//		if (driver != null) {
-//			driver.close();
-//			driver.quit();
-	//	}
+//		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
+//		WebDriverManager.firefoxdriver().setup();
+//		FirefoxOptions ops = new FirefoxOptions();
+//		ops.addArguments("--disable-notifications");
+//		driver = new FirefoxDriver(ops);
+//		driver.manage().window().maximize();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		WebDriverContext.setDriver(driver);
 //	}
+	/** * Wrap up. */
+	@AfterClass
+	public void wrapUp() {
+		if (driver != null) {
+			driver.close();
+			driver.quit();
+		}
+	}
 }
+	
+

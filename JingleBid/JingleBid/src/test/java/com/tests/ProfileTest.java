@@ -14,6 +14,6 @@ public class ProfileTest extends BaseTest{
 		LoginPage	loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
-		profilePage.profileupdate();
+		profilePage.filterMethod().filterByBrand().filterByDisplay().filterByChipset().filterByBatterySize().sortByOptionandListView();
 	}
 	}

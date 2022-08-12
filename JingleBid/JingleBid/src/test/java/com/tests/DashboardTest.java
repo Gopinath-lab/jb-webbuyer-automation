@@ -7,27 +7,42 @@ import com.pages.DashBoardPage1;
 import com.pages.DashboardPage;
 import com.pages.LoginPage;
 
-@Test(testName = "Dashboard verification", description = "Verification and validation of Dashboard funcationalities")
+//@Test(testName = "Dashboard verification", description = "Verification and validation of Dashboard funcationalities")
 
 public class DashboardTest extends BaseTest	{
 	
-	@Test
+	@Test(priority = -2, testName = "Dashboard Verification", description= "Verification and validation of Dashboard icon funcationalities")
 	
 	public void DashboardPage () throws Exception{
 		
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
 		
-		DashBoardPage1 dashboardPage = PageinstancesFactory.getInstance(DashBoardPage1.class);
-		dashboardPage.hyperlinks1();
-	//	dashboardPage.hyperlinks().bottomBannerAboutUs().footerJingleBidTv().policyinFooter().socialNetworkinFooter();
-//		dashboardPage.contactUsFooter();
-//		dashboardPage.addressinFooter();
-//		dashboardPage.chatboxIcon();
-//		dashboardPage.totalAuction().totalDeals();
-//		dashboardPage.productRequest();
-//		dashboardPage.referral();
+		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
+		dashboardPage.hyperlinks();
+		dashboardPage.footerBannerAboutUs().footerJingleBidTv().policyinFooter().socialNetworkinFooter();
+		dashboardPage.contactUsFooter().addressinFooter();
+		dashboardPage.chatboxIcon();
+		dashboardPage.referral();
 		
+	}
+	@Test (priority = -1, testName = "Total Auction and Total Deals", description = "Total auction and Total Deals functionality verification")
+	public void TotalAuctionAndTotalDeals () throws Exception {
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
+
+		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
+		dashboardPage.totalAuction().totalDeals();
+	}
+	
+	@Test (priority = 1, testName= "Product Request", description = "New Product request functionality verification")
+	public void NewProductRequest () throws Exception {
+	
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
+
+		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
+		dashboardPage.productRequest();
 	}
 
 }

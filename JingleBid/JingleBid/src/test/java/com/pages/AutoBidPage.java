@@ -2,9 +2,12 @@ package com.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -17,6 +20,7 @@ import com.util.TestProperties;
 public class AutoBidPage extends BasePage {
 	
 	SeleniumHelper seleniumHelper;
+	
 	
 	@FindBy(xpath = "//div[@class='header-text']")
 	private WebElement jingleBidLogo;
@@ -164,13 +168,15 @@ public class AutoBidPage extends BasePage {
 
 	//Specialty category WebElement
 
-		@FindBy(xpath = "(//input[@id='image'])[1]")
+		@FindBy(xpath = "//div[text()='Type A Section1']//parent::div//following-sibling::div//div[@class='carousel-image-container']")
 		private WebElement selectSpecialityStore;
 
 
 	@FindBy(xpath= "//div[@class='ant-popover-inner']/div/div/div[@class='ant-row subcategory-row']")
 	private List <WebElement> dropDownProductSelect1;
 
+	@FindBy(xpath = "//div[@class='ant-slider']//div[@class='ant-slider-handle ant-slider-handle-2']")
+	private WebElement slider;
 	
 	public AutoBidPage(WebDriver driver) {
 		super(driver);
@@ -178,7 +184,7 @@ public class AutoBidPage extends BasePage {
 	}
 	
 	public AutoBidPage searchAndStartAuctionInAutoBid () throws InterruptedException {
-		
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(searchProductInputBox);
 		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductForAutoBid"));
 		searchProductInputBox.sendKeys(Keys.ESCAPE);
@@ -232,7 +238,7 @@ public class AutoBidPage extends BasePage {
 		}
 
 		seleniumHelper.clickOnWebElement(confirmButton);
-		if (seleniumHelper.isElementDisplayed(notificationBox)) {
+		if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
 			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
 			ReportUtil.addScreenShot(LogStatus.FAIL,"Error occurred while ordering a product!");
 			return this;
@@ -243,10 +249,14 @@ public class AutoBidPage extends BasePage {
 		seleniumHelper.clickOnWebElement(couponInputBox);
 		seleniumHelper.sendKeys(couponInputBox, "4F1683BN");
 		seleniumHelper.clickOnWebElement(couponApplyButton);
-		if (seleniumHelper.isElementDisplayed(notificationBox)) {
-			String actualTextinCouponNotification = notificationBox.getText();
-			Assert.assertEquals(actualTextinCouponNotification, "Coupon Applied SuccessFully!")	;
+		String actualTextinCouponNotification = notificationBox.getText();
+		if(actualTextinCouponNotification.equalsIgnoreCase("Coupon Applied SuccessFully!"))
+		{
 			ReportUtil.addScreenShot(LogStatus.PASS, "Coupon Applied successfully!!");
+		}
+		else {
+			System.out.println(actualTextinCouponNotification + "Error occured, hence coupon cannot be applied");
+			ReportUtil.addScreenShot(LogStatus.PASS, "Coupon not applied successfully!!");
 		}
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 		seleniumHelper.clickOnWebElement(acceptBidButton);
@@ -255,6 +265,7 @@ public class AutoBidPage extends BasePage {
 	}
 
 	public AutoBidPage searchFromSpecialityStoreAndAutoBid() throws InterruptedException {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
 			seleniumHelper.clickOnWebElement(selectSpecialityStore);
 			seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 			seleniumHelper.clickOnWebElement(getBestPriceButton);
@@ -267,7 +278,7 @@ public class AutoBidPage extends BasePage {
 			}
 
 			seleniumHelper.clickOnWebElement(confirmButton);
-			if (seleniumHelper.isElementDisplayed(notificationBox)) {
+			if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
 				System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
 				ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
 				return this;
@@ -287,7 +298,7 @@ public class AutoBidPage extends BasePage {
 	}
 
 	public AutoBidPage allProductsDropDownAutoBid () throws InterruptedException {
-
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
 			seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 			seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);
 			seleniumHelper.moveToElementAndClickOnIt(categorySelectSelectDropDown);
@@ -295,17 +306,22 @@ public class AutoBidPage extends BasePage {
 			subCategorySelectProductDropDown.get(2).click();
 			seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 			seleniumHelper.clickOnWebElement(getBestPriceButton);
-			if (seleniumHelper.isElementDisplayed(emailVisibility)) {
+			if(seleniumHelper.isElementDisplayed(confirmButton)) {
 				Assert.assertTrue(true);
-				}
-			else {
+			if (seleniumHelper.isElementDisplayed(notificationBox)){
 				System.out.println(notificationBox.getText() + "Hence order cannot be completed");
-				ReportUtil.addScreenShot(LogStatus.FAIL,"Email address not mentioned");
+				String notificationText = notificationBox.getText();
+				ReportUtil.addScreenShot(LogStatus.FAIL, notificationText + "Order Cannot be placed");
+				return this;
 			}
+			}
+			else {
+				ReportUtil.addScreenShot(LogStatus.FAIL, "Error while ordering a product");
+				return this;
+			} 
 	//		seleniumHelper.clickOnWebElement(quantitySelect);
 			seleniumHelper.clickOnWebElement(confirmButton);
-
-			if (seleniumHelper.isElementDisplayed(notificationBox)) {
+			if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
 				System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
 				ReportUtil.addScreenShot(LogStatus.FAIL,"Error occured while ordering a product!");
 				return this;
@@ -322,4 +338,5 @@ public class AutoBidPage extends BasePage {
 						return this;
 	}
 }
+	
 }
