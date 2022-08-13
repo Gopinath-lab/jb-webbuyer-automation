@@ -113,8 +113,8 @@ public class DashboardPage extends BasePage{
 	@FindBy(xpath = "//div[@id='chat-icon']")
 	private WebElement chatBoxIcon;
 	
-	@FindBy(xpath = "//div[@class='fc-conversation-view']")
-	private WebElement chatBox;
+	@FindBy(xpath = "//div[@class='viewport h-chat-custom h-open']")
+	private WebElement chatBoxPopup;
 	
 	@FindBy(xpath = "//div[@class='fc-conversation-view']/div/div/div/h1[contains(text(),'Inbox')]")
 	private WebElement inboxTextinChatBox;
@@ -221,7 +221,7 @@ public class DashboardPage extends BasePage{
 		}
 	
 	
-	public DashboardPage bottomBannerAboutUs() {
+	public DashboardPage footerBannerAboutUs() {
 			seleniumHelper.scrollIntoView(aboutinBottomBanner);
 			if(seleniumHelper.isElementDisplayed(homeButtoninFooter)) {
 			seleniumHelper.clickOnWebElement(homeButtoninFooter);
@@ -243,7 +243,7 @@ public class DashboardPage extends BasePage{
 		
 			return this;
 		}
-	public DashboardPage footerJingleBidTv() {
+	public DashboardPage footerJingleBidTv() throws InterruptedException {
 				seleniumHelper.scrollIntoView(jingleBidTvFooter);
 			if (seleniumHelper.isElementDisplayed(youtubeinFooter)) { 
 			seleniumHelper.clickOnWebElement(youtubeinFooter);
@@ -254,7 +254,7 @@ public class DashboardPage extends BasePage{
 			}			
 				return this;}
 	
-	public DashboardPage policyinFooter() {
+	public DashboardPage policyinFooter() throws InterruptedException {
 				seleniumHelper.scrollIntoView(policyinFooter);
 				if (seleniumHelper.isElementDisplayed(privacyPolicyButton)) {
 					seleniumHelper.clickOnWebElement(privacyPolicyButton);
@@ -284,6 +284,7 @@ public class DashboardPage extends BasePage{
 				if (seleniumHelper.isElementDisplayed(facebookIconFooter)) {
 					seleniumHelper.clickOnWebElement(facebookIconFooter);
 					seleniumHelper.SwitchToWindow(1);
+					Thread.sleep(2000);
 					Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedJBFacebookURL"));
 					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Facebook - JingleBid page");
 					seleniumHelper.switchToParentWithChildClose(); }
@@ -291,6 +292,7 @@ public class DashboardPage extends BasePage{
 					seleniumHelper.scrollIntoView(socialinFooter);
 					seleniumHelper.clickOnWebElement(twitterIconFooter);
 					seleniumHelper.SwitchToWindow(1);
+					Thread.sleep(2000);
 					Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedJBTwitterURL"));
 					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to Twitter - JingleBid page");
 					seleniumHelper.switchToParentWithChildClose();
@@ -300,6 +302,7 @@ public class DashboardPage extends BasePage{
 					seleniumHelper.clickOnWebElement(linkedInIconFooter);
 					seleniumHelper.SwitchToWindow(1);
 					String actualURLContainstext = driver.getTitle();
+					Thread.sleep(2000);
 					Assert.assertTrue(actualURLContainstext.contains("Linked"));
 					ReportUtil.addScreenShot(LogStatus.PASS,"Directing to LinkedIn page");
 					seleniumHelper.switchToParentWithChildClose();				
@@ -318,7 +321,6 @@ public class DashboardPage extends BasePage{
 		return this;
 	}
 	
-
 		public DashboardPage contactUsFooter() throws Exception {
 			Robot bot = new Robot();
 			seleniumHelper.scrollIntoView(contactUsInFooter);
@@ -333,6 +335,7 @@ public class DashboardPage extends BasePage{
 					bot.keyRelease(KeyEvent.VK_ALT);
 				seleniumHelper.switchToParentWindow();
 				String actualAttributeinEmail = emailInFooter.getAttribute("href");
+				seleniumHelper.highlightWebElement(emailInFooter);
 				Assert.assertEquals(actualAttributeinEmail, TestProperties.getProperty("expectedAttributeinEmail"));
 				ReportUtil.addScreenShot(LogStatus.PASS,"Email ID is available in ContactUS");
 				
@@ -341,12 +344,12 @@ public class DashboardPage extends BasePage{
 			if (seleniumHelper.isElementDisplayed(telephoneNoContact)) {
 				seleniumHelper.scrollIntoView(telephoneNoContact);
 				seleniumHelper.moveToElementAndClickOnIt(telephoneNoContact);
-				seleniumHelper.highlightWebElement(telephoneNoContact);
 				Thread.sleep(3000);
 				bot.keyPress(KeyEvent.VK_ESCAPE);
 				bot.keyRelease(KeyEvent.VK_ESCAPE);
 				String actualAttributeInTelephoneContact = telephoneNoContact.getAttribute("href");
 				Assert.assertEquals(actualAttributeInTelephoneContact, TestProperties.getProperty("expectedAttributeinTelephoneToContact"));
+				seleniumHelper.highlightWebElement(telephoneNoContact);
 				ReportUtil.addScreenShot(LogStatus.PASS,"Phone Number is available in ContactUs");	
 			}
 			return this;
@@ -365,7 +368,7 @@ public class DashboardPage extends BasePage{
 			if(seleniumHelper.isElementDisplayed(chatBoxIcon)) {
 				seleniumHelper.moveToElementAndClickOnIt(chatBoxIcon);
 			//	String actualTextInChatBox = seleniumHelper.getText(inboxTextinChatBox);
-				Assert.assertTrue(seleniumHelper.isElementDisplayed(chatBox));
+				Assert.assertTrue(seleniumHelper.isElementDisplayed(chatBoxPopup));
 				ReportUtil.addScreenShot(LogStatus.PASS,"ChatBox is present and is clickable");
 				seleniumHelper.clickOnWebElement(closeChatBox);
 				seleniumHelper.switchToParentWindow();
@@ -422,13 +425,7 @@ public class DashboardPage extends BasePage{
 			}
 			return this;
 		}
-		public DashboardPage validation () {
-			seleniumHelper.clickOnWebElement(aboutUslinkonTopofDashboard);
-			seleniumHelper.SwitchToWindow(1);	
-			WebElement texts = driver.findElement(By.xpath("//h3[contains(text(),'Why should you buy on Jinglebid?')]"));
-			System.out.println(texts.getText());
-			return this;
-		}
+	
 		
 }
 	

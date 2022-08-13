@@ -5,6 +5,7 @@
     <classes>
       <class name="com.tests.DashboardTest">
         <methods>
+          <include name="wrapUp"/>
           <include name="DashboardPage"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
