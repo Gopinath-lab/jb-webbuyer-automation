@@ -3,24 +3,24 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Regression Test(failed)">
     <classes>
-      <class name="com.tests.AutoBidTest">
+      <class name="com.tests.SignUpTest">
         <methods>
           <include name="wrapUp"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
-          <include name="AutoBidByKeywordSearchandNetBankingPayment"/>
+          <include name="SignUpPage"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.AutoBidTest -->
-      <class name="com.tests.CouponsTest">
+      </class> <!-- com.tests.SignUpTest -->
+      <class name="com.tests.SearchandFilterTest">
         <methods>
           <include name="wrapUp"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
-          <include name="Couponapplyverfication"/>
+          <include name="SearchandFiltercheck"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.CouponsTest -->
+      </class> <!-- com.tests.SearchandFilterTest -->
     </classes>
   </test> <!-- Regression Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

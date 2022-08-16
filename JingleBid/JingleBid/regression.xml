@@ -6,15 +6,15 @@
 			<class name="com.tests.LoginTest" />
 			<class name="com.tests.StartAuctionTest">
 				<methods>
-					<include name="StartAuctionWay0"></include>
-					<exclude name="StartAuctionWay1"></exclude>
-					<exclude name="StartAuctionWay2"></exclude>
-					<exclude name="StartAuctionWay3"></exclude>
+					<include name="StartAuctionWay0"/>
+					<exclude name="StartAuctionWay1"/>
+					<exclude name="StartAuctionWay2"/>
+					<exclude name="StartAuctionWay3"/>
 				</methods>
 			</class>
 			<class name="com.tests.AutoBidTest">
 				<methods>
-					<include name="AutoBidByKeywordSearchandNetBankingPayment"></include>
+					<include name="AutoBidByKeywordSearchandNetBankingPayment"/>
 					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
 					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
 					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
@@ -22,16 +22,16 @@
 			</class>
 			<class name="com.tests.BuyNowTest">
 				<methods>
-					<include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"></include>
-					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
-					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
-					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
+					<exclude name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
+					<include name="BuyNowFromMainCategoryandCardPayment"/>
+					<exclude name="BuyNowFromSpecialityStoreandWalletPayment"/>
+					<exclude name="BuyNowFromAllProductsDropdownandCODOption"/>
 				</methods>
 			</class>
 			<class name="com.tests.ProfileTest">
 				<methods>
 					<exclude name="PersonalInformationUpdate"></exclude>
-					<exclude name="Profileimageupload"></exclude>
+					<include name="Profileimageupload"></include>
 					<exclude name="PhonenumberUpdate"></exclude>
 					<exclude name="PasswordUpdate"></exclude>
 					<exclude name="AddDeliveryAddress"></exclude>
@@ -41,9 +41,9 @@
 			<class name="com.tests.DashboardTest">
 				<methods>
 					<include name="DashboardTopBar"></include>
-					<exclude name="Productrequestcheck"></exclude>
+					<include name="Productrequestcheck"></include>
 					<include name="DashboardBottomBanner"></include>
-					<exclude name="PhonenumberUpdate"></exclude>
+					<include name="DashboardTotalAuctionandDeals"/>
 				</methods>
 			</class>
 			<class name="com.tests.CouponsTest">
@@ -56,6 +56,16 @@
 				<methods>
 					<include name="SearchandFiltercheck"></include>
 				</methods>
+			</class>
+			<class name="com.tests.SignUpTest" >
+			<methods> 
+			<include name="SignUpPage"/>
+			</methods> 
+			</class>
+			<class name="com.tests.LoginOTPTest">
+			<methods> 
+			<include name="LoginwithOTP"/>
+			</methods> 
 			</class>
 		</classes>
 	</test> <!-- Test -->

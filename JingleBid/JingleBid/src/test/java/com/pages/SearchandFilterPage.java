@@ -73,7 +73,7 @@ public class SearchandFilterPage extends BasePage{
 //	public Faker faker = new Faker();
 
 
-	public SearchandFilterPage filterMethod() throws InterruptedException {
+	public SearchandFilterPage filterbyPriceMethod() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(0).click();
@@ -222,7 +222,7 @@ public class SearchandFilterPage extends BasePage{
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
-		Assert.assertTrue(true);
+		Assert.assertTrue(clearFilterClick);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}

@@ -20,33 +20,37 @@ public class SignUpPage extends BasePage{
 	Constants constants;
 
 	@FindBy(xpath= "//div[@class='fs-11 fw-600 jingle-blue']")
-	public static WebElement signup;
+	private WebElement signup;
 	@FindBy(xpath = "//input[@id='name']")
-	public static WebElement name;
+	private WebElement name;
 	@FindBy(xpath = "//input[@class='ant-select-selection-search-input']")
-	public static WebElement gender;
+	private WebElement gender;
 	@FindBy(xpath = "//input[@id='email']")
-	public static WebElement email;
+	private WebElement email;
 	@FindBy(xpath = "(//div[@class='ant-select-item-option-content'])[2]")
-	public static WebElement genderValue;
+	private WebElement genderValue;
 	@FindBy(xpath = "//input[@id='phoneNumber']")
-	public static WebElement phone;
+	private WebElement phone;
 	@FindBy(xpath = "//input[@id='password']")
-	public static WebElement pass;
+	private WebElement pass;
 	@FindBy(xpath = "//input[@id='referralCode']")
-	public WebElement referralCodeEnter;
+	private WebElement referralCodeEnter;
 	@FindBy(xpath = "//input[@type='checkbox']")
-	public static WebElement accept;
+	private WebElement accept;
 	@FindBy(xpath = "//button[@type='submit']")
-	public static WebElement submitbtn;
+	private WebElement submitbtn;
 	@FindBy (xpath = "//input[@name='otpField01']")
-	public static WebElement otp;
+	private WebElement otp;
 	@FindBy(xpath = "//button[@type='submit']")
-	public static WebElement finishbutn;
+	private WebElement finishbutn;
+	@FindBy(xpath = "//iframe[@title='recaptcha challenge expires in two minutes']")
+	private WebElement captcha;
 	@FindBy (xpath = "//span[@class='dashboard-profile-name']")
-	public static WebElement profileName;
+	private WebElement profileName;
 	@FindBy(xpath = "//div[@class='ant-modal-body']")
 	private WebElement signUpCouponPopOp;
+	@FindBy(xpath = "//span[@class='anticon anticon-close ant-modal-close-icon']")
+	private WebElement closeButton;
 	@FindBy(xpath = "//div[@class='header-text']")
 	private WebElement jingleBidLogo;
 	@FindBy(xpath = "//img[@class='referral-img']")
@@ -117,18 +121,25 @@ public class SignUpPage extends BasePage{
 		seleniumHelper.clickOnWebElement(submitbtn);
 		seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
 		seleniumHelper.clickOnWebElement(finishbutn);
+		if (seleniumHelper.isElementDisplayed(captcha)) {
+			//Assert.assertTrue(true);
+			System.out.println("Google Image Captcha Interrupted, So can't able to Login!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Google Image Captcha Interrupted, So can't able to Login!");
+			return this;
+		}
 		seleniumHelper.waitForElement(signUpCouponPopOp, 10);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(signUpCouponPopOp), "SignUp coupon applied successfully");
+		Assert.assertTrue(seleniumHelper.isElementDisplayedwithoutBgColor(signUpCouponPopOp), "SignUp coupon applied successfully");
 		ReportUtil.addScreenShot(LogStatus.PASS, "SignUp successful and SignUp coupon applied successfully");
+		seleniumHelper.clickOnWebElement(closeButton);
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(referralIcon);
 		seleniumHelper.waitForElementVisible(referralSignUpIcon, 10);
 		seleniumHelper.clickOnWebElement(referralSignUpIcon);
-		if(seleniumHelper.isElementDisplayed(signUpCouponText)) {
+		if(seleniumHelper.isElementDisplayedwithoutBgColor(signUpCouponText)) {
 			String actualTextinReferralCode = signUpCouponText.getText();
 			Assert.assertEquals(actualTextinReferralCode, TestProperties.getProperty("expectedTextinSignUpCoupon"));
 			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to referral page and SignUp Coupon is available");	
 	}
 		return this;
-}}	
+}}
 

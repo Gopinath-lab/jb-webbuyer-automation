@@ -7,12 +7,12 @@ import com.pages.LoginOTPPage;
 
 public class LoginOTPTest {
 
+	@Test(testName = "10. Login with OTP", description = "Validating Login with OTP Functionality", priority = 9)
 	
-	@Test(testName = "Login with OTP Test", description = "Validating Login with OTP Functionality")
 	public class LoginTest extends BaseTest {
 
-		@Test
-		public void loginPage() throws Exception {
+		@Test (priority = 9)
+		public void LoginwithOTP() throws Exception {
 			LoginOTPPage loginPage = PageinstancesFactory.getInstance(LoginOTPPage.class);
 			loginPage.launchURL().loginwithOTP();
 				}

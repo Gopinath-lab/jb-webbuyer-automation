@@ -47,12 +47,12 @@ public class LoginOTPPage extends BasePage {
 		seleniumHelper.clickOnWebElement(phno);
 		seleniumHelper.sendKeys(phno, TestProperties.getProperty("login.num"));
 		seleniumHelper.clickOnWebElement(loginOTPBtn);
-		if (seleniumHelper.isElementDisplayed(numbernotexist)) {
+		if (seleniumHelper.isElementDisplayedwithoutWait(numbernotexist)) {
 			//Assert.assertTrue(false);
 			System.out.println("Entered number not Exist, So can't able to Login!");
-			ReportUtil.addScreenShot(LogStatus.FAIL, "Entered number not Exist, So can't able to Login!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Entered number not Exist, So cannot Login!");
 		}
-			else if (seleniumHelper.isElementDisplayed(captcha)) {
+			else if (seleniumHelper.isElementDisplayedwithoutWait(captcha)) {
 			//Assert.assertTrue(true);
 			System.out.println("Google Image Captcha Interrupted, So can't able to Login!");
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Google Image Captcha Interrupted, So can't able to Login!");

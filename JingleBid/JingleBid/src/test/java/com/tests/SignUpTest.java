@@ -15,8 +15,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
-@Test(testName = "SignUp Test", description = "Sign Up Functionality Testing")
-
+@Test(testName = "9. SignUp Test", description = "Sign Up Functionality Testing", priority = 8)
 public class SignUpTest extends BaseTest{
 //	
 //	public static SignUpPage Signuppage;

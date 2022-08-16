@@ -187,14 +187,14 @@ public class ProfilePage extends BasePage {
 	public ProfilePage profileImageUpload() throws AWTException, InterruptedException {
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.highlightWebElement(image);
-		image.sendKeys("C:\\Users\\Dell\\Downloads\\Image.jpg");
+		String profileimage = System.getProperty("user.dir") + "\\src\\main\\resources\\mainresource\\ProfileImages\\image.jpg";
+		image.sendKeys(profileimage);
 		Thread.sleep(2000);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(imageuploadedSuccessfully),
 				"Profile image uploaded Successfully");
 		ReportUtil.addScreenShot(LogStatus.PASS, "Profile image uploaded Successfully");
 		return this;
 	}
-	// Address Updated Successfully!
 
 	public ProfilePage phoneNumberChange() {
 		seleniumHelper.clickOnWebElement(viewprofile);
@@ -321,7 +321,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
-		Assert.assertTrue(true);
+		Assert.assertTrue(clearFilterClick);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
@@ -390,7 +390,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
-		Assert.assertTrue(true);
+		Assert.assertTrue(clearFilterClick);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
