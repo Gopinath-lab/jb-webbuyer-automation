@@ -29,7 +29,6 @@ import com.util.TestProperties;
 public class ProfilePage extends BasePage {
 
 	SeleniumHelper seleniumHelper;
-	
 
 	@FindBy(xpath = "//p[contains(text(),'View Profile')]/parent::button")
 	public static WebElement viewprofile;
@@ -51,13 +50,13 @@ public class ProfilePage extends BasePage {
 	private WebElement image;
 	@FindBy(xpath = "//input[@type='file']/following-sibling::img")
 	private WebElement imageAvailability;
-	@FindBy(xpath="//div[text()='Image Successfully uploaded']")
+	@FindBy(xpath = "//div[text()='Image Successfully uploaded']")
 	private WebElement imageuploadedSuccessfully;
 	@FindBy(xpath = "//span[contains(text(),'Change Phone')]/parent::button")
 	private WebElement changePhNoButton;
 	@FindBy(xpath = "//input[@name='phoneNumber']")
 	private WebElement phoneNoInput;
-	@FindBy(xpath ="//button[@id='verify-number']")
+	@FindBy(xpath = "//button[@id='verify-number']")
 	private WebElement savePhnoButton;
 	@FindBy(xpath = "//input[@name='otpField01']")
 	private WebElement otp;
@@ -73,7 +72,7 @@ public class ProfilePage extends BasePage {
 	public WebElement cnfrmPwd;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary ant-btn-round uppercase fs-11']")
 	public WebElement pwdChangeBtn;
-	@FindBy(xpath = "//div[@class='ant-notification-notice notification-error ant-notification-notice-error ant-notification-notice-closable']")
+	@FindBy(xpath = "//div[@class='ant-notification-notice-message']")
 	private WebElement notificationPopUp;
 	@FindBy(xpath = "//div[text()='Successfully updated']")
 	private WebElement passwordSuccess;
@@ -87,11 +86,11 @@ public class ProfilePage extends BasePage {
 	private WebElement jingleBidLogo;
 	@FindBy(xpath = "(//div[@class='carousel-col']/div[text()='Mobiles & Tabs ']/preceding-sibling::span)[2]")
 	private WebElement selectFromMainMenuCategory1;
-	@FindBy(xpath= "//div[@class='ant-popover-inner']/div/div/div[@class='ant-row subcategory-row']")
-	private List <WebElement> dropDownProductSelect1;
-	
+	@FindBy(xpath = "//div[@class='ant-popover-inner']/div/div/div[@class='ant-row subcategory-row']")
+	private List<WebElement> dropDownProductSelect1;
+
 	// *** Add New Address WebElements ** //
-	
+
 	@FindBy(xpath = "//span[text()='Add Address']")
 	public WebElement addAddressIcon;
 	@FindBy(id = "country")
@@ -126,7 +125,7 @@ public class ProfilePage extends BasePage {
 	public WebElement cityDropDownList;
 	@FindBy(xpath = "//span[text()='Save']")
 	public WebElement saveAddressButton;
-	///*** SLIDER ****////
+	/// *** SLIDER ****////
 	@FindBy(xpath = "//div[@class='ant-slider']//div[@class='ant-slider-handle ant-slider-handle-2']")
 	private WebElement slider;
 	@FindBy(xpath = "//span[text()='Apply']/parent::button")
@@ -139,8 +138,8 @@ public class ProfilePage extends BasePage {
 //	private WebElement filterByBrand;
 	@FindBy(xpath = "//div[text()='Brand']")
 	private WebElement filterByBrand;
-	@FindBy(xpath ="//div[@class='ant-collapse-content ant-collapse-content-active']/div/div/div/label/span")
-	private List <WebElement> subcategoryAvailable;
+	@FindBy(xpath = "//div[@class='ant-collapse-content ant-collapse-content-active']/div/div/div/label/span")
+	private List<WebElement> subcategoryAvailable;
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[1]")
 	private WebElement brandNameMatch;
 	@FindBy(xpath = "//div[text()='Display']")
@@ -154,17 +153,16 @@ public class ProfilePage extends BasePage {
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-sm ant-dropdown-trigger fs-11 text-left sort-drop-down']/span[@class='f-right']")
 	private WebElement sortByButton;
 	@FindBy(xpath = "//ul//li[@class='ant-dropdown-menu-item ant-dropdown-menu-item-only-child']")
-	private List <WebElement> sortByList;
+	private List<WebElement> sortByList;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-default ant-btn-sm ant-btn-icon-only']")
 	private WebElement listviewByOption;
 	@FindBy(xpath = "//div[@class='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-10 ant-col-lg-9 ant-col-xl-9']")
 	private WebElement sortByandListBy;
-	
+
 	public ProfilePage(WebDriver driver) {
 		super(driver);
 		seleniumHelper = new SeleniumHelper(driver);
 	}
-	
 
 	public ProfilePage launchURL() {
 		driver.get(TestProperties.getProperty("login.url"));
@@ -178,25 +176,26 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.doubleClickOnElement(driver, username);
 		seleniumHelper.backspace(username);
 		seleniumHelper.sendKeys(username, TestProperties.getProperty("newProfileName"));
-		seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));			
+		seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));
 		seleniumHelper.clickOnWebElement(saveButton);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(updatesuccess),
 				"Updated Successfully message is not displaying");
 		ReportUtil.addScreenShot(LogStatus.PASS, "Updated Successfully");
 		return this;
 	}
-	
-	public ProfilePage profileImageUpload () throws AWTException, InterruptedException {
+
+	public ProfilePage profileImageUpload() throws AWTException, InterruptedException {
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.highlightWebElement(image);
 		image.sendKeys("C:\\Users\\Dell\\Downloads\\Image.jpg");
 		Thread.sleep(2000);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(imageuploadedSuccessfully),"Profile image uploaded Successfully");
-		ReportUtil.addScreenShot(LogStatus.PASS,"Profile image uploaded Successfully");
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(imageuploadedSuccessfully),
+				"Profile image uploaded Successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Profile image uploaded Successfully");
 		return this;
 	}
-	//Address Updated Successfully!
-	
+	// Address Updated Successfully!
+
 	public ProfilePage phoneNumberChange() {
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(changePhNoButton);
@@ -205,45 +204,31 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(savePhnoButton);
 		seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
 		seleniumHelper.clickOnWebElement(finishButton);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(noUpdatedSuccessfully),"Phone number changed Successfully");
-		ReportUtil.addScreenShot(LogStatus.PASS,"Phone number changed Successfully");			
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(noUpdatedSuccessfully),
+				"Phone number changed Successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Phone number changed Successfully");
 		return this;
 	}
-	
+
 	public ProfilePage changePassword() {
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(changePassword);
-	//	seleniumHelper.clickOnWebElement(newPwd);
+		// seleniumHelper.clickOnWebElement(newPwd);
 		seleniumHelper.sendKeys(newPwd, TestProperties.getProperty("newPassword"));
-	//	seleniumHelper.clickOnWebElement(cnfrmPwd);
+		// seleniumHelper.clickOnWebElement(cnfrmPwd);
 		seleniumHelper.sendKeys(cnfrmPwd, TestProperties.getProperty("confirmPassword"));
 		seleniumHelper.clickOnWebElement(pwdChangeBtn);
 		String actualTextinNotificationBox = notificationPopUp.getText();
-		if (actualTextinNotificationBox.equalsIgnoreCase("Successfully updated")){
+		if (actualTextinNotificationBox.equalsIgnoreCase("Successfully updated")) {
 			Assert.assertEquals(actualTextinNotificationBox, "Successfully updated");
 			ReportUtil.addScreenShot(LogStatus.PASS, "Password Updated Successfully");
-		}
-		else {
+		} else {
 			System.out.println(notificationPopUp.getText() + "Error, occured. Hence, password cannit be changed");
-			ReportUtil.addScreenShot(LogStatus.FAIL,"Error while updating password");
-		}	
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Error while updating password");
+		}
 		return this;
 	}
-	
-	public ProfilePage deliveryAddressDetete() {
-		seleniumHelper.clickOnWebElement(viewprofile);
-		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
-		seleniumHelper.moveToElementAndClickOnIt(deleteButton);
-		seleniumHelper.clickOnWebElement(editButton);
-		seleniumHelper.clickOnWebElement(addNewStreet);
-		seleniumHelper.sendKeys(addNewStreet, TestProperties.getProperty("newStreet"));
-		seleniumHelper.clickOnWebElement(addNewLandmark);
-		seleniumHelper.sendKeys(addNewLandmark, TestProperties.getProperty("newLandmark"));
-		seleniumHelper.clickOnWebElement(saveAddressButton);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationPopUp),"Address Updated Successfully!");
-		ReportUtil.addScreenShot(LogStatus.PASS,"Address changed successfully!");	
-		return this;
-	}
+
 	public ProfilePage addNewAddress() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
@@ -270,11 +255,27 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.moveToElementAndClickOnIt(citySelect);
 		// cityDropDownList.get(0).click();
 		seleniumHelper.clickOnWebElement(cityDropDownList);
-		seleniumHelper.clickOnWebElement(saveAddressButton);	
-		
+		seleniumHelper.clickOnWebElement(saveAddressButton);
+
 		return this;
 	}
-	
+
+	public ProfilePage deliveryAddressUpdate() throws InterruptedException {
+		seleniumHelper.clickOnWebElement(viewprofile);
+		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
+		seleniumHelper.moveToElementAndClickOnIt(deleteButton);
+		seleniumHelper.clickOnWebElement(editButton);
+		seleniumHelper.clickOnWebElement(addNewStreet);
+		seleniumHelper.sendKeys(addNewStreet, TestProperties.getProperty("newStreet"));
+		seleniumHelper.clickOnWebElement(addNewLandmark);
+		seleniumHelper.sendKeys(addNewLandmark, TestProperties.getProperty("newLandmark"));
+		seleniumHelper.hardWait(3000);
+		seleniumHelper.clickOnWebElement(saveAddressButton);
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationPopUp), "Address Updated Successfully!");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Address changed successfully!");
+		return this;
+	}
+
 	public ProfilePage filterMethod() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
@@ -284,26 +285,29 @@ public class ProfilePage extends BasePage {
 //		Dimension sliderSize = slider.getSize();
 //		int sliderWidth = sliderSize.getWidth();
 //		int xSlider = slider.getLocation().getX();
-		action.moveToElement(slider).click().dragAndDropBy(slider,20, 0).build().perform();
+		action.moveToElement(slider).click().dragAndDropBy(slider, 20, 0).build().perform();
 		seleniumHelper.highlightWebElement(priceRange);
 		seleniumHelper.clickOnWebElement(applybutton);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Filtered the page with MRP Price Range");
-		return this;	
+		return this;
 	}
-	public ProfilePage filterByBrand () throws InterruptedException {
+
+	public ProfilePage filterByBrand() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(0).click();
 		seleniumHelper.waitForElement(filterByBrand, 5);
 		seleniumHelper.clickOnWebElement(filterByBrand);
 		String brandName = TestProperties.getProperty("brandName");
-		WebElement brandCheckBox = driver.findElement(By.xpath("//span[contains(text(),'"+brandName+"')]/preceding-sibling::span"));
-		WebElement brandSelected = driver.findElement(By.xpath("//span[contains(text(),'"+brandName+"')]/parent::label"));
+		WebElement brandCheckBox = driver
+				.findElement(By.xpath("//span[contains(text(),'" + brandName + "')]/preceding-sibling::span"));
+		WebElement brandSelected = driver
+				.findElement(By.xpath("//span[contains(text(),'" + brandName + "')]/parent::label"));
 		Thread.sleep(2000);
 		Boolean brandClick = false;
-		for (int i = 0; i <=subcategoryAvailable.size(); i++) {
+		for (int i = 0; i <= subcategoryAvailable.size(); i++) {
 			Thread.sleep(2000);
-			if(subcategoryAvailable.get(i).getText().equals(brandName)) {
+			if (subcategoryAvailable.get(i).getText().equals(brandName)) {
 				seleniumHelper.clickOnWebElement(brandCheckBox);
 				seleniumHelper.clickOnWebElement(applybutton);
 				seleniumHelper.isElementDisplayed(brandSelected);
@@ -312,15 +316,16 @@ public class ProfilePage extends BasePage {
 				Assert.assertTrue(brandClick);
 				ReportUtil.addScreenShot(LogStatus.PASS, "Brand filter applied successfully");
 				break;
-			}	
+			}
 		}
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
 		Assert.assertTrue(true);
-		ReportUtil.addScreenShot(LogStatus.PASS,"Clear Filter button is applied successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
+
 	public ProfilePage filterByDisplay() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
@@ -328,13 +333,15 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.waitForElement(filterByDisplay, 5);
 		seleniumHelper.clickOnWebElement(filterByDisplay);
 		String displayName = TestProperties.getProperty("displayName");
-		WebElement displayCheckBox = driver.findElement(By.xpath("//span[contains(text(),'"+displayName+"')]/preceding-sibling::span"));
-		WebElement displaySelected = driver.findElement(By.xpath("//span[contains(text(),'"+displayName+"')]/parent::label"));
+		WebElement displayCheckBox = driver
+				.findElement(By.xpath("//span[contains(text(),'" + displayName + "')]/preceding-sibling::span"));
+		WebElement displaySelected = driver
+				.findElement(By.xpath("//span[contains(text(),'" + displayName + "')]/parent::label"));
 		Thread.sleep(2000);
 		Boolean displayClick = false;
-		for (int i = 0; i <=subcategoryAvailable.size(); i++) {
+		for (int i = 0; i <= subcategoryAvailable.size(); i++) {
 			Thread.sleep(2000);
-			if(subcategoryAvailable.get(i).getText().equals(displayName)) {
+			if (subcategoryAvailable.get(i).getText().equals(displayName)) {
 				seleniumHelper.clickOnWebElement(displayCheckBox);
 				seleniumHelper.clickOnWebElement(applybutton);
 				seleniumHelper.isElementDisplayed(displaySelected);
@@ -349,24 +356,27 @@ public class ProfilePage extends BasePage {
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
 		Assert.assertTrue(true);
-		ReportUtil.addScreenShot(LogStatus.PASS,"Clear Filter button is applied successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
-	public ProfilePage filterByChipset () throws InterruptedException {
+
+	public ProfilePage filterByChipset() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(0).click();
 		seleniumHelper.waitForElement(filterByChipset, 5);
 		seleniumHelper.clickOnWebElement(filterByChipset);
 		String chipsetName = TestProperties.getProperty("chipsetName");
-		WebElement chipsetCheckBox = driver.findElement(By.xpath("//span[contains(text(),'"+chipsetName+"')]/preceding-sibling::span"));
-		WebElement chipsetSelected = driver.findElement(By.xpath("//span[contains(text(),'"+chipsetName+"')]/parent::label"));
+		WebElement chipsetCheckBox = driver
+				.findElement(By.xpath("//span[contains(text(),'" + chipsetName + "')]/preceding-sibling::span"));
+		WebElement chipsetSelected = driver
+				.findElement(By.xpath("//span[contains(text(),'" + chipsetName + "')]/parent::label"));
 
 		Thread.sleep(2000);
 		Boolean chipsetClick = false;
-		for (int i = 0; i <=subcategoryAvailable.size(); i++) {
+		for (int i = 0; i <= subcategoryAvailable.size(); i++) {
 			Thread.sleep(2000);
-			if(subcategoryAvailable.get(i).getText().equals(chipsetName)) {
+			if (subcategoryAvailable.get(i).getText().equals(chipsetName)) {
 				seleniumHelper.clickOnWebElement(chipsetCheckBox);
 				seleniumHelper.clickOnWebElement(applybutton);
 				seleniumHelper.isElementDisplayed(chipsetSelected);
@@ -375,30 +385,33 @@ public class ProfilePage extends BasePage {
 				Assert.assertTrue(chipsetClick);
 				ReportUtil.addScreenShot(LogStatus.PASS, "Chipset filter applied successfully");
 				break;
-			}	
+			}
 		}
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
 		Assert.assertTrue(true);
-		ReportUtil.addScreenShot(LogStatus.PASS,"Clear Filter button is applied successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
-	public ProfilePage filterByBatterySize () throws InterruptedException {
+
+	public ProfilePage filterByBatterySize() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(0).click();
 		seleniumHelper.waitForElement(filterByBattery, 5);
 		seleniumHelper.clickOnWebElement(filterByBattery);
 		String batteryName = TestProperties.getProperty("batterySize");
-		WebElement batteryCheckBox = driver.findElement(By.xpath("//span[contains(text(),'"+batteryName+"')]/preceding-sibling::span"));
-		WebElement batterySelected = driver.findElement(By.xpath("//span[contains(text(),'"+batteryName+"')]/parent::label"));
+		WebElement batteryCheckBox = driver
+				.findElement(By.xpath("//span[contains(text(),'" + batteryName + "')]/preceding-sibling::span"));
+		WebElement batterySelected = driver
+				.findElement(By.xpath("//span[contains(text(),'" + batteryName + "')]/parent::label"));
 
 		Thread.sleep(2000);
 		Boolean chipsetClick = false;
-		for (int i = 0; i <=subcategoryAvailable.size(); i++) {
+		for (int i = 0; i <= subcategoryAvailable.size(); i++) {
 			Thread.sleep(2000);
-			if(subcategoryAvailable.get(i).getText().equals(batteryName)) {
+			if (subcategoryAvailable.get(i).getText().equals(batteryName)) {
 				seleniumHelper.clickOnWebElement(batteryCheckBox);
 				seleniumHelper.clickOnWebElement(applybutton);
 				seleniumHelper.isElementDisplayed(batterySelected);
@@ -407,16 +420,17 @@ public class ProfilePage extends BasePage {
 				Assert.assertTrue(chipsetClick);
 				ReportUtil.addScreenShot(LogStatus.PASS, "BatterySize filter applied successfully");
 				break;
-			}	
+			}
 		}
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
 		Assert.assertTrue(true);
-		ReportUtil.addScreenShot(LogStatus.PASS,"Clear Filter button is applied successfully");	
+		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
-	public ProfilePage sortByOptionandListView () throws InterruptedException {
+
+	public ProfilePage sortByOptionandListView() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(0).click();
@@ -429,10 +443,8 @@ public class ProfilePage extends BasePage {
 		Boolean sortByClick = true;
 		Assert.assertTrue(sortByClick);
 		ReportUtil.addScreenShot(LogStatus.PASS, "SortBy and ViewBy-List functionalities applied successfully");
-		
+
 		return this;
 	}
-	
-	
-	
+
 }
