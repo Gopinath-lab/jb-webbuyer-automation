@@ -63,7 +63,6 @@ public class StartAuctionpage extends BasePage {
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[1]")
 	public WebElement selectmainproduct;
 
-
 	// *******************Specialty category WebElement***********************//
 
 	@FindBy(xpath = "(//input[@id='image'])[1]")
@@ -166,7 +165,7 @@ public class StartAuctionpage extends BasePage {
 		seleniumHelper.clickOnWebElement(selectProductButton);
 		Thread.sleep(3000);
 		if (seleniumHelper.isElementEnabled(emailVisibility)) {
-//			Assert.assertTrue(true);
+			Assert.assertTrue(true);
 			System.out.println("Email address visibility test passed:" + emailVisibility.getText());
 		} else {
 			System.out.println(notificationPopUp.getText() + "Hence order cannot be completed");
@@ -174,10 +173,23 @@ public class StartAuctionpage extends BasePage {
 		}
 		seleniumHelper.clickOnWebElement(confirmButton);
 		Thread.sleep(1000);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationPopUp),
-				"Error occured while ordering a product!");
-		ReportUtil.addScreenShot(LogStatus.PASS, "Product Searched and Ordered Successfully!");
+//		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationPopUp),
+//				"Error occured while ordering a product!");
+//		ReportUtil.addScreenShot(LogStatus.PASS, "Product Searched and Ordered Successfully!");
+//		return this;
+		if (seleniumHelper.isElementDisplayed(notificationBox)) {
+			Assert.assertTrue(true);
+			System.out.println(notificationBox.getText());
+			ReportUtil.addScreenShot(LogStatus.PASS,
+					"Product Ordered Successfully from Top Search!");
+		} else {
+			System.out.println("Error occured while ordering a product from All products dropdown!");
+			ReportUtil.addScreenShot(LogStatus.FAIL,
+					"Error occured while ordering a product from All products dropdown!");
+		}
+
 		return this;
+
 	}
 
 	// ********************************Method2********************************************//
@@ -208,7 +220,7 @@ public class StartAuctionpage extends BasePage {
 			Assert.assertTrue(true);
 			System.out.println(notificationBox.getText());
 			ReportUtil.addScreenShot(LogStatus.PASS,
-					"Product Ordered Successfully from Top Search all Products Drop-down!");
+					"Product Ordered Successfully from Top Search All Products Drop-down!");
 		} else {
 			System.out.println("Error occured while ordering a product from All products dropdown!");
 			ReportUtil.addScreenShot(LogStatus.FAIL,
@@ -263,12 +275,10 @@ public class StartAuctionpage extends BasePage {
 		if (seleniumHelper.isElementDisplayed(notificationBox)) {
 			Assert.assertTrue(true);
 			System.out.println(notificationBox.getText());
-			ReportUtil.addScreenShot(LogStatus.PASS,
-					"Product Ordered Successfully from Main-Category!");
+			ReportUtil.addScreenShot(LogStatus.PASS, "Product Ordered Successfully from Main-Category!");
 		} else {
 			System.out.println("Error occured while ordering a product from Main-Category!");
-			ReportUtil.addScreenShot(LogStatus.FAIL,
-					"Error occured while ordering a product from Main-Category!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product from Main-Category!");
 		}
 		return this;
 	}
@@ -295,12 +305,10 @@ public class StartAuctionpage extends BasePage {
 		if (seleniumHelper.isElementDisplayed(notificationBox)) {
 			Assert.assertTrue(true);
 			System.out.println(notificationBox.getText());
-			ReportUtil.addScreenShot(LogStatus.PASS,
-					"Product Ordered Successfully from Speciality Store!");
+			ReportUtil.addScreenShot(LogStatus.PASS, "Product Ordered Successfully from Speciality Store!");
 		} else {
 			System.out.println("Error occured while ordering a product from Speciality Store!");
-			ReportUtil.addScreenShot(LogStatus.FAIL,
-					"Error occured while ordering a product from Speciality Store!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product from Speciality Store!");
 		}
 		return this;
 	}
@@ -311,7 +319,7 @@ public class StartAuctionpage extends BasePage {
 		seleniumHelper.clickOnWebElement(goToHomeButton);
 		return this;
 	}
-	
+
 	public StartAuctionpage cancelAuction() {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(totalAuctionButton);
@@ -319,12 +327,14 @@ public class StartAuctionpage extends BasePage {
 		seleniumHelper.clickOnWebElement(selectProductFromTotalAuction);
 		seleniumHelper.waitForElement(cancelAuctionButton, 10);
 		seleniumHelper.clickOnWebElement(cancelAuctionButton);
-	//	String actualTextinCancelPopUp = cancelAuctionPopUp.getText();
-	//	Assert.assertEquals(actualTextinCancelPopUp, TestProperties.getProperty("expectedTextinCancelAuctionPopUp"));
+		// String actualTextinCancelPopUp = cancelAuctionPopUp.getText();
+		// Assert.assertEquals(actualTextinCancelPopUp,
+		// TestProperties.getProperty("expectedTextinCancelAuctionPopUp"));
 		seleniumHelper.clickOnWebElement(cancelJustTriedAppButton);
 		seleniumHelper.clickOnWebElement(submitButtonInCancelPopUp);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(auctionCancelled),"Auction has been cancelled Successfully");
-		ReportUtil.addScreenShot(LogStatus.PASS,"Auction cancelled successfully");
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(auctionCancelled),
+				"Auction has been cancelled Successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Auction cancelled successfully");
 		return this;
 	}
 

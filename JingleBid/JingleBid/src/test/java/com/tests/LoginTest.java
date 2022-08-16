@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import com.factory.PageinstancesFactory;
 import com.pages.LoginPage;
 
-@Test(testName = "Email/Password Login Test", description = "Validating Email/Pass Login Functionality")
+@Test(testName = "1. Email/Password Login Test", description = "Validating Email/Pass Login Functionality")
 public class LoginTest extends BaseTest {
 
 	@Test

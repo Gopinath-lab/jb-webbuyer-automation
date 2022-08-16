@@ -6,12 +6,21 @@
       <class name="com.tests.AutoBidTest">
         <methods>
           <include name="wrapUp"/>
-          <include name="AutoBidFromMainCategory"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
+          <include name="AutoBidByKeywordSearchandNetBankingPayment"/>
           <include name="globalSetup"/>
         </methods>
       </class> <!-- com.tests.AutoBidTest -->
+      <class name="com.tests.CouponsTest">
+        <methods>
+          <include name="wrapUp"/>
+          <include name="wrapAllUp"/>
+          <include name="setup"/>
+          <include name="Couponapplyverfication"/>
+          <include name="globalSetup"/>
+        </methods>
+      </class> <!-- com.tests.CouponsTest -->
     </classes>
   </test> <!-- Regression Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

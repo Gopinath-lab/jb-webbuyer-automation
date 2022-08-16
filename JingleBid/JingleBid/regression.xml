@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="2" name="Regression Test" >
-    <classes>
-    <class name="com.tests.LoginTest"/>
-    <class name="com.tests.AutoBidTest"/>
-    <class name="com.tests.BuyNowTest"/>          
-    <class name="com.tests.DashboardTest"/>
-    </classes>
-  </test> <!-- Test -->
+	<test thread-count="2" name="Regression Test">
+		<classes>
+			<class name="com.tests.LoginTest" />
+			<class name="com.tests.StartAuctionTest">
+				<methods>
+					<include name="StartAuctionWay0"></include>
+					<exclude name="StartAuctionWay1"></exclude>
+					<exclude name="StartAuctionWay2"></exclude>
+					<exclude name="StartAuctionWay3"></exclude>
+				</methods>
+			</class>
+			<class name="com.tests.AutoBidTest">
+				<methods>
+					<include name="AutoBidByKeywordSearchandNetBankingPayment"></include>
+					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
+					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
+					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
+				</methods>
+			</class>
+			<class name="com.tests.BuyNowTest">
+				<methods>
+					<include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"></include>
+					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
+					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
+					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
+				</methods>
+			</class>
+			<class name="com.tests.ProfileTest">
+				<methods>
+					<exclude name="PersonalInformationUpdate"></exclude>
+					<exclude name="Profileimageupload"></exclude>
+					<exclude name="PhonenumberUpdate"></exclude>
+					<exclude name="PasswordUpdate"></exclude>
+					<exclude name="AddDeliveryAddress"></exclude>
+					<include name="EditDeliveryAddress"></include>
+				</methods>
+			</class>
+			<class name="com.tests.DashboardTest">
+				<methods>
+					<include name="DashboardTopBar"></include>
+					<exclude name="Productrequestcheck"></exclude>
+					<include name="DashboardBottomBanner"></include>
+					<exclude name="PhonenumberUpdate"></exclude>
+				</methods>
+			</class>
+			<class name="com.tests.CouponsTest">
+				<methods>
+					<include name="ReferralPage"></include>
+					<include name="Couponapplyverfication"></include>
+				</methods>
+			</class>
+			<class name="com.tests.SearchandFilterTest">
+				<methods>
+					<include name="SearchandFiltercheck"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
 </suite> <!-- Suite -->
