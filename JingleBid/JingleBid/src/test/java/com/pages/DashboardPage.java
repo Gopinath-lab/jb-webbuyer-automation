@@ -74,8 +74,12 @@ public class DashboardPage extends BasePage {
 	private WebElement contactUsInFooter;
 	@FindBy(xpath = "//a[contains(@href,'mailto')]")
 	private WebElement emailInFooter;
+	@FindBy(xpath = "//a//li[text()='hello@jinglebid.com']")
+	private WebElement emailCheck;
 	@FindBy(xpath = "//a[contains(@href,'tel')]")
 	private WebElement telephoneNoContact;
+	@FindBy(xpath = "//a//li[text()='+91-1414-9373-00']")
+	private WebElement telephoneNoCheck;
 	@FindBy(xpath = "//div[contains(text(),'Registered Office Address ')]")
 	private WebElement addressInFooter;
 	@FindBy(xpath = "//div[@class='footer-list cursor-fix']")
@@ -118,10 +122,10 @@ public class DashboardPage extends BasePage {
 
 	/// ****IF ELSE Condition*****/////
 	public DashboardPage Topbarhyperlinks() {
-		if (seleniumHelper.isElementDisplayed(downloadAppLink)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(downloadAppLink)) {
 			seleniumHelper.clickOnWebElement(downloadAppLink);
 			seleniumHelper.SwitchToWindow(1);
-			seleniumHelper.isElementDisplayed(appInstallButton);
+			seleniumHelper.isElementDisplayedwithoutBgColor(appInstallButton);
 			Assert.assertEquals(actualTextinPlaystore.getText(), TestProperties.getProperty("expectedTextinPlayStore"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Verify Top Bar - Download the App Link");
 			seleniumHelper.switchToParentWithChildClose();
@@ -131,7 +135,7 @@ public class DashboardPage extends BasePage {
 			return this;
 		}
 
-		if (seleniumHelper.isElementDisplayed(aboutUslinkonTopofDashboard)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(aboutUslinkonTopofDashboard)) {
 			seleniumHelper.clickOnWebElement(aboutUslinkonTopofDashboard);
 			seleniumHelper.SwitchToWindow(1);
 			String actualAboutUsURL = driver.getCurrentUrl();
@@ -146,7 +150,7 @@ public class DashboardPage extends BasePage {
 			return this;
 		}
 
-		if (seleniumHelper.isElementDisplayed(jingleBidTVIcon)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(jingleBidTVIcon)) {
 			seleniumHelper.clickOnWebElement(jingleBidTVIcon);
 			seleniumHelper.SwitchToWindow(1);
 			String actualJingleBidTVURL = driver.getCurrentUrl();
@@ -159,7 +163,7 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Youtube - JingleBid TV ");
 			return this;
 		}
-		if (seleniumHelper.isElementDisplayed(jingleBidLogo)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(jingleBidLogo)) {
 			seleniumHelper.clickOnWebElement(jingleBidLogo);
 			Assert.assertEquals(jingleBidLogo.getText(), TestProperties.getProperty("expectedTextinPlayStore"));
 			seleniumHelper.highlightWebElement(jingleBidLogo);
@@ -172,13 +176,13 @@ public class DashboardPage extends BasePage {
 
 	public DashboardPage footerBannerAboutUs() {
 		seleniumHelper.scrollIntoView(aboutinBottomBanner);
-		if (seleniumHelper.isElementDisplayed(homeButtoninFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(homeButtoninFooter)) {
 			seleniumHelper.clickOnWebElement(homeButtoninFooter);
 			ReportUtil.addScreenShot(LogStatus.PASS, "Footer Home button Directed to home page Succesfully!");
 		}
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.scrollIntoView(aboutinBottomBanner);
-		if (seleniumHelper.isElementDisplayed(aboutUsInFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(aboutUsInFooter)) {
 			seleniumHelper.clickOnWebElement(aboutUsInFooter);
 			seleniumHelper.SwitchToWindow(1);
 			String actualAboutUsURL1 = driver.getCurrentUrl();
@@ -192,7 +196,7 @@ public class DashboardPage extends BasePage {
 
 	public DashboardPage footerJingleBidTv() throws InterruptedException {
 		seleniumHelper.scrollIntoView(jingleBidTvFooter);
-		if (seleniumHelper.isElementDisplayed(youtubeinFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(youtubeinFooter)) {
 			seleniumHelper.clickOnWebElement(youtubeinFooter);
 			seleniumHelper.SwitchToWindow(1);
 			Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedJingleBidTVURL"));
@@ -204,21 +208,21 @@ public class DashboardPage extends BasePage {
 
 	public DashboardPage policyinFooter() throws InterruptedException {
 		seleniumHelper.scrollIntoView(policyinFooter);
-		if (seleniumHelper.isElementDisplayed(privacyPolicyButton)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(privacyPolicyButton)) {
 			seleniumHelper.clickOnWebElement(privacyPolicyButton);
 			seleniumHelper.SwitchToWindow(1);
 			Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedPrivacyPolicyURL"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Privacy Policy Page ");
 			seleniumHelper.switchToParentWithChildClose();
 		}
-		if (seleniumHelper.isElementDisplayed(refundReturnPolicyButton)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(refundReturnPolicyButton)) {
 			seleniumHelper.clickOnWebElement(refundReturnPolicyButton);
 			seleniumHelper.SwitchToWindow(1);
 			Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedReturnRefundURL"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Return and Refund Policy Page ");
 			seleniumHelper.switchToParentWithChildClose();
 		}
-		if (seleniumHelper.isElementDisplayed(termsandConditionsButton)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(termsandConditionsButton)) {
 			seleniumHelper.clickOnWebElement(termsandConditionsButton);
 			seleniumHelper.SwitchToWindow(1);
 			Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedTermsandConditionsURL"));
@@ -231,7 +235,7 @@ public class DashboardPage extends BasePage {
 	public DashboardPage socialNetworkinFooter() throws Exception {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.scrollIntoView(socialinFooter);
-		if (seleniumHelper.isElementDisplayed(facebookIconFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(facebookIconFooter)) {
 			seleniumHelper.clickOnWebElement(facebookIconFooter);
 			seleniumHelper.SwitchToWindow(1);
 			Thread.sleep(2000);
@@ -239,7 +243,7 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Facebook - JingleBid page");
 			seleniumHelper.switchToParentWithChildClose();
 		}
-		if (seleniumHelper.isElementDisplayed(twitterIconFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(twitterIconFooter)) {
 			seleniumHelper.scrollIntoView(socialinFooter);
 			seleniumHelper.clickOnWebElement(twitterIconFooter);
 			seleniumHelper.SwitchToWindow(1);
@@ -249,7 +253,7 @@ public class DashboardPage extends BasePage {
 			seleniumHelper.switchToParentWithChildClose();
 		}
 
-		if (seleniumHelper.isElementDisplayed(linkedInIconFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(linkedInIconFooter)) {
 			seleniumHelper.clickOnWebElement(linkedInIconFooter);
 			seleniumHelper.SwitchToWindow(1);
 			String actualURLContainstext = driver.getTitle();
@@ -259,7 +263,7 @@ public class DashboardPage extends BasePage {
 			seleniumHelper.switchToParentWithChildClose();
 		}
 
-		if (seleniumHelper.isElementDisplayed(instagramIconFooter)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(instagramIconFooter)) {
 			seleniumHelper.scrollIntoView(socialinFooter);
 			seleniumHelper.clickOnWebElement(instagramIconFooter);
 			seleniumHelper.SwitchToWindow(1);
@@ -273,43 +277,44 @@ public class DashboardPage extends BasePage {
 	}
 
 	public DashboardPage contactUsFooter() throws Exception {
-		Robot bot = new Robot();
+//		Robot bot = new Robot();
 		seleniumHelper.scrollIntoView(contactUsInFooter);
 		if (seleniumHelper.isElementDisplayed(emailInFooter)) {
-			seleniumHelper.clickOnWebElement(emailInFooter);
-			Thread.sleep(4000);
-			bot.keyPress(KeyEvent.VK_ESCAPE);
-			bot.keyRelease(KeyEvent.VK_ESCAPE);
-			bot.keyPress(KeyEvent.VK_ALT);
-			bot.keyPress(KeyEvent.VK_F4);
-			bot.keyRelease(KeyEvent.VK_F4);
-			bot.keyRelease(KeyEvent.VK_ALT);
-			seleniumHelper.switchToParentWindow();
-			String actualAttributeinEmail = emailInFooter.getAttribute("href");
-			seleniumHelper.highlightWebElement(emailInFooter);
-			Assert.assertEquals(actualAttributeinEmail, TestProperties.getProperty("expectedAttributeinEmail"));
-			ReportUtil.addScreenShot(LogStatus.PASS, "Email ID is available in ContactUS");
+//			seleniumHelper.scrollIntoView(emailInFooter);
+			Assert.assertTrue(seleniumHelper.isElementEnabled(emailInFooter));
+			seleniumHelper.highlightWebElementwithoutBg(emailCheck);
+//			Thread.sleep(4000);
+//			bot.keyPress(KeyEvent.VK_ESCAPE);
+//			bot.keyRelease(KeyEvent.VK_ESCAPE);
+//			bot.keyPress(KeyEvent.VK_ALT);
+//			bot.keyPress(KeyEvent.VK_F4);
+//			bot.keyRelease(KeyEvent.VK_F4);
+//			bot.keyRelease(KeyEvent.VK_ALT);
+//			seleniumHelper.switchToParentWindow();
+			String actualAttributeinEmail = emailCheck.getText();
+			Assert.assertEquals(actualAttributeinEmail, TestProperties.getProperty("expectedTextinEmail"));
+			ReportUtil.addScreenShot(LogStatus.PASS, "Email ID is available in Contact US and is enabled");
 
 		}
 
 		if (seleniumHelper.isElementDisplayed(telephoneNoContact)) {
 			seleniumHelper.scrollIntoView(telephoneNoContact);
-			seleniumHelper.moveToElementAndClickOnIt(telephoneNoContact);
-			Thread.sleep(3000);
-			bot.keyPress(KeyEvent.VK_ESCAPE);
-			bot.keyRelease(KeyEvent.VK_ESCAPE);
-			String actualAttributeInTelephoneContact = telephoneNoContact.getAttribute("href");
-			Assert.assertEquals(actualAttributeInTelephoneContact,
-					TestProperties.getProperty("expectedAttributeinTelephoneToContact"));
-			seleniumHelper.highlightWebElement(telephoneNoContact);
-			ReportUtil.addScreenShot(LogStatus.PASS, "Phone Number is available in ContactUs");
+//			seleniumHelper.moveToElementAndClickOnIt(telephoneNoContact);
+			Assert.assertTrue(seleniumHelper.isElementEnabled(telephoneNoCheck));
+			seleniumHelper.highlightWebElementwithoutBg(telephoneNoCheck);
+//			bot.keyPress(KeyEvent.VK_ESCAPE);
+//			bot.keyRelease(KeyEvent.VK_ESCAPE);
+			String actualTextInTelephoneContact = telephoneNoCheck.getText();
+			Assert.assertEquals(actualTextInTelephoneContact,
+					TestProperties.getProperty("expectedTextinTelephoneToContact"));
+			ReportUtil.addScreenShot(LogStatus.PASS, "Phone Number is available in ContactUs and is enabled");
 		}
 		return this;
 	}
 
 	public DashboardPage addressinFooter() {
 		seleniumHelper.scrollIntoView(addressInFooter);
-		if (seleniumHelper.isElementDisplayed(jbAddress))
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(jbAddress))
 			System.out.println("Registered Office Address = ' " + jbAddress.getText() + "'");
 		ReportUtil.addScreenShot(LogStatus.PASS, "Address is available in Registered Office Address");
 		return this;
@@ -320,7 +325,7 @@ public class DashboardPage extends BasePage {
 		if (seleniumHelper.isElementDisplayed(chatBoxIcon)) {
 			seleniumHelper.moveToElementAndClickOnIt(chatBoxIcon);
 			// String actualTextInChatBox = seleniumHelper.getText(inboxTextinChatBox);
-			Assert.assertTrue(seleniumHelper.isElementDisplayed(chatBoxPopup));
+			Assert.assertTrue(seleniumHelper.isElementDisplayedwithoutBgColor(chatBoxPopup));
 			ReportUtil.addScreenShot(LogStatus.PASS, "ChatBox is present and is clickable");
 			seleniumHelper.clickOnWebElement(closeChatBox);
 			seleniumHelper.switchToParentWindow();

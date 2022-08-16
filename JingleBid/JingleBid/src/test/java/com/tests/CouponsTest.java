@@ -7,7 +7,7 @@ import com.pages.CouponsPage;
 import com.pages.LoginPage;
 import com.pages.PaymentMethodsPage;
 
-@Test(testName = "7. Coupon verification")
+@Test(testName = "7. Coupon verification", priority = 6)
 
 public class CouponsTest extends BaseTest {
 

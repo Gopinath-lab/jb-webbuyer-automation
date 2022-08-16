@@ -66,17 +66,23 @@ public class BaseTest {
 
 	/** * Setup. */
 	@BeforeClass
+//	@Parameters("browser")
 	protected void setup() {
 		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions ops = new ChromeOptions();
 		ops.addArguments("--disable-notifications");
+		if(TestProperties.getProperty("headlessBoolean").equalsIgnoreCase("true")) {
+		ops.addArguments("--headless");
+//		ops.setHeadless(true);
+		ops.addArguments("--window-size=1920,1080");
+		}
 		driver = new ChromeDriver(ops);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebDriverContext.setDriver(driver);
 	}
-
+	
 //		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
 //		WebDriverManager.firefoxdriver().setup();
 //		FirefoxOptions ops = new FirefoxOptions();
@@ -86,6 +92,20 @@ public class BaseTest {
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //		WebDriverContext.setDriver(driver);
 //	}
+	
+//	protected void setup( String browser)throws Exception {
+//		if(browser.equalsIgnoreCase("firefox")) {
+//			WebDriverManager.firefoxdriver().setup();
+//			driver = new FirefoxDriver();
+//			driver.manage().window().maximize();
+//			WebDriverContext.setDriver(driver);
+//		}
+//		else if (browser.equalsIgnoreCase("chrome")) {
+//			WebDriverManager.chromedriver().setup();
+//			driver = new ChromeDriver();
+//			driver.manage().window().maximize();
+//			WebDriverContext.setDriver(driver);
+//		} }
 	/** * Wrap up. */
 	@AfterClass
 	public void wrapUp() {

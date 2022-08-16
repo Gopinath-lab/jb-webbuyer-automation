@@ -61,6 +61,11 @@ public class SeleniumHelper {
 				element);
 	}
 
+	public void highlightWebElementwithoutBg(WebElement element) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].setAttribute('style', 'border:2px solid red')",
+				element);
+	}
 	/**	 * Method to File Upload	 */
 
 	public void fileUpload(String filepath) throws AWTException {
@@ -503,6 +508,20 @@ public class SeleniumHelper {
 		return flag;
 	}
 
+	public boolean isElementDisplayedwithoutBgColor(WebElement ele) {
+		boolean flag = false;
+		try {
+			waitForElementVisible(ele, 20);
+			flag = ele.isDisplayed();
+			if (flag)
+				highlightWebElementwithoutBg(ele);
+		} catch (NoSuchElementException e) {
+			flag = false;
+		} catch (Exception e1) {
+			flag = false;
+		}
+		return flag;
+	}
 	/**
 	 * Method to verify the element is displayed
 	 */

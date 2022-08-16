@@ -6,7 +6,7 @@ import com.factory.PageinstancesFactory;
 import com.pages.LoginPage;
 import com.pages.StartAuctionpage;
 
-@Test(testName = "2. Start Auction[Add to Cart]", description = "Start Auction Functionality")
+@Test(testName = "2. Start Auction[Add to Cart]", description = "Start Auction Functionality", priority = 1)
 
 public class StartAuctionTest extends BaseTest {
 
@@ -22,8 +22,8 @@ public class StartAuctionTest extends BaseTest {
 	@Test(priority = 1, description = "2. Start the Auction from All Products Drop-down!")
 	public void StartAuctionWay1() throws AWTException, InterruptedException {
 
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		StartAuctionpage startAuction = PageinstancesFactory.getInstance(StartAuctionpage.class);
 		startAuction.selectFromAllProductDropDown().goToHome();
 	}
@@ -31,8 +31,8 @@ public class StartAuctionTest extends BaseTest {
 	@Test(priority = 2, description = "3. Start the Auction from Explore Category!")
 	public void StartAuctionWay2() throws AWTException, InterruptedException {
 
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		StartAuctionpage startAuction = PageinstancesFactory.getInstance(StartAuctionpage.class);
 		startAuction.selectMainCategoryAndStartAuction().goToHome();
 	}
@@ -40,8 +40,8 @@ public class StartAuctionTest extends BaseTest {
 	@Test(priority = 3, description = "4. Start the Auction from Speciality Store!")
 	public void StartAuctionWay3() throws AWTException, InterruptedException {
 
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		StartAuctionpage startAuction = PageinstancesFactory.getInstance(StartAuctionpage.class);
 		startAuction.startAuctionFromSpeciality().goToHome().cancelAuction();
 	}

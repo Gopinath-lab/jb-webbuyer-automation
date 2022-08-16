@@ -7,7 +7,7 @@ import com.pages.DashBoardPage1;
 import com.pages.DashboardPage;
 import com.pages.LoginPage;
 
-@Test(testName = "6. Dashboard verification")
+@Test(testName = "6. Dashboard verification", priority = 5)
 
 public class DashboardTest extends BaseTest {
 
@@ -29,10 +29,17 @@ public class DashboardTest extends BaseTest {
 		dashboardPage.chatboxIcon();
 	}
 
-	@Test(priority = 2, description = "3. Validate Product Request!")
-	public void Productrequestcheck() throws Exception {
+	@Test(priority = 2, description = "3.Validate Total auction and Total Deals and check")
+	public void DashboardTotalAuctionandDeals () throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
+		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
+		dashboardPage.totalAuction().totalDeals();
+	}
+	@Test(priority = 3, description = "4. Validate Product Request!")
+	public void Productrequestcheck() throws Exception {
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
 		dashboardPage.productRequest();
 	}
