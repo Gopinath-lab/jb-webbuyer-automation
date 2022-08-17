@@ -24,8 +24,8 @@ public class BuyNowTest extends BaseTest {
 
 	@Test(enabled = false, priority = 1, testName = "Search Product from Main category and BuyNow", description = "Search Product from Main category and BuyNow with card payment - Functionality test")
 	public void BuyNowFromMainCategoryandCardPayment() throws Exception {
-//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-//		loginPage.launchURL().emailpassLoginGeneral();
+		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+		loginPage.launchURL().emailpassLoginGeneral();
 		BuyNowPage buyNowPage = PageinstancesFactory.getInstance(BuyNowPage.class);
 		buyNowPage.MainCategoryandBuyNow();
 		PaymentMethodsPage paymentMethod = PageinstancesFactory.getInstance(PaymentMethodsPage.class);

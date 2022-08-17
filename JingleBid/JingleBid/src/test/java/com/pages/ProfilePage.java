@@ -40,6 +40,8 @@ public class ProfilePage extends BasePage {
 	public static WebElement saveButton;
 	@FindBy(xpath = "//div[text()='Updated Successfully']")
 	private WebElement updatesuccess;
+	@FindBy(xpath = "//button[@id='recaptcha-verify-button']")
+	public WebElement captcha;
 	@FindBy(xpath = "//div[@class='ant-select ant-select-single ant-select-show-arrow ant-select-open']")
 	private WebElement genderselect;
 	@FindBy(xpath = "//div[@class='rc-virtual-list-holder']")
@@ -72,6 +74,8 @@ public class ProfilePage extends BasePage {
 	public WebElement cnfrmPwd;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary ant-btn-round uppercase fs-11']")
 	public WebElement pwdChangeBtn;
+	@FindBy(xpath = "//span[@class='anticon anticon-close ant-modal-close-icon']")
+	public WebElement closeButton;
 	@FindBy(xpath = "//div[@class='ant-notification-notice-message']")
 	private WebElement notificationPopUp;
 	@FindBy(xpath = "//div[text()='Successfully updated']")
@@ -80,7 +84,11 @@ public class ProfilePage extends BasePage {
 	private WebElement deliveryLocationbutton;
 	@FindBy(xpath = "(//span[@aria-label='delete']/parent::button[@type='button'])[2]")
 	private WebElement deleteButton;
-	@FindBy(xpath = "(//span[text()='Edit']/parent::button)[3]")
+	@FindBy(xpath ="//div[text()='Are you sure to delete this address?']")
+	private WebElement deleteConfirmation;
+	@FindBy(xpath = "//span[text()='Yes']")
+	private WebElement yesButton;
+	@FindBy(xpath = "(//span[text()='Edit'])[2]")
 	private WebElement editButton;
 	@FindBy(xpath = "//div[@class='header-text']")
 	private WebElement jingleBidLogo;
@@ -91,7 +99,7 @@ public class ProfilePage extends BasePage {
 
 	// *** Add New Address WebElements ** //
 
-	@FindBy(xpath = "//span[text()='Add Address']")
+	@FindBy(xpath = "//span[text()='ADD NEW ADDRESS']")
 	public WebElement addAddressIcon;
 	@FindBy(id = "country")
 	public WebElement selectCountry;
@@ -113,15 +121,15 @@ public class ProfilePage extends BasePage {
 	public WebElement addNewArea;
 	@FindBy(xpath = "//input[@id='state']")
 	public WebElement addNewState;
-	@FindBy(xpath = "(//div[@class='rc-virtual-list-holder'])[2]")
-	public List<WebElement> stateDropDownSelect;
+	@FindBy(xpath = "//div[@class='rc-virtual-list-holder-inner']//div[text() = 'Tamil Nadu']")
+	public WebElement stateDropDownSelect;
 	@FindBy(xpath = "//input[@id='city']")
 	public WebElement citySelect;
 //	@FindBy(xpath = "(//span[@class='ant-select-selection-item'])[2]")
 //	public WebElement citySelect;
 //	@FindBy(xpath  = "(//div[@class='rc-virtual-list-holder'])[2]")
 //	public List <WebElement> cityDropDownList;
-	@FindBy(xpath = "//div[text()='Chengalpattu']")
+	@FindBy(xpath = "//div[text()='Chennai']")
 	public WebElement cityDropDownList;
 	@FindBy(xpath = "//span[text()='Save']")
 	public WebElement saveAddressButton;
@@ -171,12 +179,13 @@ public class ProfilePage extends BasePage {
 //	public Faker faker = new Faker();
 
 	public ProfilePage profileupdate() throws AWTException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.waitForElementToBeClickable(username, "10");
 		seleniumHelper.doubleClickOnElement(driver, username);
 		seleniumHelper.backspace(username);
 		seleniumHelper.sendKeys(username, TestProperties.getProperty("newProfileName"));
-		seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));
+	//	seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));
 		seleniumHelper.clickOnWebElement(saveButton);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(updatesuccess),
 				"Updated Successfully message is not displaying");
@@ -185,6 +194,7 @@ public class ProfilePage extends BasePage {
 	}
 
 	public ProfilePage profileImageUpload() throws AWTException, InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.highlightWebElement(image);
 		String profileimage = System.getProperty("user.dir") + "\\src\\main\\resources\\mainresource\\ProfileImages\\image.jpg";
@@ -197,20 +207,33 @@ public class ProfilePage extends BasePage {
 	}
 
 	public ProfilePage phoneNumberChange() {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(changePhNoButton);
 		seleniumHelper.clickOnWebElement(phoneNoInput);
-		phoneNoInput.sendKeys(TestProperties.getProperty("login.num"));
+		phoneNoInput.sendKeys(TestProperties.getProperty("changemobile.num"));
 		seleniumHelper.clickOnWebElement(savePhnoButton);
 		seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
 		seleniumHelper.clickOnWebElement(finishButton);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(noUpdatedSuccessfully),
-				"Phone number changed Successfully");
-		ReportUtil.addScreenShot(LogStatus.PASS, "Phone number changed Successfully");
+		seleniumHelper.waitForElement(notificationPopUp, 2);
+		String actualTextinNotification = notificationPopUp.getText();
+		seleniumHelper.highlightWebElement(notificationPopUp);
+		if (actualTextinNotification.equalsIgnoreCase("Phone Number Updated Successfully")) {
+			ReportUtil.addScreenShot(LogStatus.PASS, "Phone number changed Successfully");
+		}
+		else if (seleniumHelper.isElementDisplayedwithoutWait(captcha)) {
+			System.out.println("Google Image Captcha Interrupted, So can't change Phone number!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Google Image Captcha Interrupted, So cannot change the phone number!");
+		}
+		else {
+			System.out.println(actualTextinNotification + " - Error occured while updating the phone number");
+			ReportUtil.addScreenShot(LogStatus.FAIL, actualTextinNotification);
+		}
 		return this;
 	}
 
 	public ProfilePage changePassword() {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(changePassword);
 		// seleniumHelper.clickOnWebElement(newPwd);
@@ -218,23 +241,28 @@ public class ProfilePage extends BasePage {
 		// seleniumHelper.clickOnWebElement(cnfrmPwd);
 		seleniumHelper.sendKeys(cnfrmPwd, TestProperties.getProperty("confirmPassword"));
 		seleniumHelper.clickOnWebElement(pwdChangeBtn);
+		seleniumHelper.isElementDisplayed(notificationPopUp);
+		seleniumHelper.waitForElement(notificationPopUp, 5);
 		String actualTextinNotificationBox = notificationPopUp.getText();
 		if (actualTextinNotificationBox.equalsIgnoreCase("Successfully updated")) {
 			Assert.assertEquals(actualTextinNotificationBox, "Successfully updated");
 			ReportUtil.addScreenShot(LogStatus.PASS, "Password Updated Successfully");
-		} else {
-			System.out.println(notificationPopUp.getText() + "Error, occured. Hence, password cannit be changed");
-			ReportUtil.addScreenShot(LogStatus.FAIL, "Error while updating password");
+		} 
+		else {
+			System.out.println(actualTextinNotificationBox + " - Error, occured. Hence, password cannot be changed");
+			ReportUtil.addScreenShot(LogStatus.PASS, "Error while updating password");
+			seleniumHelper.clickOnWebElement(closeButton);
 		}
 		return this;
 	}
 
 	public ProfilePage addNewAddress() throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
 		seleniumHelper.clickOnWebElement(addAddressIcon);
-		seleniumHelper.clickOnWebElement(selectCountry);
-		countryDropDown.get(0).click();
+//		seleniumHelper.clickOnWebElement(selectCountry);
+//		countryDropDown.get(0).click();
 		seleniumHelper.clickOnWebElement(addNewName);
 		seleniumHelper.sendKeys(addNewName, TestProperties.getProperty("newName"));
 		seleniumHelper.clickOnWebElement(addNewPhoneNumber);
@@ -250,32 +278,52 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(addNewArea);
 		seleniumHelper.sendKeys(addNewArea, TestProperties.getProperty("newArea"));
 		seleniumHelper.clickOnWebElement(addNewState);
-		stateDropDownSelect.get(0).click();
 		Thread.sleep(2000);
+		seleniumHelper.clickOnWebElement(stateDropDownSelect);
 		seleniumHelper.moveToElementAndClickOnIt(citySelect);
 		// cityDropDownList.get(0).click();
 		seleniumHelper.clickOnWebElement(cityDropDownList);
 		seleniumHelper.clickOnWebElement(saveAddressButton);
-
+		seleniumHelper.isElementDisplayed(notificationPopUp);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Address deleted successfully!");
+		seleniumHelper.waitForElement(notificationPopUp, 5);
+		String addressAddedText = seleniumHelper.getText(notificationPopUp);
+		Assert.assertEquals(addressAddedText, "Address Added Successfully");
 		return this;
 	}
 
-	public ProfilePage deliveryAddressUpdate() throws InterruptedException {
+	public ProfilePage deliveryAddressDelete() throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
 		seleniumHelper.moveToElementAndClickOnIt(deleteButton);
-		seleniumHelper.clickOnWebElement(editButton);
-		seleniumHelper.clickOnWebElement(addNewStreet);
-		seleniumHelper.sendKeys(addNewStreet, TestProperties.getProperty("newStreet"));
-		seleniumHelper.clickOnWebElement(addNewLandmark);
-		seleniumHelper.sendKeys(addNewLandmark, TestProperties.getProperty("newLandmark"));
-		seleniumHelper.hardWait(3000);
-		seleniumHelper.clickOnWebElement(saveAddressButton);
-		Assert.assertTrue(seleniumHelper.isElementDisplayed(notificationPopUp), "Address Updated Successfully!");
-		ReportUtil.addScreenShot(LogStatus.PASS, "Address changed successfully!");
+		Assert.assertTrue(seleniumHelper.isElementDisplayed(deleteConfirmation));
+		seleniumHelper.clickOnWebElement(yesButton);
+		seleniumHelper.isElementDisplayed(notificationPopUp);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Address deleted successfully!");
+		seleniumHelper.waitForElement(notificationPopUp, 5);
+		String addressDeleteText = seleniumHelper.getText(notificationPopUp);
+		Assert.assertEquals(addressDeleteText, "Selected Address Deleted Successfully");
 		return this;
 	}
 
+	public ProfilePage deliveryAddressEdit()throws Exception{
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(viewprofile);
+		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
+		seleniumHelper.clickOnWebElement(editButton);
+		seleniumHelper.clickOnWebElement(addNewStreet);
+		seleniumHelper.clearAndSendKeys(addNewStreet, TestProperties.getProperty("newStreet"));
+		seleniumHelper.clickOnWebElement(addNewLandmark);
+		seleniumHelper.clearAndSendKeys(addNewLandmark, TestProperties.getProperty("newLandmark"));
+		seleniumHelper.hardWait(3000);
+		seleniumHelper.clickOnWebElement(saveAddressButton);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Address edited successfully!");
+		seleniumHelper.waitForElement(notificationPopUp, 5);
+		String addressEditText = seleniumHelper.getText(notificationPopUp);
+		Assert.assertEquals(addressEditText, "Address Updated Successfully!");
+		return this;
+	}
 	public ProfilePage filterMethod() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
@@ -355,7 +403,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
-		Assert.assertTrue(true);
+		Assert.assertTrue(clearFilterClick);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}
@@ -425,7 +473,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(clearFilterButton);
 		Thread.sleep(2000);
 		Boolean clearFilterClick = true;
-		Assert.assertTrue(true);
+		Assert.assertTrue(clearFilterClick);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Clear Filter button is applied successfully");
 		return this;
 	}

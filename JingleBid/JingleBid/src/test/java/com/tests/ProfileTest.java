@@ -9,7 +9,7 @@ import com.pages.ProfilePage;
 @Test(testName = "5. View Profile", description = "Validating Profile Functionality", priority = 5)
 public class ProfileTest extends BaseTest {
 
-	@Test(enabled = true, description = "1. Validating Profile Update Functionality!")
+	@Test(enabled = true, description = "1. Validating Profile Update Functionality!", priority = 1)
 	public void PersonalInformationUpdate() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
@@ -17,43 +17,52 @@ public class ProfileTest extends BaseTest {
 		profilePage.profileupdate();
 	}
 
-	@Test(enabled = true, description = "2. Validating Profile Image Upload Functionality!")
+	@Test(enabled = true, description = "2. Validating Profile Image Upload Functionality!", priority = 2)
 	public void Profileimageupload() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.profileImageUpload();
 	}
 
-	@Test(enabled = false, description = "3. Validating Phone Number Change!")
+	@Test(enabled = true, description = "3. Validating Phone Number Change!",  priority = 3)
 	public void PhonenumberUpdate() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.phoneNumberChange();
 	}
 
-	@Test(enabled = false, description = "4. Validating Password Change!")
+	@Test(enabled = true, description = "4. Validating Password Change!",  priority = 4)
 	public void PasswordUpdate() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.changePassword();
 	}
 
-	@Test(enabled = false, description = "5. Validating Add Delivery Address!")
+	@Test(enabled = true, description = "5. Validating Add New Delivery Address!",  priority = 5)
 	public void AddDeliveryAddress() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.addNewAddress();
 	}
 
-	@Test(description = "6. Validating Update Delivery Address!")
+	@Test(enabled = true, description = "6. Validating Edit Delivery Address!",  priority = 6)
 	public void EditDeliveryAddress() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
-		profilePage.deliveryAddressUpdate();
+		profilePage.deliveryAddressEdit();
 	}
+	
+	@Test(enabled = true, description = "7. Validating Delete Delivery Address!",  priority = 7)
+	public void DeleteDeliveryAddress() throws Exception {
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
+		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
+		profilePage.deliveryAddressDelete();
+	}
+	
 }
