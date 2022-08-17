@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<test thread-count="2" name="Regression Test">
+	<test thread-count="2" name="Regression Test Part 1">
 		<classes>
 			<class name="com.tests.LoginTest" />
 			<class name="com.tests.StartAuctionTest">
@@ -22,50 +22,22 @@
 			</class>
 			<class name="com.tests.BuyNowTest">
 				<methods>
-					<exclude name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
-					<include name="BuyNowFromMainCategoryandCardPayment"/>
+					<include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
+					<exclude name="BuyNowFromMainCategoryandCardPayment"/>
 					<exclude name="BuyNowFromSpecialityStoreandWalletPayment"/>
 					<exclude name="BuyNowFromAllProductsDropdownandCODOption"/>
 				</methods>
 			</class>
 			<class name="com.tests.ProfileTest">
 				<methods>
-					<exclude name="PersonalInformationUpdate"></exclude>
+					<include name="PersonalInformationUpdate"></include>
 					<include name="Profileimageupload"></include>
-					<exclude name="PhonenumberUpdate"></exclude>
-					<exclude name="PasswordUpdate"></exclude>
-					<exclude name="AddDeliveryAddress"></exclude>
+					<include name="PhonenumberUpdate"></include>
+					<include name="PasswordUpdate"></include>
+					<include name="AddDeliveryAddress"></include>
 					<include name="EditDeliveryAddress"></include>
+					<include name="DeleteDeliveryAddress"></include>
 				</methods>
-			</class>
-			<class name="com.tests.DashboardTest">
-				<methods>
-					<include name="DashboardTopBar"></include>
-					<include name="Productrequestcheck"></include>
-					<include name="DashboardBottomBanner"></include>
-					<include name="DashboardTotalAuctionandDeals"/>
-				</methods>
-			</class>
-			<class name="com.tests.CouponsTest">
-				<methods>
-					<include name="ReferralPage"></include>
-					<include name="Couponapplyverfication"></include>
-				</methods>
-			</class>
-			<class name="com.tests.SearchandFilterTest">
-				<methods>
-					<include name="SearchandFiltercheck"></include>
-				</methods>
-			</class>
-			<class name="com.tests.SignUpTest" >
-			<methods> 
-			<include name="SignUpPage"/>
-			</methods> 
-			</class>
-			<class name="com.tests.LoginOTPTest">
-			<methods> 
-			<include name="LoginwithOTP"/>
-			</methods> 
 			</class>
 		</classes>
 	</test> <!-- Test -->

@@ -95,7 +95,7 @@ public class CouponsPage extends BasePage{
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(referralIcon);
 		seleniumHelper.waitForElementVisible(referralCode, 10);
-		if (seleniumHelper.isElementDisplayed(referralCode)) {
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(referralCode)) {
 			String actualTextinReferralCode = referralCode.getText();
 			Assert.assertEquals(actualTextinReferralCode, TestProperties.getProperty("expectedTextinReferralCode"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to referral page and referral coupon is available");
@@ -133,7 +133,9 @@ public class CouponsPage extends BasePage{
 		}
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 		seleniumHelper.clickOnWebElement(acceptBidButton);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
+		Boolean bidaccepted = true;
+		Assert.assertTrue(bidaccepted);
+//		ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
 		return this;
 	}
 }

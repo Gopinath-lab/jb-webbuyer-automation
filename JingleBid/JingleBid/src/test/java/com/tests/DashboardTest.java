@@ -21,8 +21,8 @@ public class DashboardTest extends BaseTest {
 
 	@Test(priority = 1, description = "2. Bottom Banner Details & Links Check!")
 	public void DashboardBottomBanner() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
 		dashboardPage.footerBannerAboutUs().footerJingleBidTv().policyinFooter().socialNetworkinFooter();
 		dashboardPage.contactUsFooter().addressinFooter();
@@ -31,8 +31,8 @@ public class DashboardTest extends BaseTest {
 
 	@Test(priority = 2, description = "3.Validate Total auction and Total Deals and check")
 	public void DashboardTotalAuctionandDeals () throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
 		dashboardPage.totalAuction().totalDeals();
 	}

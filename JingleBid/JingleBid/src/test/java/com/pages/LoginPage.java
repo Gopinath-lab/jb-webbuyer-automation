@@ -75,11 +75,11 @@ public class LoginPage extends BasePage {
 		return this;
 		
 	}
+	
 	public LoginPage logout() {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		seleniumHelper.clickOnWebElement(menudrop);

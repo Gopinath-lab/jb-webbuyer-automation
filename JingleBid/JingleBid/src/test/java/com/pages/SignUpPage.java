@@ -128,9 +128,11 @@ public class SignUpPage extends BasePage{
 			return this;
 		}
 		seleniumHelper.waitForElement(signUpCouponPopOp, 10);
+		if(seleniumHelper.isElementDisplayed(signUpCouponPopOp)) {
 		Assert.assertTrue(seleniumHelper.isElementDisplayedwithoutBgColor(signUpCouponPopOp), "SignUp coupon applied successfully");
 		ReportUtil.addScreenShot(LogStatus.PASS, "SignUp successful and SignUp coupon applied successfully");
 		seleniumHelper.clickOnWebElement(closeButton);
+		}
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(referralIcon);
 		seleniumHelper.waitForElementVisible(referralSignUpIcon, 10);
@@ -140,6 +142,9 @@ public class SignUpPage extends BasePage{
 			Assert.assertEquals(actualTextinReferralCode, TestProperties.getProperty("expectedTextinSignUpCoupon"));
 			ReportUtil.addScreenShot(LogStatus.PASS,"Directing to referral page and SignUp Coupon is available");	
 	}
+		else {ReportUtil.addScreenShot(LogStatus.FAIL, "Directing to referral page but SignUp Coupon is not available");
+			
+		}
 		return this;
 }}
 
