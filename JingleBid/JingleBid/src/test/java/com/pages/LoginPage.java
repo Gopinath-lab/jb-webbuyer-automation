@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.basepage.BasePage;
-import com.github.javafaker.Faker;
 import com.helper.SeleniumHelper;
 import com.relevantcodes.extentreports.LogStatus;
 import com.util.ReportUtil;
@@ -44,7 +43,6 @@ public class LoginPage extends BasePage {
 		seleniumHelper = new SeleniumHelper(driver);
 	}
 
-	public Faker faker = new Faker(); // Used to generate random text like, name, city address, color
 	SoftAssert softassert = new SoftAssert();
 
 	public LoginPage launchURL() {
