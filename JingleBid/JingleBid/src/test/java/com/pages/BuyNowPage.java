@@ -185,6 +185,7 @@ public class BuyNowPage extends BasePage {
 		seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 		seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);
 		seleniumHelper.moveToElementAndClickOnIt(categorySelectSelectDropDown);
+		Thread.sleep(3000);
 		// categorySelectSelectDropDown.get(0).click();
 		subCategorySelectProductDropDown.get(0).click();
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
@@ -201,7 +202,7 @@ public class BuyNowPage extends BasePage {
 		seleniumHelper.clickOnWebElement(selectSpecialityStore);
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch1);
 		seleniumHelper.clickOnWebElement(buyNowButton);
-		seleniumHelper.isElementDisplayed(confirmButton);
+		seleniumHelper.waitForElementVisible(confirmButton,5);
 		seleniumHelper.clickOnWebElement(confirmButton);
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 		seleniumHelper.clickOnWebElement(placeOrderButton);

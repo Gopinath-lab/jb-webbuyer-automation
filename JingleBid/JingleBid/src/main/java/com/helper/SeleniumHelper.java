@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
@@ -388,9 +387,9 @@ public class SeleniumHelper {
 	
 	@SuppressWarnings("deprecation")
 	public void waitForElement(WebElement element, int timeOutInSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
 		wait.ignoring(NoSuchElementException.class);
-		wait.ignoring(ElementNotVisibleException.class);
+	//	wait.ignoring(ElementNotVisibleException.class);
 		wait.ignoring(StaleElementReferenceException.class);
 		wait.pollingEvery(Duration.ofSeconds(3));
 		wait.until(elementLocated(element));
@@ -407,23 +406,23 @@ public class SeleniumHelper {
 		};
 	}
 
-	private WebDriverWait getWait(int timeOutInSeconds) {
+	private WebDriverWait getWait(Duration timeOutInSeconds) {
 		LoggerUtil.debug("");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.ignoring(NoSuchElementException.class);
-		wait.ignoring(ElementNotVisibleException.class);
+	//	wait.ignoring(ElementNotVisibleException.class);
 		wait.ignoring(StaleElementReferenceException.class);
 		wait.ignoring(NoSuchFrameException.class);
 		return wait;
 	}
 
 	public void waitForElementVisible(By locator, int timeOutInSeconds) {
-		WebDriverWait wait = getWait(timeOutInSeconds);
+		WebDriverWait wait = getWait(Duration.ofSeconds(timeOutInSeconds));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
 	}
 
 	public void waitForElementVisible(WebElement element, int timeOutInSeconds) {
-		WebDriverWait wait = getWait(timeOutInSeconds);
+		WebDriverWait wait = getWait(Duration.ofSeconds(timeOutInSeconds));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
@@ -447,12 +446,12 @@ public class SeleniumHelper {
 	}
 
 	public void elementExits(By locator, int timeOutInSeconds) {
-		WebDriverWait wait = getWait(timeOutInSeconds);
+		WebDriverWait wait = getWait(Duration.ofSeconds(timeOutInSeconds));
 		wait.until(elementLocatedBy(locator));
 	}
 
 	public void elementExistAndVisible(By locator, int timeOutInSeconds) {
-		WebDriverWait wait = getWait(timeOutInSeconds);
+		WebDriverWait wait = getWait(Duration.ofSeconds(timeOutInSeconds));
 		wait.until(elementLocatedBy(locator));
 		scrollIntoView(driver.findElement(locator));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -460,7 +459,7 @@ public class SeleniumHelper {
 	}
 
 	public void waitForIframe(By locator, int timeOutInSeconds) {
-		WebDriverWait wait = getWait(timeOutInSeconds);
+		WebDriverWait wait = getWait(Duration.ofSeconds(timeOutInSeconds));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));
 		driver.switchTo().defaultContent();
 	}
@@ -681,9 +680,9 @@ public class SeleniumHelper {
 
 	/**	 * Method to Explicitly wait for element to be enabled=click	 */
 	
-	public void waitForElementToBeClickable(WebElement element, String duration) {
-
-		WebDriverWait wait = (new WebDriverWait(driver, Integer.parseInt(duration) * 1000));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-	}
+//	public void waitForElementToBeClickable(WebElement element, int duration) {
+//
+//		WebDriverWait wait = (new WebDriverWait(driver, Integer.parseInt(duration) * 1000));
+//		wait.until(ExpectedConditions.elementToBeClickable(element));
+//	}
 }

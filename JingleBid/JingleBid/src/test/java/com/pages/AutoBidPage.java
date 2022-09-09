@@ -81,6 +81,8 @@ public class AutoBidPage extends BasePage {
 	public WebElement productinMyDeals;
 	@FindBy(xpath = "//div[@class='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-9 ant-col-lg-10 ant-col-xl-8']")
 	public WebElement orderedStatusDetail;
+	@FindBy(xpath = "//div[@class='header-text']")
+	private WebElement jingleBidLogo;
 
 	// Payment Method WebElements
 
@@ -118,6 +120,8 @@ public class AutoBidPage extends BasePage {
 	public WebElement paymentDetails;
 	@FindBy(xpath = "(//div[@class='carousel-col']/div[text()='Mobile Accessories']/preceding-sibling::span)[2]")
 	private WebElement selectFromMainMenuCategory1;
+	@FindBy(xpath = "//span[@class='ant-modal-close-x']/span")
+	private WebElement closeButton;
 
 	// Specialty category WebElement
 
@@ -154,15 +158,20 @@ public class AutoBidPage extends BasePage {
 		}
 		seleniumHelper.clickOnWebElement(confirmButton);
 		seleniumHelper.hardWait(3000);
+		if (seleniumHelper.isElementDisplayed(acceptLowerPriceButton)) {
 		seleniumHelper.moveToElementAndClickOnIt(acceptLowerPriceButton);
 		seleniumHelper.clickOnWebElement(termsAndConditionsCheckBoxwithoutIndex);
 		seleniumHelper.clickOnWebElement(acceptBidButton);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
+		ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product");
+			seleniumHelper.clickOnWebElement(closeButton);
+		}
 		return this;
 	}
 
 	public AutoBidPage searchFromMainCategoryAndAutoBid() throws InterruptedException {
-//		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(1).click();
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
@@ -201,7 +210,8 @@ public class AutoBidPage extends BasePage {
 	}
 
 	public AutoBidPage searchFromSpecialityStoreAndAutoBid() throws InterruptedException {
-//		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.waitForElement(selectSpecialityStore, 5);
 		seleniumHelper.clickOnWebElement(selectSpecialityStore);
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 		seleniumHelper.clickOnWebElement(getBestPriceButton);
@@ -213,11 +223,11 @@ public class AutoBidPage extends BasePage {
 		}
 
 		seleniumHelper.clickOnWebElement(confirmButton);
-		if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
-			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
-			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product!");
-			return this;
-		}
+//		if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
+//			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
+//			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product!");
+//			return this;
+//		}
 		seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
 		seleniumHelper.clickOnWebElement(productCoupon);
 		if (seleniumHelper.isElementDisplayed(notificationBox)) {
@@ -233,33 +243,41 @@ public class AutoBidPage extends BasePage {
 	}
 
 	public AutoBidPage allProductsDropDownAutoBid() throws InterruptedException {
-//		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.waitForElement(allProductSelect, 5);
 		seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 		seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);
 		seleniumHelper.moveToElementAndClickOnIt(categorySelectSelectDropDown);
+		Thread.sleep(2000);
 		// categorySelectSelectDropDown.get(1).click();
 		subCategorySelectProductDropDown.get(2).click();
+//		Boolean elementClick = false;
+//		for (int i = 0; i < subCategorySelectProductDropDown.size(); i++) {
+//			Thread.sleep(2000);
+//			System.out.println(subCategorySelectProductDropDown.get(i).getText());
+//			if (subCategorySelectProductDropDown.get(i).getText().equals("Power Bank")) {
+//				seleniumHelper.clickOnWebElement(subCategorySelectProductDropDown.get(i));
+//				elementClick = true;
+//				break;
+//			}
+//		}
+//		Assert.assertTrue(elementClick, "Product selected from All category");
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 		seleniumHelper.clickOnWebElement(getBestPriceButton);
-		if (seleniumHelper.isElementDisplayed(confirmButton)) {
+		if (seleniumHelper.isElementDisplayed(emailVisibility)) {
 			Assert.assertTrue(true);
-			if (seleniumHelper.isElementDisplayed(notificationBox)) {
-				System.out.println(notificationBox.getText() + "Hence order cannot be completed");
-				String notificationText = notificationBox.getText();
-				ReportUtil.addScreenShot(LogStatus.FAIL, notificationText + "Order Cannot be placed");
-				return this;
-			}
 		} else {
-			ReportUtil.addScreenShot(LogStatus.FAIL, "Error while ordering a product");
+			System.out.println(notificationBox.getText() + "Hence order cannot be completed");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Email address not mentioned");
 			return this;
 		}
-		// seleniumHelper.clickOnWebElement(quantitySelect);
+		Thread.sleep(2000);
 		seleniumHelper.clickOnWebElement(confirmButton);
-		if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
-			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
-			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product!");
-			return this;
-		} else {
+//		if (seleniumHelper.isElementDisplayedwithoutWait(notificationBox)) {
+//			System.out.println(notificationBox.getText() + ".Hence, cannot order a product");
+//			ReportUtil.addScreenShot(LogStatus.FAIL, "Error occured while ordering a product!");
+//			return this;
+//		} else {
 			seleniumHelper.clickOnWebElement(acceptLowerPriceButton);
 			seleniumHelper.clickOnWebElement(productCoupon);
 			if (seleniumHelper.isElementDisplayed(notificationBox)) {
@@ -272,4 +290,4 @@ public class AutoBidPage extends BasePage {
 		}
 	}
 
-}
+//}

@@ -3,7 +3,7 @@
 <suite name="Regressionsuite2">
   <test thread-count="2" name="Regression Test Part 2">
 		<classes>
-			<class name="com.tests.LoginTest" />
+		
 			<class name="com.tests.DashboardTest">
 				<methods>
 					<include name="DashboardTopBar"></include>

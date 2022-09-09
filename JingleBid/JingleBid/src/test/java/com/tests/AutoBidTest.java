@@ -21,7 +21,7 @@ public class AutoBidTest extends BaseTest {
 		paymentMethod.netBankingPayment();
 	}
 
-	@Test(enabled = false, priority = 1, testName = "Search Product from Main category and start AutoBid", description = "2.Search Product from Main category and start AutoBid with card payment - Functionality test")
+	@Test(enabled = true, priority = 1, testName = "Search Product from Main category and start AutoBid", description = "2.Search Product from Main category and start AutoBid with card payment - Functionality test")
 	public void AutoBidFromMainCategoryandCardPayment() throws Exception {
 //		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 //		loginPage.launchURL().emailpassLoginGeneral();
@@ -31,7 +31,7 @@ public class AutoBidTest extends BaseTest {
 		paymentMethod.cardPaymentMethod();
 	}
 
-	@Test(enabled = false, priority = 2, testName = "Search Product from Speciality store and start AutoBid", description = "3.Search Product from Speciality Store and start AutoBid with wallet payment - Functionality test")
+	@Test(enabled = true, priority = 2, testName = "Search Product from Speciality store and start AutoBid", description = "3.Search Product from Speciality Store and start AutoBid with wallet payment - Functionality test")
 	public void AutoBidFromSpecialityStoreandWalletPayment() throws Exception {
 //		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 //		loginPage.launchURL().emailpassLoginGeneral();
@@ -41,7 +41,7 @@ public class AutoBidTest extends BaseTest {
 		paymentMethod.walletPaymentMethod();
 	}
 
-	@Test(enabled = false, priority = 3, testName = "Search Product from All Products dropdown and start AutoBid", description = "4.Search Product from All products dropdown and start AutoBid with COD payment - Functionality test")
+	@Test(enabled = true, priority = 3, testName = "Search Product from All Products dropdown and start AutoBid", description = "4.Search Product from All products dropdown and start AutoBid with COD payment - Functionality test")
 	public void AutoBidFromAllProductsDropdownandCODOption() throws Exception {
 //		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 //		loginPage.launchURL().emailpassLoginGeneral();

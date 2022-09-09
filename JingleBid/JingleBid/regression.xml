@@ -15,17 +15,17 @@
 			<class name="com.tests.AutoBidTest">
 				<methods>
 					<include name="AutoBidByKeywordSearchandNetBankingPayment"/>
-					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
-					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
-					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
+					<include name="AutoBidFromMainCategoryandCardPayment"></include>
+					<include name="AutoBidFromSpecialityStoreandWalletPayment"></include>
+					<include name="AutoBidFromAllProductsDropdownandCODOption"></include>
 				</methods>
 			</class>
 			<class name="com.tests.BuyNowTest">
 				<methods>
 					<include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
-					<exclude name="BuyNowFromMainCategoryandCardPayment"/>
-					<exclude name="BuyNowFromSpecialityStoreandWalletPayment"/>
-					<exclude name="BuyNowFromAllProductsDropdownandCODOption"/>
+					<include name="BuyNowFromMainCategoryandCardPayment"/>
+					<include name="BuyNowFromSpecialityStoreandWalletPayment"/>
+					<include name="BuyNowFromAllProductsDropdownandCODOption"/>
 				</methods>
 			</class>
 			<class name="com.tests.ProfileTest">
@@ -38,6 +38,37 @@
 					<include name="EditDeliveryAddress"></include>
 					<include name="DeleteDeliveryAddress"></include>
 				</methods>
+			</class>
+			<class name="com.tests.DashboardTest">
+				<methods>
+					<include name="DashboardTopBar"></include>
+					<include name="Productrequestcheck"></include>
+					<include name="DashboardBottomBanner"></include>
+					<include name="DashboardTotalAuctionandDeals"/>
+					<include name="FilterCheck"></include>
+					<include name="DealsAndAuctionRedirecting"></include>
+				</methods>
+			</class>
+			<class name="com.tests.CouponsTest">
+				<methods>
+					<include name="ReferralPage"></include>
+					<include name="Couponapplyverfication"></include>
+				</methods>
+			</class>
+			<class name="com.tests.SearchandFilterTest">
+				<methods>
+					<include name="SearchandFiltercheck"></include>
+				</methods>
+			</class>
+			<class name="com.tests.SignUpTest" >
+			<methods> 
+			<include name="SignUpPage"/>
+			</methods> 
+			</class>
+			<class name="com.tests.LoginOTPTest">
+			<methods> 
+			<include name="LoginwithOTP"/>
+			</methods> 
 			</class>
 		</classes>
 	</test> <!-- Test -->

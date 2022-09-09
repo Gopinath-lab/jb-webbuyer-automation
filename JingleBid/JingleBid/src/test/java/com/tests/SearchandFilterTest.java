@@ -15,6 +15,7 @@ public class SearchandFilterTest extends BaseTest{
 			LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 			loginPage.launchURL().emailpassLoginGeneral();
 			SearchandFilterPage searchandfilter = PageinstancesFactory.getInstance(SearchandFilterPage.class);
-			searchandfilter.filterbyPriceMethod().filterByBrand().filterByDisplay().filterByChipset().filterByBatterySize().sortByOptionandListView();
+			searchandfilter.sortByOptionandListView();
+			searchandfilter.filterbyPriceMethod().filterByBrand().filterByDisplay().filterByChipset().filterByBatterySize().sortByOptionandListView().productsearchToHomePage();
 		}
 }
