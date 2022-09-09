@@ -128,7 +128,7 @@ public class ProfilePage extends BasePage {
 //	public WebElement citySelect;
 //	@FindBy(xpath  = "(//div[@class='rc-virtual-list-holder'])[2]")
 //	public List <WebElement> cityDropDownList;
-	@FindBy(xpath = "//div[text()='Chennai']")
+	@FindBy(xpath = "//div[contains(text(),'Chennai')]//parent::div[@label='Chennai']")
 	public WebElement cityDropDownList;
 	@FindBy(xpath = "//span[text()='Save']")
 	public WebElement saveAddressButton;
@@ -165,6 +165,12 @@ public class ProfilePage extends BasePage {
 	private WebElement listviewByOption;
 	@FindBy(xpath = "//div[@class='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-10 ant-col-lg-9 ant-col-xl-9']")
 	private WebElement sortByandListBy;
+	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Auction')]")
+	private WebElement totalAuctionButton;
+	@FindBy(xpath = "//a[@class='ant-breadcrumb-link' and @href='/']")
+	private WebElement homeButton;
+	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Deals')]")
+	private WebElement totalDealsButton;
 
 	public ProfilePage(WebDriver driver) {
 		super(driver);
@@ -180,7 +186,7 @@ public class ProfilePage extends BasePage {
 	public ProfilePage profileupdate() throws AWTException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
-		seleniumHelper.waitForElementToBeClickable(username, "10");
+		seleniumHelper.waitForElementVisible(username, 10);
 		seleniumHelper.doubleClickOnElement(driver, username);
 		seleniumHelper.backspace(username);
 		seleniumHelper.sendKeys(username, TestProperties.getProperty("newProfileName"));
@@ -279,6 +285,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(addNewState);
 		Thread.sleep(2000);
 		seleniumHelper.clickOnWebElement(stateDropDownSelect);
+		seleniumHelper.waitForElement(citySelect,5);
 		seleniumHelper.moveToElementAndClickOnIt(citySelect);
 		// cityDropDownList.get(0).click();
 		seleniumHelper.clickOnWebElement(cityDropDownList);
@@ -493,5 +500,24 @@ public class ProfilePage extends BasePage {
 
 		return this;
 	}
+	
+	public ProfilePage totalAuctiontoProfilePage() throws Exception {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalAuctionButton);
+		seleniumHelper.clickOnWebElement(homeButton);
+		Boolean homeButtonClick = true;
+		Assert.assertTrue(homeButtonClick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directing to home page from Total Auction page");	
+		return this;
+		}
 
+	public ProfilePage totalDealstoProfilePage() throws Exception {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalDealsButton);
+		seleniumHelper.clickOnWebElement(homeButton);
+		Boolean homeButtonClick = true;
+		Assert.assertTrue(homeButtonClick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directing to home page from Total Deals page");	
+		return this;	
+	}
 }

@@ -59,10 +59,9 @@ public class ProfileTest extends BaseTest {
 	
 	@Test(enabled = true, description = "7. Validating Delete Delivery Address!",  priority = 7)
 	public void DeleteDeliveryAddress() throws Exception {
-//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-//		loginPage.launchURL().emailpassLoginGeneral();
+		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.deliveryAddressDelete();
 	}
-	
-}
+	}

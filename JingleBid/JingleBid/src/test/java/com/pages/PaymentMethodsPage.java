@@ -39,13 +39,17 @@ public class PaymentMethodsPage extends BasePage {
 	public List<WebElement> netBankingOptions;
 	@FindBy(xpath = "//div[text()='Card']/parent::div/parent::div")
 	private WebElement cardButton;
+	@FindBy(xpath = "//div[contains(text(),'to access Saved Cards')]")
+	private WebElement savedCardOTP;
+	@FindBy(xpath = "//button[contains(text(),'Skip Saved Cards')]")
+	private WebElement skipSavedCard;
 	@FindBy(xpath = "//input[@id='card_number']")
 	private WebElement enterCardNumber;
 	@FindBy(xpath = "//input[@id='card_expiry']")
 	private WebElement expiryDateOfCardNumber;
 	@FindBy(xpath = "//input[@id='card_cvv']")
 	private WebElement cvvDetails;
-	@FindBy(xpath = "//span[@class='checkbox svelte-wpiw3q']")
+	@FindBy(xpath = "//span[@class='checkbox svelte-bptfuc']")
 	private WebElement saveCardNumber;
 	@FindBy(xpath = "//input[@placeholder='OTP']")
 	private WebElement OTPenter;
@@ -53,7 +57,7 @@ public class PaymentMethodsPage extends BasePage {
 	private WebElement submitButton;
 //	@FindBy(xpath = "//button[@type='button' and @method='wallet']")
 //	private WebElement walletPaymentButton;
-	@FindBy(xpath = " //div[text()='Wallet']//parent::div//parent::div//parent::button")
+	@FindBy(xpath = "//div[text()='Wallet']//parent::div//parent::div[@class='stack svelte-2dd0di horizontal']")
 	private WebElement walletPaymentButton;
 	@FindBy(xpath = "//button[@class=' radio-option slotted-radio']")
 	private List<WebElement> selectWalletButton;
@@ -67,6 +71,8 @@ public class PaymentMethodsPage extends BasePage {
 	public WebElement paymentFailureButton;
 	@FindBy(xpath = "//h3[text()='Payment Details']/parent::div")
 	public WebElement paymentDetails;
+	@FindBy(xpath ="//span[contains(text(),'Payment Status')]")
+	private WebElement paymentStatus;
 	@FindBy(xpath = "//span[contains(text(),'Payment Method')]")
 	private WebElement paymentMethodDetails;
 	@FindBy(xpath = "//span[text()='Cash on delivery']//preceding-sibling::span")
@@ -116,6 +122,7 @@ public class PaymentMethodsPage extends BasePage {
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
 		Thread.sleep(3000);
 		seleniumHelper.scrollIntoView(paymentDetails);
+		seleniumHelper.waitForElement(paymentStatus, 5);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
 		return this;
 	}
@@ -124,17 +131,16 @@ public class PaymentMethodsPage extends BasePage {
 		driver.switchTo().frame(0);
 		seleniumHelper.scrollIntoView(walletPaymentButton);
 		seleniumHelper.clickOnWebElement(walletPaymentButton);
-		Boolean elementClickwallet = false;
 		for (int i = 0; i <= selectWalletButton.size(); i++) {
 			Thread.sleep(2000);
 			if (selectWalletButton.get(i).getText().equals("PhonePe")) {
 				seleniumHelper.clickOnWebElement(selectWalletButton.get(i));
-				elementClickwallet = true;
 				break;
 			}
 		}
+		Boolean elementClickwallet = true;
 		Assert.assertTrue(elementClickwallet, "Verification - PhonePe option clicked");
-		seleniumHelper.isElementDisplayed(payButton);
+		Thread.sleep(2000);
 		seleniumHelper.clickOnWebElement(payButton);
 		seleniumHelper.SwitchToWindow(1);
 		seleniumHelper.waitForElement(paymentSuccessButton, 10);
@@ -149,6 +155,7 @@ public class PaymentMethodsPage extends BasePage {
 		seleniumHelper.hardWait(2000);
 		seleniumHelper.waitForElementVisible(paymentMethodDetails, 10);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
+		seleniumHelper.waitForElement(paymentStatus, 5);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
 		return this;
 	}
@@ -157,6 +164,12 @@ public class PaymentMethodsPage extends BasePage {
 		driver.switchTo().frame(0);
 		seleniumHelper.scrollIntoView(cardButton);
 		seleniumHelper.clickOnWebElement(cardButton);
+		seleniumHelper.waitForElement(savedCardOTP, 5);
+		if(seleniumHelper.isElementDisplayed(savedCardOTP))
+		{
+			seleniumHelper.clickOnWebElement(skipSavedCard);
+		}
+		seleniumHelper.waitForElementVisible(enterCardNumber, 10);
 		seleniumHelper.clickOnWebElement(enterCardNumber);
 		enterCardNumber.sendKeys(TestProperties.getProperty("CardNumber"));
 		seleniumHelper.clickOnWebElement(expiryDateOfCardNumber);
@@ -176,8 +189,8 @@ public class PaymentMethodsPage extends BasePage {
 		seleniumHelper.hardWait(2000);
 		seleniumHelper.highlightWebElement(orderedStatusDetail);
 		seleniumHelper.scrollIntoView(paymentDetails);
-		seleniumHelper.hardWait(2000);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
+		seleniumHelper.waitForElement(paymentStatus, 5);
 		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
 		return this;
 	}
@@ -197,10 +210,8 @@ public class PaymentMethodsPage extends BasePage {
 		seleniumHelper.highlightWebElement(orderedStatusDetail);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(paymentDetails));
 		seleniumHelper.scrollIntoView(paymentDetails);
-		seleniumHelper.hardWait(2000);
-		seleniumHelper.waitForElementVisible(paymentMethodDetails, 10);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Payment successfully done");
-
+		seleniumHelper.waitForElement(paymentStatus, 5);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Bid ordered with Cash On Delivery method");
 		return this;
 	}
 

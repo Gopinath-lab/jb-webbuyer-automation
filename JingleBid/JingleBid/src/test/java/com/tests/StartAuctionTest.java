@@ -6,7 +6,7 @@ import com.factory.PageinstancesFactory;
 import com.pages.LoginPage;
 import com.pages.StartAuctionpage;
 
-@Test(testName = "2. Start Auction[Add to Cart]", description = "Start Auction Functionality", priority = 1)
+@Test(testName = "2. Start Auction", description = "Start Auction Functionality", priority = 1)
 
 public class StartAuctionTest extends BaseTest {
 

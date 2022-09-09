@@ -43,4 +43,19 @@ public class DashboardTest extends BaseTest {
 		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
 		dashboardPage.productRequest();
 	}
+	@Test(priority = 4, description = "5. Validate Total auction and total deals filter functionality!")
+	public void FilterCheck() throws Exception {
+		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+		loginPage.launchURL().emailpassLoginGeneral();
+		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
+		dashboardPage.totalauctionfilter().totalDealFilter();
+	}
+	
+	@Test(priority = 5, description = "6. Validate redirecting to Home and ProfilePage and view functionality in Total deals and Total Auction")
+	public void DealsAndAuctionRedirecting() throws Exception {
+		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+		loginPage.launchURL().emailpassLoginGeneral();
+		DashboardPage dashboardPage = PageinstancesFactory.getInstance(DashboardPage.class);
+		dashboardPage.totalAuctionToHomePage().totalAuctionToProfilePage().totalAuctionViewFunctionality().totalDealsToProfilePage().totalDealsToHomePage().totalDealsViewFunctionality();
+	}
 }

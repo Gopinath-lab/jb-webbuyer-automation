@@ -4,8 +4,10 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -114,6 +116,18 @@ public class DashboardPage extends BasePage {
 	private WebElement requestSent;
 	@FindBy(xpath = "//div[@class='ant-modal-content']")
 	private WebElement requestSentNotificationBox;
+	@FindBy(xpath = "//label[@class ='ant-checkbox-wrapper ant-checkbox-group-item']//span//following-sibling::span")
+	private List<WebElement> totalAuctionFilterList;
+	@FindBy(xpath = "//span[text()='Clear All']//parent::button")
+	private WebElement clearAllFilterButton;
+	@FindBy(xpath = "//span[text()='Profile']")
+	private WebElement profilePage;
+	@FindBy(xpath ="//a[@class='ant-breadcrumb-link' and @href='/']")
+	private WebElement homeButtonIcon;
+	@FindBy(xpath = "//span[@class='anticon anticon-appstore']")
+	private WebElement iconViewButton;
+	
+	
 
 	public DashboardPage(WebDriver driver) {
 		super(driver);
@@ -374,4 +388,140 @@ public class DashboardPage extends BasePage {
 		}
 		return this;
 	}
+	public DashboardPage totalauctionfilter () throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalAuctionButton);
+		String totalAuctionFilter = TestProperties.getProperty("totalAuctionFilter");
+		WebElement filterCheckBox = driver
+				.findElement(By.xpath("//span[contains(text(),'" + totalAuctionFilter + "')]/preceding-sibling::span"));
+		Thread.sleep(2000);
+		Boolean auctionFilterClick = false;
+		for (int i = 0; i < totalAuctionFilterList.size(); i++) {
+			Thread.sleep(4000);
+//			System.out.println(totalAuctionFilterList.get(i).getText());
+			if (totalAuctionFilterList.get(i).getText().equalsIgnoreCase(totalAuctionFilter)) {
+				seleniumHelper.moveToElementAndClickOnIt(filterCheckBox);
+				Thread.sleep(4000);
+				break;
+			}
+			}
+			auctionFilterClick = true;
+			Assert.assertTrue(auctionFilterClick);
+			ReportUtil.addScreenShot(LogStatus.PASS, "Total Auction filter applied successfully");
+			Boolean clearFilter = false;
+			
+				seleniumHelper.clickOnWebElement(clearAllFilterButton);
+				seleniumHelper.isElementDisplayedwithoutBgColor(clearAllFilterButton);
+			Thread.sleep(2000);
+			clearFilter = true;
+			Assert.assertTrue(clearFilter);
+			ReportUtil.addScreenShot(LogStatus.PASS, "Clear All Filter button applied successfully");
+			return this;
 }
+	public DashboardPage totalDealFilter () throws InterruptedException {
+			seleniumHelper.clickOnWebElement(jingleBidLogo);
+			seleniumHelper.clickOnWebElement(totalDealsButton);
+			String totalAuctionFilter = TestProperties.getProperty("totalAuctionFilter");
+			WebElement filterCheckBox = driver
+					.findElement(By.xpath("//span[contains(text(),'" + totalAuctionFilter + "')]/preceding-sibling::span"));
+			Thread.sleep(2000);
+			Boolean auctionFilterClick = false;
+			for (int i = 0; i < totalAuctionFilterList.size(); i++) {
+				Thread.sleep(4000);
+				if (totalAuctionFilterList.get(i).getText().equalsIgnoreCase(totalAuctionFilter)) {
+					seleniumHelper.moveToElementAndClickOnIt(filterCheckBox);
+					Thread.sleep(4000);
+					break;
+				}
+				}
+				auctionFilterClick = true;
+				Assert.assertTrue(auctionFilterClick);
+				ReportUtil.addScreenShot(LogStatus.PASS, "Total Deals filter applied successfully");
+				Boolean clearFilter = false;
+				
+					seleniumHelper.clickOnWebElement(clearAllFilterButton);
+					seleniumHelper.isElementDisplayedwithoutBgColor(clearAllFilterButton);
+				Thread.sleep(2000);
+				clearFilter = true;
+				Assert.assertTrue(clearFilter);
+				ReportUtil.addScreenShot(LogStatus.PASS, "Clear All Filter button applied successfully");
+				return this;
+	}
+	
+	public DashboardPage totalDealsToProfilePage() throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalDealsButton);
+		seleniumHelper.isElementDisplayed(profilePage);
+		seleniumHelper.clickOnWebElement(profilePage);
+		Boolean profileclick = false;
+		Thread.sleep(2000);
+		profileclick = true;
+		Assert.assertTrue(profileclick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directed to Profile Page from Total Deals page");
+		return this;	
+	}
+	public DashboardPage totalAuctionToProfilePage() throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalAuctionButton);
+		seleniumHelper.isElementDisplayed(profilePage);
+		seleniumHelper.clickOnWebElement(profilePage);
+		Boolean profileclick = false;
+		Thread.sleep(2000);
+		profileclick = true;
+		Assert.assertTrue(profileclick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directed to Profile Page from Total Auction page");
+		return this;
+	}
+	public DashboardPage totalDealsToHomePage () throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalDealsButton);
+		seleniumHelper.isElementDisplayed(homeButtonIcon);
+		seleniumHelper.clickOnWebElement(homeButtonIcon);
+		Boolean homePageclick = false;
+		Thread.sleep(2000);
+		homePageclick = true;
+		Assert.assertTrue(homePageclick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directed to Home Page from Total Deals page");
+		return this;
+	}
+	public DashboardPage totalAuctionToHomePage () throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalAuctionButton);
+		seleniumHelper.isElementDisplayed(homeButtonIcon);
+		seleniumHelper.clickOnWebElement(homeButtonIcon);
+		Boolean homePageclick = false;
+		Thread.sleep(2000);
+		homePageclick = true;
+		Assert.assertTrue(homePageclick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directed to Home Page from Total Auction page");
+		return this;
+	}
+	public DashboardPage totalDealsViewFunctionality () throws Exception {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalDealsButton);
+		seleniumHelper.isElementDisplayedwithoutBgColor(iconViewButton);
+		seleniumHelper.clickOnWebElement(iconViewButton);
+		Thread.sleep(2000);
+		Boolean viewClick = false;
+		viewClick = true;
+		Assert.assertTrue(viewClick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Grid View functionality is selected");
+		return this;
+	}
+	
+	public DashboardPage totalAuctionViewFunctionality () throws Exception {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(totalAuctionButton);
+		seleniumHelper.isElementDisplayedwithoutBgColor(iconViewButton);
+		seleniumHelper.clickOnWebElement(iconViewButton);
+		Thread.sleep(2000);
+		Boolean viewClick = false;
+		viewClick = true;
+		Assert.assertTrue(viewClick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Grid View functionality is selected");
+		return this;
+	}
+}
+
+	
+	

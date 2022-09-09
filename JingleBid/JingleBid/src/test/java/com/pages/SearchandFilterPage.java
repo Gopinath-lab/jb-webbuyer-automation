@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -60,7 +61,17 @@ public class SearchandFilterPage extends BasePage{
 	private WebElement listviewByOption;
 	@FindBy(xpath = "//div[@class='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-10 ant-col-lg-9 ant-col-xl-9']")
 	private WebElement sortByandListBy;
-
+	@FindBy(xpath = "//div[@class='ant-card-head-wrapper']")
+	private WebElement totalAuctionandDealsheader;
+	@FindBy(xpath = "//span[@class='count-text' and contains(text(),'Deals')]")
+	private WebElement totalDealsButton;
+	@FindBy(xpath = "//input[@placeholder='Search Products']")
+	private WebElement searchProductInputBox;
+	@FindBy(xpath = "(//button[@type='button'])[3]")
+	private WebElement searchButton;
+	@FindBy(xpath ="//a[@class='ant-breadcrumb-link' and @href='/']")
+	private WebElement homeButtonIcon;
+	
 	public SearchandFilterPage(WebDriver driver) {
 		super(driver);
 		seleniumHelper = new SeleniumHelper(driver);
@@ -232,7 +243,7 @@ public class SearchandFilterPage extends BasePage{
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(0).click();
 		seleniumHelper.clickOnWebElement(sortByButton);
-//		Thread.sleep(2000);
+		Thread.sleep(2000);
 		sortByList.get(2).click();
 		seleniumHelper.clickOnWebElement(listviewByOption);
 		seleniumHelper.isElementDisplayed(sortByandListBy);
@@ -243,5 +254,18 @@ public class SearchandFilterPage extends BasePage{
 
 		return this;
 	}
-
+	public SearchandFilterPage productsearchToHomePage () throws Exception {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(searchProductInputBox);
+		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductForAutoBid"));
+		searchProductInputBox.sendKeys(Keys.ENTER);
+		seleniumHelper.isElementDisplayedwithoutBgColor(homeButtonIcon);
+		seleniumHelper.clickOnWebElement(homeButtonIcon);
+		Thread.sleep(2000);
+		Boolean viewClick = false;
+		viewClick = true;
+		Assert.assertTrue(viewClick);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directed to home page after product search");
+		return this;
+	}
 }
