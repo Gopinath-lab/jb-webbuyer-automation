@@ -287,7 +287,6 @@ public class AutoBidPage extends BasePage {
 			}
 			ReportUtil.addScreenShot(LogStatus.PASS, "Bid accepted successfully");
 			return this;
+			
 		}
 	}
-
-//}

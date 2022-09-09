@@ -164,7 +164,7 @@ public class PaymentMethodsPage extends BasePage {
 		driver.switchTo().frame(0);
 		seleniumHelper.scrollIntoView(cardButton);
 		seleniumHelper.clickOnWebElement(cardButton);
-		seleniumHelper.waitForElement(savedCardOTP, 5);
+//		seleniumHelper.waitForElement(savedCardOTP, 5);
 		if(seleniumHelper.isElementDisplayed(savedCardOTP))
 		{
 			seleniumHelper.clickOnWebElement(skipSavedCard);
