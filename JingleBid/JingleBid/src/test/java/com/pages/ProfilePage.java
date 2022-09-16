@@ -183,9 +183,10 @@ public class ProfilePage extends BasePage {
 	}
 //	public Faker faker = new Faker();
 
-	public ProfilePage profileupdate() throws AWTException {
+	public ProfilePage profileupdate() throws AWTException, InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
+		Thread.sleep(2000);
 		seleniumHelper.waitForElementVisible(username, 10);
 		seleniumHelper.doubleClickOnElement(driver, username);
 		seleniumHelper.backspace(username);

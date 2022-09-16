@@ -244,6 +244,7 @@ public class AutoBidPage extends BasePage {
 
 	public AutoBidPage allProductsDropDownAutoBid() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.wait(2000);
 		seleniumHelper.waitForElement(allProductSelect, 5);
 		seleniumHelper.moveToElementAndClickOnIt(allProductSelect);
 		seleniumHelper.waitForElementVisible(categorySelectSelectDropDown, 10);

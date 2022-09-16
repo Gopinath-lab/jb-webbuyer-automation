@@ -44,8 +44,8 @@ public class AutoBidTest extends BaseTest {
 
 	@Test(enabled = true, priority = 3, testName = "Search Product from All Products dropdown and start AutoBid", description = "4.Search Product from All products dropdown and start AutoBid with COD payment - Functionality test")
 	public void AutoBidFromAllProductsDropdownandCODOption() throws Exception {
-		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpassLoginGeneral();
+//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+//		loginPage.launchURL().emailpassLoginGeneral();
 		AutoBidPage autoBidPage = PageinstancesFactory.getInstance(AutoBidPage.class);
 		autoBidPage.allProductsDropDownAutoBid();
 		PaymentMethodsPage paymentMethod = PageinstancesFactory.getInstance(PaymentMethodsPage.class);

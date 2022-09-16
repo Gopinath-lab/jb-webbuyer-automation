@@ -1,40 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-09-09T18:44:42 IST" name="Default suite" finished-at="2022-09-09T18:45:18 IST" duration-ms="36239">
+  <suite started-at="2022-09-15T17:44:54 IST" name="Default suite" finished-at="2022-09-15T17:45:14 IST" duration-ms="20318">
     <groups>
     </groups>
-    <test started-at="2022-09-09T18:44:42 IST" name="Default test" finished-at="2022-09-09T18:45:18 IST" duration-ms="36239">
-      <class name="com.tests.AutoBidTest">
-        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.AutoBidTest@534a5a98]" started-at="2022-09-09T18:44:41 IST" name="globalSetup" test-instance-name="3. AutoBid" finished-at="2022-09-09T18:44:42 IST" duration-ms="113" status="PASS">
+    <test started-at="2022-09-15T17:44:54 IST" name="Default test" finished-at="2022-09-15T17:45:14 IST" duration-ms="20318">
+      <class name="com.tests.SharablelinkTest$SharableLink">
+        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:44:54 IST" name="globalSetup" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:44:54 IST" duration-ms="109" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- globalSetup -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.AutoBidTest@534a5a98]" started-at="2022-09-09T18:44:42 IST" name="setup" test-instance-name="3. AutoBid" finished-at="2022-09-09T18:44:44 IST" duration-ms="2181" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:44:54 IST" name="setup" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:44:56 IST" duration-ms="2020" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="AutoBidFromAllProductsDropdownandCODOption()[pri:3, instance:com.tests.AutoBidTest@534a5a98]" started-at="2022-09-09T18:44:44 IST" name="AutoBidFromAllProductsDropdownandCODOption" description="4.Search Product from All products dropdown and start AutoBid with COD payment - Functionality test" test-instance-name="3. AutoBid" finished-at="2022-09-09T18:45:15 IST" duration-ms="31067" status="PASS">
+        <test-method signature="ReferralPage()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:44:56 IST" name="ReferralPage" description="1. Referral Page Check!" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:06 IST" duration-ms="10178" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AutoBidFromAllProductsDropdownandCODOption -->
-        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.AutoBidTest@534a5a98]" started-at="2022-09-09T18:45:15 IST" name="wrapUp" test-instance-name="3. AutoBid" finished-at="2022-09-09T18:45:18 IST" duration-ms="2775" status="PASS">
+        </test-method> <!-- ReferralPage -->
+        <test-method signature="RelatedProduct()[pri:1, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:45:06 IST" name="RelatedProduct" description="2. Check for related product visibility!" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:14 IST" duration-ms="7348" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RelatedProduct -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:45:14 IST" name="wrapUp" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:14 IST" duration-ms="417" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapUp -->
-        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.AutoBidTest@534a5a98]" started-at="2022-09-09T18:45:18 IST" name="wrapAllUp" test-instance-name="3. AutoBid" finished-at="2022-09-09T18:45:18 IST" duration-ms="24" status="PASS">
+        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:45:14 IST" name="wrapAllUp" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:14 IST" duration-ms="11" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@3cc053]]>
+                <![CDATA[org.testng.TestRunner@4e0cc334]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapAllUp -->
-      </class> <!-- com.tests.AutoBidTest -->
+      </class> <!-- com.tests.SharablelinkTest$SharableLink -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

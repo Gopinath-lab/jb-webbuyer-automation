@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tests.AutoBidTest">
+      <class name="com.tests.SharablelinkTest$SharableLinkDemo">
         <methods>
-          <include name="AutoBidFromAllProductsDropdownandCODOption"/>
           <include name="wrapUp"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
+          <include name="RelatedProduct"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.AutoBidTest -->
+      </class> <!-- com.tests.SharablelinkTest$SharableLinkDemo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

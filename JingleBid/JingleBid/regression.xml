@@ -60,6 +60,12 @@
 					<include name="SearchandFiltercheck"></include>
 				</methods>
 			</class>
+			<class name="com.tests.ShareableLink">
+			<methods>
+				<include name="SharableLink"></include>
+				<include name="RelatedProduct"></include>			
+			</methods>	
+			</class>
 			<class name="com.tests.SignUpTest" >
 			<methods> 
 			<include name="SignUpPage"/>
