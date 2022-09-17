@@ -39,6 +39,7 @@ public class AutoBidTest extends BaseTest {
 		autoBidPage.searchFromSpecialityStoreAndAutoBid();
 		PaymentMethodsPage paymentMethod = PageinstancesFactory.getInstance(PaymentMethodsPage.class);
 		paymentMethod.walletPaymentMethod();
+		
 	}
 
 	@Test(enabled = true, priority = 3, testName = "Search Product from All Products dropdown and start AutoBid", description = "4.Search Product from All products dropdown and start AutoBid with COD payment - Functionality test")

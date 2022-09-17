@@ -39,6 +39,14 @@ public class ShareableLink extends BasePage{
 	private WebElement shareOptions;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-icon-only share-product-copy']//img")
 	private WebElement copyUrlButton;
+	@FindBy(xpath = "//div[@class='header-text']")
+	private WebElement jingleBidLogo;
+	@FindBy(xpath = "//div[@class='ant-row related-prdt-title-header']")
+	private WebElement relatedProduct;
+	@FindBy(xpath = "//div[@class='slick-track']//div[@data-index='0']//span")
+	private WebElement relatedProductSearchResult1;
+	
+	
 	
 	public ShareableLink(WebDriver driver) {
 		super(driver);
@@ -74,4 +82,25 @@ public class ShareableLink extends BasePage{
         ReportUtil.addScreenShot(LogStatus.PASS,"New tab opened and copy pasted the URL copied");
 		return this;	
 	}
+	
+	public ShareableLink relatedProductSearch() throws InterruptedException {
+		seleniumHelper.clickOnWebElement(jingleBidLogo);
+		seleniumHelper.clickOnWebElement(searchProductInputBox);
+		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("relatedProductSearch"));
+		searchProductInputBox.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		searchProductInputBox.sendKeys(Keys.ESCAPE);
+		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
+		seleniumHelper.scrollToElemet(relatedProduct);
+		seleniumHelper.isElementDisplayed(relatedProductSearchResult1);
+		String relatedProductActualText = relatedProductSearchResult1.getText();
+		Assert.assertEquals(relatedProductActualText, TestProperties.getProperty("relatedProductResultExpectedText"));
+		seleniumHelper.isElementDisplayed(relatedProduct);
+		ReportUtil.addScreenShot(LogStatus.PASS, "Related product is available for the selected product");
+	
+		return this;
+	}
+	
+	
+	
 	}

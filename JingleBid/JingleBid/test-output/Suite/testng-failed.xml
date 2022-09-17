@@ -3,17 +3,15 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Regression Test Part 1(failed)">
     <classes>
-      <class name="com.tests.BuyNowTest">
+      <class name="com.tests.SearchandFilterTest">
         <methods>
           <include name="wrapUp"/>
-          <include name="BuyNowFromMainCategoryandCardPayment"/>
           <include name="wrapAllUp"/>
-          <include name="BuyNowFromAllProductsDropdownandCODOption"/>
           <include name="setup"/>
-          <include name="BuyNowFromSpecialityStoreandWalletPayment"/>
+          <include name="SearchandFiltercheck"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.BuyNowTest -->
+      </class> <!-- com.tests.SearchandFilterTest -->
       <class name="com.tests.AutoBidTest">
         <methods>
           <include name="AutoBidFromAllProductsDropdownandCODOption"/>
@@ -22,18 +20,19 @@
           <include name="wrapAllUp"/>
           <include name="AutoBidFromMainCategoryandCardPayment"/>
           <include name="setup"/>
+          <include name="AutoBidByKeywordSearchandNetBankingPayment"/>
           <include name="globalSetup"/>
         </methods>
       </class> <!-- com.tests.AutoBidTest -->
-      <class name="com.tests.ProfileTest">
+      <class name="com.tests.SignUpTest">
         <methods>
           <include name="wrapUp"/>
           <include name="wrapAllUp"/>
-          <include name="PersonalInformationUpdate"/>
           <include name="setup"/>
+          <include name="SignUpPage"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.ProfileTest -->
+      </class> <!-- com.tests.SignUpTest -->
     </classes>
   </test> <!-- Regression Test Part 1(failed) -->
 </suite> <!-- Failed suite [Suite] -->
