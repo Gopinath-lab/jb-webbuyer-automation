@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tests.SharablelinkTest$SharableLinkDemo">
+      <class name="com.tests.ProfileTest">
         <methods>
           <include name="wrapUp"/>
           <include name="wrapAllUp"/>
+          <include name="PersonalInformationUpdate"/>
           <include name="setup"/>
-          <include name="RelatedProduct"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.SharablelinkTest$SharableLinkDemo -->
+      </class> <!-- com.tests.ProfileTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

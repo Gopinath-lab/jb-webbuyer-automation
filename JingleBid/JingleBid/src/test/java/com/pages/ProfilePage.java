@@ -1,16 +1,20 @@
 package com.pages;
 
 import java.awt.AWTException;
+import java.awt.RenderingHints.Key;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.Locale;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.jsoup.select.Evaluator.ContainsText;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,6 +24,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.basepage.BasePage;
+import com.github.javafaker.Animal;
+import com.github.javafaker.Avatar;
+import com.github.javafaker.Faker;
+import com.github.javafaker.FunnyName;
+import com.github.javafaker.Name;
 import com.helper.SeleniumHelper;
 import com.relevantcodes.extentreports.LogStatus;
 import com.util.ReportUtil;
@@ -181,17 +190,23 @@ public class ProfilePage extends BasePage {
 		driver.get(TestProperties.getProperty("login.url"));
 		return this;
 	}
-//	public Faker faker = new Faker();
+	Faker faker = new Faker((new Locale("en-IND")));
 
+			
 	public ProfilePage profileupdate() throws AWTException, InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		Thread.sleep(2000);
 		seleniumHelper.waitForElementVisible(username, 10);
 		seleniumHelper.doubleClickOnElement(driver, username);
-		seleniumHelper.backspace(username);
-		seleniumHelper.sendKeys(username, TestProperties.getProperty("newProfileName"));
-	//	seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));
+		Actions action = new Actions(driver);
+		action.keyDown(Keys.CONTROL)
+		         .sendKeys(Keys.chord("A"))
+		         .keyUp(Keys.CONTROL)
+		         .perform();				
+		String generatedString = RandomStringUtils.random(5,true,false);
+		seleniumHelper.sendKeys(username, "Auto"+" "+ generatedString);
+//		seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));
 		seleniumHelper.clickOnWebElement(saveButton);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(updatesuccess),
 				"Updated Successfully message is not displaying");
