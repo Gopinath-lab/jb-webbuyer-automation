@@ -80,6 +80,7 @@ public class ShareableLink extends BasePage{
         System.out.println(driver.getCurrentUrl());
         Assert.assertTrue(openLink, "Opened new tab and URL copied is pasted");
         ReportUtil.addScreenShot(LogStatus.PASS,"New tab opened and copy pasted the URL copied");
+        seleniumHelper.switchToParentWithChildClose();
 		return this;	
 	}
 	

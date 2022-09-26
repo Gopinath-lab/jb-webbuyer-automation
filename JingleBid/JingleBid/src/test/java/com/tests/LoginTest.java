@@ -11,6 +11,6 @@ public class LoginTest extends BaseTest {
 	@Test
 	public void loginPage() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-		loginPage.launchURL().emailpasslogin().logout();
+		loginPage.launchURL().emailpasslogin().logout(); 
 			}
 	}

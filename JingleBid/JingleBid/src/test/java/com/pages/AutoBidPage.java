@@ -37,6 +37,8 @@ public class AutoBidPage extends BasePage {
 	public List<WebElement> subCategorySelectProductDropDown;
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[1]")
 	public WebElement selectProductAfterSearch;
+	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[2]")
+	public WebElement selectProductAfterSearch1;
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary autobid-select-btn']")
 	public WebElement getBestPriceButton;
 	@FindBy(xpath = "//span[text()='SELECT PRODUCT']")
@@ -174,7 +176,7 @@ public class AutoBidPage extends BasePage {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
 		dropDownProductSelect1.get(1).click();
-		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
+		seleniumHelper.clickOnWebElement(selectProductAfterSearch1);
 		seleniumHelper.clickOnWebElement(getBestPriceButton);
 		Thread.sleep(3000);
 		if (seleniumHelper.isElementDisplayed(emailVisibility)) {

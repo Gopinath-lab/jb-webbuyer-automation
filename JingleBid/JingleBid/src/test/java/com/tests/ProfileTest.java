@@ -9,7 +9,7 @@ import com.pages.ProfilePage;
 @Test(testName = "5. View Profile", description = "Validating Profile Functionality", priority = 5)
 public class ProfileTest extends BaseTest {
 
-	@Test(enabled = true, description = "1. Validating Profile Update Functionality!", priority = 1)
+	@Test(enabled = true, description = "1. Validating Profile Update Functionality!", priority = 1, invocationCount = 3)
 	public void PersonalInformationUpdate() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();

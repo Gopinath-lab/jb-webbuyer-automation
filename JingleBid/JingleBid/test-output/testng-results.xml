@@ -1,44 +1,481 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="26" total="55" passed="25" failed="4" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-09-15T17:44:54 IST" name="Default suite" finished-at="2022-09-15T17:45:14 IST" duration-ms="20318">
+  <suite started-at="2022-09-26T18:02:38 IST" name="Suite" finished-at="2022-09-26T18:18:08 IST" duration-ms="930061">
     <groups>
     </groups>
-    <test started-at="2022-09-15T17:44:54 IST" name="Default test" finished-at="2022-09-15T17:45:14 IST" duration-ms="20318">
-      <class name="com.tests.SharablelinkTest$SharableLink">
-        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:44:54 IST" name="globalSetup" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:44:54 IST" duration-ms="109" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- globalSetup -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:44:54 IST" name="setup" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:44:56 IST" duration-ms="2020" status="PASS">
+    <test started-at="2022-09-26T18:02:38 IST" name="Regression Test Part 1" finished-at="2022-09-26T18:18:08 IST" duration-ms="930061">
+      <class name="com.tests.CouponsTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.CouponsTest@54c5a2ff]" started-at="2022-09-26T18:12:49 IST" name="setup" test-instance-name="7. Coupon verification" finished-at="2022-09-26T18:12:50 IST" duration-ms="1153" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="ReferralPage()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:44:56 IST" name="ReferralPage" description="1. Referral Page Check!" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:06 IST" duration-ms="10178" status="PASS">
+        <test-method signature="Couponapplyverfication()[pri:0, instance:com.tests.CouponsTest@54c5a2ff]" started-at="2022-09-26T18:12:50 IST" name="Couponapplyverfication" description="2. Couponapplyverfication Check!" test-instance-name="7. Coupon verification" finished-at="2022-09-26T18:13:37 IST" duration-ms="46593" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Couponapplyverfication -->
+        <test-method signature="ReferralPage()[pri:0, instance:com.tests.CouponsTest@54c5a2ff]" started-at="2022-09-26T18:13:37 IST" name="ReferralPage" description="1. Referral Page Check!" test-instance-name="7. Coupon verification" finished-at="2022-09-26T18:13:41 IST" duration-ms="3557" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ReferralPage -->
-        <test-method signature="RelatedProduct()[pri:1, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:45:06 IST" name="RelatedProduct" description="2. Check for related product visibility!" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:14 IST" duration-ms="7348" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- RelatedProduct -->
-        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:45:14 IST" name="wrapUp" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:14 IST" duration-ms="417" status="PASS">
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.CouponsTest@54c5a2ff]" started-at="2022-09-26T18:13:41 IST" name="wrapUp" test-instance-name="7. Coupon verification" finished-at="2022-09-26T18:13:44 IST" duration-ms="2830" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapUp -->
-        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.SharablelinkTest$SharableLink@783a467b]" started-at="2022-09-15T17:45:14 IST" name="wrapAllUp" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-15T17:45:14 IST" duration-ms="11" status="PASS">
+      </class> <!-- com.tests.CouponsTest -->
+      <class name="com.tests.StartAuctionTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.StartAuctionTest@f0c8a99]" started-at="2022-09-26T18:03:11 IST" name="setup" test-instance-name="2. Start Auction" finished-at="2022-09-26T18:03:12 IST" duration-ms="1334" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="StartAuctionWay0()[pri:0, instance:com.tests.StartAuctionTest@f0c8a99]" started-at="2022-09-26T18:03:12 IST" name="StartAuctionWay0" description="1. Search a Product and Start the Auction!" test-instance-name="2. Start Auction" finished-at="2022-09-26T18:03:27 IST" duration-ms="14338" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartAuctionWay0 -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.StartAuctionTest@f0c8a99]" started-at="2022-09-26T18:03:27 IST" name="wrapUp" test-instance-name="2. Start Auction" finished-at="2022-09-26T18:03:28 IST" duration-ms="1075" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.StartAuctionTest -->
+      <class name="com.tests.ProfileTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:07:49 IST" name="setup" test-instance-name="5. View Profile" finished-at="2022-09-26T18:07:51 IST" duration-ms="1394" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="PersonalInformationUpdate()[pri:1, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:07:51 IST" name="PersonalInformationUpdate" description="1. Validating Profile Update Functionality!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:08:03 IST" duration-ms="12248" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PersonalInformationUpdate -->
+        <test-method signature="PersonalInformationUpdate()[pri:1, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:08:03 IST" name="PersonalInformationUpdate" description="1. Validating Profile Update Functionality!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:08:10 IST" duration-ms="6607" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PersonalInformationUpdate -->
+        <test-method signature="PersonalInformationUpdate()[pri:1, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:08:10 IST" name="PersonalInformationUpdate" description="1. Validating Profile Update Functionality!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:08:17 IST" duration-ms="6953" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PersonalInformationUpdate -->
+        <test-method signature="Profileimageupload()[pri:2, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:08:17 IST" name="Profileimageupload" description="2. Validating Profile Image Upload Functionality!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:08:22 IST" duration-ms="4907" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Profileimageupload -->
+        <test-method signature="PhonenumberUpdate()[pri:3, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:08:23 IST" name="PhonenumberUpdate" description="3. Validating Phone Number Change!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:09:25 IST" duration-ms="62306" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for com.helper.SeleniumHelper$1@579ce2e9 (tried for 2 second(s) with 3000 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.helper.SeleniumHelper$1@579ce2e9 (tried for 2 second(s) with 3000 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+at com.helper.SeleniumHelper.waitForElement(SeleniumHelper.java:403)
+at com.pages.ProfilePage.phoneNumberChange(ProfilePage.java:239)
+at com.tests.ProfileTest.PhonenumberUpdate(ProfileTest.java:33)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='ant-notification-notice-message']"}
+  (Session info: chrome=105.0.5195.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-A62QDBA', ip: '192.168.29.125', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [bd22887685c7e2a2abbce294732e9cac, findElement {using=xpath, value=//div[@class='ant-notification-notice-message']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 105.0.5195.127, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:60645}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60645/devtoo..., se:cdpVersion: 105.0.5195.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: bd22887685c7e2a2abbce294732e9cac
+at jdk.internal.reflect.GeneratedConstructorAccessor23.newInstance(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:379)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+at jdk.proxy2/jdk.proxy2.$Proxy20.isDisplayed(Unknown Source)
+at com.helper.SeleniumHelper$1.apply(SeleniumHelper.java:412)
+at com.helper.SeleniumHelper$1.apply(SeleniumHelper.java:1)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+... 31 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PhonenumberUpdate -->
+        <test-method signature="PasswordUpdate()[pri:4, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:09:25 IST" name="PasswordUpdate" description="4. Validating Password Change!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:09:28 IST" duration-ms="2905" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PasswordUpdate -->
+        <test-method signature="AddDeliveryAddress()[pri:5, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:09:28 IST" name="AddDeliveryAddress" description="5. Validating Add New Delivery Address!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:09:35 IST" duration-ms="6903" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddDeliveryAddress -->
+        <test-method signature="EditDeliveryAddress()[pri:6, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:09:35 IST" name="EditDeliveryAddress" description="6. Validating Edit Delivery Address!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:09:41 IST" duration-ms="6178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EditDeliveryAddress -->
+        <test-method signature="DeleteDeliveryAddress()[pri:7, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:09:42 IST" name="DeleteDeliveryAddress" description="7. Validating Delete Delivery Address!" test-instance-name="5. View Profile" finished-at="2022-09-26T18:09:47 IST" duration-ms="5284" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DeleteDeliveryAddress -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.ProfileTest@7526515b]" started-at="2022-09-26T18:09:47 IST" name="wrapUp" test-instance-name="5. View Profile" finished-at="2022-09-26T18:09:47 IST" duration-ms="433" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.ProfileTest -->
+      <class name="com.tests.SearchandFilterTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.SearchandFilterTest@6d4d66d2]" started-at="2022-09-26T18:13:44 IST" name="setup" test-instance-name="8. Search and Filter" finished-at="2022-09-26T18:13:45 IST" duration-ms="1339" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="SearchandFiltercheck()[pri:0, instance:com.tests.SearchandFilterTest@6d4d66d2]" started-at="2022-09-26T18:13:45 IST" name="SearchandFiltercheck" description="1. Validating Search and Filter!" test-instance-name="8. Search and Filter" finished-at="2022-09-26T18:16:59 IST" duration-ms="193820" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SearchandFiltercheck -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.SearchandFilterTest@6d4d66d2]" started-at="2022-09-26T18:16:59 IST" name="wrapUp" test-instance-name="8. Search and Filter" finished-at="2022-09-26T18:17:02 IST" duration-ms="2959" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.SearchandFilterTest -->
+      <class name="com.tests.SignUpTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.SignUpTest@11392934]" started-at="2022-09-26T18:17:02 IST" name="setup" test-instance-name="9. SignUp Test" finished-at="2022-09-26T18:17:03 IST" duration-ms="1069" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="SignUpPage()[pri:0, instance:com.tests.SignUpTest@11392934]" started-at="2022-09-26T18:17:03 IST" name="SignUpPage" description="Sign Up Functionality Testing" test-instance-name="9. SignUp Test" finished-at="2022-09-26T18:17:36 IST" duration-ms="32718" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SignUpPage -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.SignUpTest@11392934]" started-at="2022-09-26T18:17:36 IST" name="wrapUp" test-instance-name="9. SignUp Test" finished-at="2022-09-26T18:17:39 IST" duration-ms="2783" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.SignUpTest -->
+      <class name="com.tests.DashboardTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:09:47 IST" name="setup" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:09:48 IST" duration-ms="1011" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="DashboardTopBar()[pri:0, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:09:48 IST" name="DashboardTopBar" description="1. Top Bar Hyperlinks Check!" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:10:34 IST" duration-ms="45401" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DashboardTopBar -->
+        <test-method signature="DashboardBottomBanner()[pri:1, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:10:34 IST" name="DashboardBottomBanner" description="2. Bottom Banner Details &amp; Links Check!" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:10:51 IST" duration-ms="16560" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DashboardBottomBanner -->
+        <test-method signature="DashboardTotalAuctionandDeals()[pri:2, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:10:51 IST" name="DashboardTotalAuctionandDeals" description="3.Validate Total auction and Total Deals and check" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:11:05 IST" duration-ms="14157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DashboardTotalAuctionandDeals -->
+        <test-method signature="Productrequestcheck()[pri:3, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:11:05 IST" name="Productrequestcheck" description="4. Validate Product Request!" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:11:10 IST" duration-ms="4706" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Productrequestcheck -->
+        <test-method signature="FilterCheck()[pri:4, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:11:10 IST" name="FilterCheck" description="5. Validate Total auction and total deals filter functionality!" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:11:56 IST" duration-ms="45844" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FilterCheck -->
+        <test-method signature="DealsAndAuctionRedirecting()[pri:5, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:11:56 IST" name="DealsAndAuctionRedirecting" description="6. Validate redirecting to Home and ProfilePage and view functionality in Total deals and Total Auction" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:12:45 IST" duration-ms="48917" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DealsAndAuctionRedirecting -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.DashboardTest@1ed4ae0f]" started-at="2022-09-26T18:12:45 IST" name="wrapUp" test-instance-name="6. Dashboard verification" finished-at="2022-09-26T18:12:49 IST" duration-ms="3689" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.DashboardTest -->
+      <class name="com.tests.LoginTest">
+        <test-method is-config="true" signature="globalSetup()[pri:0, instance:com.tests.LoginTest@5ab956d7]" started-at="2022-09-26T18:02:38 IST" name="globalSetup" test-instance-name="1. Email/Password Login Test" finished-at="2022-09-26T18:02:38 IST" duration-ms="155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- globalSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.LoginTest@5ab956d7]" started-at="2022-09-26T18:02:54 IST" name="setup" test-instance-name="1. Email/Password Login Test" finished-at="2022-09-26T18:02:56 IST" duration-ms="1274" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="loginPage()[pri:0, instance:com.tests.LoginTest@5ab956d7]" started-at="2022-09-26T18:02:56 IST" name="loginPage" description="Validating Email/Pass Login Functionality" test-instance-name="1. Email/Password Login Test" finished-at="2022-09-26T18:03:07 IST" duration-ms="11680" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginPage -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.LoginTest@5ab956d7]" started-at="2022-09-26T18:03:08 IST" name="wrapUp" test-instance-name="1. Email/Password Login Test" finished-at="2022-09-26T18:03:11 IST" duration-ms="3247" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:com.tests.LoginTest@5ab956d7]" started-at="2022-09-26T18:18:09 IST" name="wrapAllUp" test-instance-name="1. Email/Password Login Test" finished-at="2022-09-26T18:18:09 IST" duration-ms="19" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4e0cc334]]>
+                <![CDATA[org.testng.TestRunner@2a19eaf0]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wrapAllUp -->
+      </class> <!-- com.tests.LoginTest -->
+      <class name="com.tests.BuyNowTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.BuyNowTest@644baf4a]" started-at="2022-09-26T18:06:39 IST" name="setup" test-instance-name="4. BuyNow" finished-at="2022-09-26T18:06:40 IST" duration-ms="1231" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="BuyNowSearchProducyUsingKeywordandNetBankingPayment()[pri:0, instance:com.tests.BuyNowTest@644baf4a]" started-at="2022-09-26T18:06:40 IST" name="BuyNowSearchProducyUsingKeywordandNetBankingPayment" description="1. Search Product by &#039;keywordsearch&#039; and BuyNow with Netbanking payment - Functionality test" test-instance-name="4. BuyNow" finished-at="2022-09-26T18:07:46 IST" duration-ms="66097" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BuyNowSearchProducyUsingKeywordandNetBankingPayment -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.BuyNowTest@644baf4a]" started-at="2022-09-26T18:07:46 IST" name="wrapUp" test-instance-name="4. BuyNow" finished-at="2022-09-26T18:07:49 IST" duration-ms="3176" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.BuyNowTest -->
+      <class name="com.tests.AutoBidTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.AutoBidTest@f78a47e]" started-at="2022-09-26T18:03:28 IST" name="setup" test-instance-name="3. AutoBid" finished-at="2022-09-26T18:03:30 IST" duration-ms="1687" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="AutoBidByKeywordSearchandNetBankingPayment()[pri:0, instance:com.tests.AutoBidTest@f78a47e]" started-at="2022-09-26T18:03:30 IST" name="AutoBidByKeywordSearchandNetBankingPayment" description="1.Search Product by &#039;keywordsearch&#039; and start AutoBid with Netbanking payment - Functionality test" test-instance-name="3. AutoBid" finished-at="2022-09-26T18:04:15 IST" duration-ms="44858" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidByKeywordSearchandNetBankingPayment -->
+        <test-method signature="AutoBidFromMainCategoryandCardPayment()[pri:1, instance:com.tests.AutoBidTest@f78a47e]" started-at="2022-09-26T18:04:15 IST" name="AutoBidFromMainCategoryandCardPayment" description="2.Search Product from Main category and start AutoBid with card payment - Functionality test" test-instance-name="3. AutoBid" finished-at="2022-09-26T18:05:41 IST" duration-ms="86367" status="FAIL">
+          <exception class="java.lang.IndexOutOfBoundsException">
+            <message>
+              <![CDATA[Index: 1, Size: 1]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+at java.base/java.util.LinkedList.checkElementIndex(LinkedList.java:559)
+at java.base/java.util.LinkedList.get(LinkedList.java:480)
+at com.helper.SeleniumHelper.SwitchToWindow(SeleniumHelper.java:178)
+at com.pages.PaymentMethodsPage.cardPaymentMethod(PaymentMethodsPage.java:191)
+at com.tests.AutoBidTest.AutoBidFromMainCategoryandCardPayment(AutoBidTest.java:31)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IndexOutOfBoundsException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidFromMainCategoryandCardPayment -->
+        <test-method signature="AutoBidFromSpecialityStoreandWalletPayment()[pri:2, instance:com.tests.AutoBidTest@f78a47e]" started-at="2022-09-26T18:05:51 IST" name="AutoBidFromSpecialityStoreandWalletPayment" description="3.Search Product from Speciality Store and start AutoBid with wallet payment - Functionality test" test-instance-name="3. AutoBid" finished-at="2022-09-26T18:06:15 IST" duration-ms="24001" status="FAIL">
+          <exception class="org.openqa.selenium.ElementNotInteractableException">
+            <message>
+              <![CDATA[element not interactable
+  (Session info: chrome=105.0.5195.127)
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-A62QDBA', ip: '192.168.29.125', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [34be2077dcd8a3af2f73c870d2cec17b, sendKeysToElement {id=afaba769-023c-4ecf-9331-528695c18491, value=[Ljava.lang.CharSequence;@87aec6a}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 105.0.5195.127, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:60350}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60350/devtoo..., se:cdpVersion: 105.0.5195.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (34be2077dcd8a3af2f73c870d2cec17b)] -> xpath: //div[contains(text(),'payment was not successful')]]
+Session ID: 34be2077dcd8a3af2f73c870d2cec17b]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
+  (Session info: chrome=105.0.5195.127)
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-A62QDBA', ip: '192.168.29.125', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [34be2077dcd8a3af2f73c870d2cec17b, sendKeysToElement {id=afaba769-023c-4ecf-9331-528695c18491, value=[Ljava.lang.CharSequence;@87aec6a}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 105.0.5195.127, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\Dell\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:60350}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60350/devtoo..., se:cdpVersion: 105.0.5195.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (34be2077dcd8a3af2f73c870d2cec17b)] -> xpath: //div[contains(text(),'payment was not successful')]]
+Session ID: 34be2077dcd8a3af2f73c870d2cec17b
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
+at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:113)
+at jdk.internal.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
+at jdk.proxy2/jdk.proxy2.$Proxy20.sendKeys(Unknown Source)
+at com.pages.PaymentMethodsPage.walletPaymentMethod(PaymentMethodsPage.java:151)
+at com.tests.AutoBidTest.AutoBidFromSpecialityStoreandWalletPayment(AutoBidTest.java:41)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidFromSpecialityStoreandWalletPayment -->
+        <test-method signature="AutoBidFromAllProductsDropdownandCODOption()[pri:3, instance:com.tests.AutoBidTest@f78a47e]" started-at="2022-09-26T18:06:15 IST" name="AutoBidFromAllProductsDropdownandCODOption" description="4.Search Product from All products dropdown and start AutoBid with COD payment - Functionality test" test-instance-name="3. AutoBid" finished-at="2022-09-26T18:06:35 IST" duration-ms="20074" status="FAIL">
+          <exception class="java.lang.IllegalMonitorStateException">
+            <message>
+              <![CDATA[current thread is not owner]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalMonitorStateException: current thread is not owner
+at java.base/java.lang.Object.wait(Native Method)
+at com.pages.AutoBidPage.allProductsDropDownAutoBid(AutoBidPage.java:249)
+at com.tests.AutoBidTest.AutoBidFromAllProductsDropdownandCODOption(AutoBidTest.java:50)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalMonitorStateException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AutoBidFromAllProductsDropdownandCODOption -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.AutoBidTest@f78a47e]" started-at="2022-09-26T18:06:35 IST" name="wrapUp" test-instance-name="3. AutoBid" finished-at="2022-09-26T18:06:39 IST" duration-ms="3220" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.AutoBidTest -->
+      <class name="com.tests.SharablelinkTest$SharableLink">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@2a265ea9]" started-at="2022-09-26T18:02:38 IST" name="setup" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-26T18:02:41 IST" duration-ms="2848" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="ReferralPage()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@2a265ea9]" started-at="2022-09-26T18:02:41 IST" name="ReferralPage" description="1. Referral Page Check!" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-26T18:02:54 IST" duration-ms="13116" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReferralPage -->
+        <test-method signature="RelatedProduct()[pri:1, instance:com.tests.SharablelinkTest$SharableLink@2a265ea9]" started-at="2022-09-26T18:05:42 IST" name="RelatedProduct" description="2. Check for related product visibility!" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-26T18:05:50 IST" duration-ms="8007" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RelatedProduct -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.SharablelinkTest$SharableLink@2a265ea9]" started-at="2022-09-26T18:05:50 IST" name="wrapUp" test-instance-name="7. Product search and referral page and related product visibility" finished-at="2022-09-26T18:05:51 IST" duration-ms="1209" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
       </class> <!-- com.tests.SharablelinkTest$SharableLink -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      <class name="com.tests.LoginOTPTest$LoginTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tests.LoginOTPTest$LoginTest@6892b3b6]" started-at="2022-09-26T18:17:39 IST" name="setup" test-instance-name="10. Login with OTP" finished-at="2022-09-26T18:17:40 IST" duration-ms="1142" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="LoginwithOTP()[pri:9, instance:com.tests.LoginOTPTest$LoginTest@6892b3b6]" started-at="2022-09-26T18:17:40 IST" name="LoginwithOTP" description="Validating Login with OTP Functionality" test-instance-name="10. Login with OTP" finished-at="2022-09-26T18:18:07 IST" duration-ms="27347" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginwithOTP -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:com.tests.LoginOTPTest$LoginTest@6892b3b6]" started-at="2022-09-26T18:18:08 IST" name="wrapUp" test-instance-name="10. Login with OTP" finished-at="2022-09-26T18:18:08 IST" duration-ms="467" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+      </class> <!-- com.tests.LoginOTPTest$LoginTest -->
+    </test> <!-- Regression Test Part 1 -->
+  </suite> <!-- Suite -->
 </testng-results>
