@@ -7,6 +7,7 @@ import java.util.List;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -31,7 +32,7 @@ public class PaymentMethodsPage extends BasePage {
 
 	// Payment Method WebElements
 
-	@FindBy(xpath = "//button[@class='new-method has-tooltip false svelte-1u727jy']/div/div/div[text()='Netbanking']")
+	@FindBy(xpath = "//button[@class='new-method has-tooltip false svelte-1kfpmw0']/div/div/div/div[text()='Netbanking'] | //button[@class='new-method has-tooltip false svelte-1u727jy']/div/div/div[text()='Netbanking']")
 	public WebElement netbankingButton;
 	@FindBy(xpath = "//div[@id='form-netbanking']/div/div/div/div/label[@for='bank-radio-HDFC']")
 	public WebElement hdfcNetBankingButton;
@@ -43,7 +44,7 @@ public class PaymentMethodsPage extends BasePage {
 	private WebElement savedCardOTP;
 	@FindBy(xpath = "//button[contains(text(),'Skip Saved Cards')]")
 	private WebElement skipSavedCard;
-	@FindBy(xpath = "//input[@id='card_number']")
+	@FindBy(xpath = "//div[@class='svelte-h8mlhm']/div/div/div/div/div/div/input | (//input[@id='card_number'])[2]")
 	private WebElement enterCardNumber;
 	@FindBy(xpath = "//input[@id='card_expiry']")
 	private WebElement expiryDateOfCardNumber;
@@ -57,14 +58,16 @@ public class PaymentMethodsPage extends BasePage {
 	private WebElement submitButton;
 //	@FindBy(xpath = "//button[@type='button' and @method='wallet']")
 //	private WebElement walletPaymentButton;
-	@FindBy(xpath = "//div[text()='Wallet']//parent::div//parent::div[@class='stack svelte-2dd0di horizontal']")
+	@FindBy(xpath = "//div[text()='Wallet']//parent::div//parent::div[@class='stack svelte-2dd0di horizontal'] | //div[text()='Wallet']/ancestor::div/ancestor::button")
 	private WebElement walletPaymentButton;
 	@FindBy(xpath = "//button[@class=' radio-option slotted-radio']")
 	private List<WebElement> selectWalletButton;
-//	@FindBy(xpath ="//span[@id='footer-cta']//parent::div")
-//	public WebElement payButton;
-	@FindBy(xpath = "//div[@id='footer']")
+	@FindBy(xpath = "//div[contains(text(),'payment was not successful')]")
+	private WebElement paymentNotSuccessful;
+	@FindBy(xpath ="//span[@id='footer-cta']//parent::div | //button[contains(text(),'Pay')]")
 	public WebElement payButton;
+//	@FindBy(xpath = "//div[@id='footer']")
+//	public WebElement payButton;
 	@FindBy(xpath = "//button[text()='Success']")
 	public WebElement paymentSuccessButton;
 	@FindBy(xpath = "//button[text()='Failure']")
@@ -142,6 +145,16 @@ public class PaymentMethodsPage extends BasePage {
 		Assert.assertTrue(elementClickwallet, "Verification - PhonePe option clicked");
 		Thread.sleep(2000);
 		seleniumHelper.clickOnWebElement(payButton);
+		if(seleniumHelper.isElementDisplayed(paymentNotSuccessful)) {
+			Thread.sleep(2000);
+			String failureMsg = paymentNotSuccessful.getText();
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Payment failure message : " + "'" +failureMsg + "'");
+			Actions action = new Actions(driver);
+			action.keyDown(Keys.ESCAPE)
+			         .keyUp(Keys.ESCAPE)
+			         .perform();
+			return this;
+		}
 		seleniumHelper.SwitchToWindow(1);
 		seleniumHelper.waitForElement(paymentSuccessButton, 10);
 		seleniumHelper.clickOnWebElement(paymentSuccessButton);
@@ -168,19 +181,20 @@ public class PaymentMethodsPage extends BasePage {
 		if(seleniumHelper.isElementDisplayed(savedCardOTP))
 		{
 			seleniumHelper.clickOnWebElement(skipSavedCard);
+			return this;
 		}
 		seleniumHelper.waitForElementVisible(enterCardNumber, 10);
 		seleniumHelper.clickOnWebElement(enterCardNumber);
-		enterCardNumber.sendKeys(TestProperties.getProperty("CardNumber"));
+		seleniumHelper.sendKeyswithouthighlight(enterCardNumber, TestProperties.getProperty("CardNumber"));
 		seleniumHelper.clickOnWebElement(expiryDateOfCardNumber);
-		expiryDateOfCardNumber.sendKeys(TestProperties.getProperty("expiryDate"));
+		seleniumHelper.sendKeyswithouthighlight(expiryDateOfCardNumber, TestProperties.getProperty("expiryDate"));
 		seleniumHelper.clickOnWebElement(cvvDetails);
-		cvvDetails.sendKeys(TestProperties.getProperty("cvvDetails"));
+		seleniumHelper.sendKeyswithouthighlight(cvvDetails, TestProperties.getProperty("cvvDetails"));
 		seleniumHelper.clickOnWebElement(saveCardNumber);
 		seleniumHelper.clickOnWebElement(payButton);
 		seleniumHelper.SwitchToWindow(1);
 		seleniumHelper.clickOnWebElement(OTPenter);
-		seleniumHelper.sendKeys(OTPenter, TestProperties.getProperty("login.otp"));
+		seleniumHelper.sendKeyswithouthighlight(OTPenter, TestProperties.getProperty("login.otp"));
 		seleniumHelper.clickOnWebElement(submitButton);
 		seleniumHelper.switchToParentWindow();
 		seleniumHelper.clickOnWebElement(goToDealsButton);

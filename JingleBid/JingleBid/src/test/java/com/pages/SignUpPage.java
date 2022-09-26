@@ -2,6 +2,7 @@ package com.pages;
 
 import java.util.Properties;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -113,7 +114,8 @@ public class SignUpPage extends BasePage{
 		seleniumHelper.sendKeys(name, TestProperties.getProperty("signup.userName"));
 		seleniumHelper.clickOnWebElement(gender);	
 		seleniumHelper.clickOnWebElement(genderValue);
-		seleniumHelper.sendKeys(email, TestProperties.getProperty("signup.email"));
+		String generatedString = RandomStringUtils.random(3,true,false);
+		seleniumHelper.sendKeys(email, "Automation"+generatedString+"@jbregression.com");
 		seleniumHelper.sendKeys(pass, TestProperties.getProperty("signup.password"));
 		seleniumHelper.sendKeys(phone, TestProperties.getProperty("signup.enterPhone"));
 		seleniumHelper.sendKeys(referralCodeEnter, "DSUZSNPA");

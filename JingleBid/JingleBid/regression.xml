@@ -3,7 +3,7 @@
 <suite name="Suite">
 	<test thread-count="2" name="Regression Test Part 1">
 		<classes>
-			<class name="com.tests.LoginTest" />
+			<class name="com.tests.LoginTest"/>
 			<class name="com.tests.StartAuctionTest">
 				<methods>
 					<include name="StartAuctionWay0"/>
@@ -23,9 +23,9 @@
 			<class name="com.tests.BuyNowTest">
 				<methods>
 					<include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
-					<include name="BuyNowFromMainCategoryandCardPayment"/>
-					<include name="BuyNowFromSpecialityStoreandWalletPayment"/>
-					<include name="BuyNowFromAllProductsDropdownandCODOption"/>
+					<exclude name="BuyNowFromMainCategoryandCardPayment"/>
+					<exclude name="BuyNowFromSpecialityStoreandWalletPayment"/>
+					<exclude name="BuyNowFromAllProductsDropdownandCODOption"/>
 				</methods>
 			</class>
 			<class name="com.tests.ProfileTest">
@@ -60,7 +60,7 @@
 					<include name="SearchandFiltercheck"></include>
 				</methods>
 			</class>
-			<class name="com.tests.ShareableLink">
+			<class name="com.tests.SharablelinkTest">
 			<methods>
 				<include name="SharableLink"></include>
 				<include name="RelatedProduct"></include>			

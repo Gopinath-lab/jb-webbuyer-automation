@@ -143,8 +143,8 @@ public class DashboardPage extends BasePage {
 			Assert.assertEquals(actualTextinPlaystore.getText(), TestProperties.getProperty("expectedTextinPlayStore"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Verify Top Bar - Download the App Link");
 			seleniumHelper.switchToParentWithChildClose();
-
-		} else {
+		} 
+		else {
 			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Jinglebid app in PlayStore");
 			return this;
 		}
@@ -184,6 +184,7 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "JingleBid Logo is displayed ");
 		} else {
 			ReportUtil.addScreenShot(LogStatus.FAIL, "JingleBid Logo is not displayed ");
+			return this;
 		}
 		return this;
 	}
@@ -194,6 +195,11 @@ public class DashboardPage extends BasePage {
 			seleniumHelper.clickOnWebElement(homeButtoninFooter);
 			ReportUtil.addScreenShot(LogStatus.PASS, "Footer Home button Directed to home page Succesfully!");
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Footer Home button not Directed to home page ");
+			return this;
+		}
+		
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.scrollIntoView(aboutinBottomBanner);
 		if (seleniumHelper.isElementDisplayedwithoutBgColor(aboutUsInFooter)) {
@@ -204,6 +210,10 @@ public class DashboardPage extends BasePage {
 			Assert.assertEquals(actualAboutUsURL1, TestProperties.getProperty("expectedAboutUsURL"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to AboutUs page ");
 			seleniumHelper.switchToParentWithChildClose();
+		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to AboutUs Page");
+			return this;
 		}
 		return this;
 	}
@@ -217,6 +227,10 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Youtube - JingleBid TV ");
 			seleniumHelper.switchToParentWithChildClose();
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Youtube - JingleBid TV ");
+			return this;
+		}
 		return this;
 	}
 
@@ -229,6 +243,10 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Privacy Policy Page ");
 			seleniumHelper.switchToParentWithChildClose();
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Privacy Policy Page ");
+			return this;
+		}
 		if (seleniumHelper.isElementDisplayedwithoutBgColor(refundReturnPolicyButton)) {
 			seleniumHelper.clickOnWebElement(refundReturnPolicyButton);
 			seleniumHelper.SwitchToWindow(1);
@@ -236,12 +254,20 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Return and Refund Policy Page ");
 			seleniumHelper.switchToParentWithChildClose();
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Return and Refund Policy Page ");
+			return this;
+		}
 		if (seleniumHelper.isElementDisplayedwithoutBgColor(termsandConditionsButton)) {
 			seleniumHelper.clickOnWebElement(termsandConditionsButton);
 			seleniumHelper.SwitchToWindow(1);
 			Assert.assertEquals(driver.getCurrentUrl(), TestProperties.getProperty("expectedTermsandConditionsURL"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Terms and Conditions page");
 			seleniumHelper.switchToParentWithChildClose();
+		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Terms and Conditions page ");
+			return this;
 		}
 		return this;
 	}
@@ -257,6 +283,10 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Facebook - JingleBid page");
 			seleniumHelper.switchToParentWithChildClose();
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Facebook - JingleBid Page");
+			return this;
+		}
 		if (seleniumHelper.isElementDisplayedwithoutBgColor(twitterIconFooter)) {
 			seleniumHelper.scrollIntoView(socialinFooter);
 			seleniumHelper.clickOnWebElement(twitterIconFooter);
@@ -266,7 +296,10 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Twitter - JingleBid page");
 			seleniumHelper.switchToParentWithChildClose();
 		}
-
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Twitter - JingleBid Page");
+			return this;
+		}
 		if (seleniumHelper.isElementDisplayedwithoutBgColor(linkedInIconFooter)) {
 			seleniumHelper.clickOnWebElement(linkedInIconFooter);
 			seleniumHelper.SwitchToWindow(1);
@@ -276,6 +309,9 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to LinkedIn page");
 			seleniumHelper.switchToParentWithChildClose();
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to LinkedIn - JingleBid Page");
+			return this; }
 
 		if (seleniumHelper.isElementDisplayedwithoutBgColor(instagramIconFooter)) {
 			seleniumHelper.scrollIntoView(socialinFooter);
@@ -287,8 +323,13 @@ public class DashboardPage extends BasePage {
 			ReportUtil.addScreenShot(LogStatus.PASS, "Directing to Instagram page");
 			seleniumHelper.switchToParentWithChildClose();
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Not directing to Instagram - JingleBid Page");
+			return this;
+			}
+	
 		return this;
-	}
+		}
 
 	public DashboardPage contactUsFooter() throws Exception {
 //		Robot bot = new Robot();
@@ -308,8 +349,11 @@ public class DashboardPage extends BasePage {
 			String actualAttributeinEmail = emailCheck.getText();
 			Assert.assertEquals(actualAttributeinEmail, TestProperties.getProperty("expectedTextinEmail"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Email ID is available in Contact US and is enabled");
-
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Email ID is not available in Contact US and is not enabled");
+			return this;
+			}
 
 		if (seleniumHelper.isElementDisplayed(telephoneNoContact)) {
 			seleniumHelper.scrollIntoView(telephoneNoContact);
@@ -323,14 +367,25 @@ public class DashboardPage extends BasePage {
 					TestProperties.getProperty("expectedTextinTelephoneToContact"));
 			ReportUtil.addScreenShot(LogStatus.PASS, "Phone Number is available in ContactUs and is enabled");
 		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Phone Number is ntot available in ContactUs and is not enabled");
+			return this;
+			}
+
 		return this;
 	}
 
 	public DashboardPage addressinFooter() {
 		seleniumHelper.scrollIntoView(addressInFooter);
-		if (seleniumHelper.isElementDisplayedwithoutBgColor(jbAddress))
+		if (seleniumHelper.isElementDisplayedwithoutBgColor(jbAddress)) {
 			System.out.println("Registered Office Address = ' " + jbAddress.getText() + "'");
 		ReportUtil.addScreenShot(LogStatus.PASS, "Address is available in Registered Office Address");
+		}
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Address is not available in Registered Office Address");
+			return this;
+			}
+		
 		return this;
 	}
 
@@ -344,6 +399,11 @@ public class DashboardPage extends BasePage {
 			seleniumHelper.clickOnWebElement(closeChatBox);
 			seleniumHelper.switchToParentWindow();
 		}
+		
+		else {
+			ReportUtil.addScreenShot(LogStatus.FAIL, "ChatBox is not present and is not clickable");
+			return this;
+			}
 		return this;
 	}
 

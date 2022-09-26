@@ -343,6 +343,14 @@ public class SeleniumHelper {
 		}
 	}
 
+	public void sendKeyswithouthighlight(WebElement element, String value) {
+		try {
+			highlightWebElement(element);
+			element.sendKeys(value);
+		} catch (Exception e) {
+			LoggerUtil.error("Unable to do sendKeys on the Locator : " + element + " Value : " + value);
+		}
+	}
 	public void clear(WebElement element) {
 		element.clear();
 
