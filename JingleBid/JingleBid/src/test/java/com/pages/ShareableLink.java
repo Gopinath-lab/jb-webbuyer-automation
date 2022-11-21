@@ -55,7 +55,7 @@ public class ShareableLink extends BasePage{
 	
 	public ShareableLink shareableURL() throws InterruptedException, Exception, Exception {
 		seleniumHelper.clickOnWebElement(searchProductInputBox);
-		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductForAutoBid"));
+		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductForAutoBid1"));
 		searchProductInputBox.sendKeys(Keys.ENTER);
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 		seleniumHelper.hardWait(3000);

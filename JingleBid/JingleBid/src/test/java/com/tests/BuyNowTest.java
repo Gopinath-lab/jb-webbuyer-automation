@@ -8,11 +8,11 @@ import com.pages.BuyNowPage;
 import com.pages.LoginPage;
 import com.pages.PaymentMethodsPage;
 
-@Test(testName = "4. BuyNow", description = "Buy Now and payment functionality", priority = 3)
+@Test(testName = "4. BuyNow", description = "Buy Now and payment functionality")
 
 public class BuyNowTest extends BaseTest {
 
-	@Test(priority = 0, description = "1. Search Product by 'keywordsearch' and BuyNow with Netbanking payment - Functionality test")
+	@Test(enabled = true, priority = 0, description = "1. Search Product by 'keywordsearch' and BuyNow with Netbanking payment - Functionality test")
 	public void BuyNowSearchProducyUsingKeywordandNetBankingPayment() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();

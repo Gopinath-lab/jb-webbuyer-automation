@@ -141,7 +141,7 @@ public class AutoBidPage extends BasePage {
 
 	public AutoBidPage searchAndStartAuctionInAutoBid() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(searchProductInputBox);
-		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductForAutoBid"));
+		seleniumHelper.sendKeys(searchProductInputBox, TestProperties.getProperty("searchProductForAutoBid1"));
 		searchProductInputBox.sendKeys(Keys.ENTER);
 		seleniumHelper.clickOnWebElement(selectProductAfterSearch);
 		seleniumHelper.hardWait(3000);

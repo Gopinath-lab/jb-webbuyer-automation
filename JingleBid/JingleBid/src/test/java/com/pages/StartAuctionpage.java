@@ -64,13 +64,13 @@ public class StartAuctionpage extends BasePage {
 
 	// *******************Specialty category WebElement***********************//
 
-	@FindBy(xpath = "(//input[@id='image'])[1]")
+	@FindBy(xpath = "(//input[@id='image'])[5]")
 	public WebElement selectSpecialityStore;
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[1]")
 	public WebElement selectProductAfterSearch1;
 	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[2]")
 	public WebElement selectProductAfterSearch2;
-	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[3]")
+	@FindBy(xpath = "(//h6[@class='mt-10 ellipsis-l e-2 fa13 product-name'])[4]")
 	public WebElement selectspecproduct;
 
 	// *******************WebElement for Add Address****************************//

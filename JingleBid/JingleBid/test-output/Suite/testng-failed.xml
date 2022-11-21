@@ -3,26 +3,29 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Regression Test Part 1(failed)">
     <classes>
-      <class name="com.tests.ProfileTest">
+      <class name="com.tests.DashboardTest">
         <methods>
+          <include name="DashboardBottomBanner"/>
           <include name="wrapUp"/>
+          <include name="DashboardTotalAuctionandDeals"/>
+          <include name="Productrequestcheck"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
-          <include name="PhonenumberUpdate"/>
+          <include name="globalSetup"/>
+        </methods>
+      </class> <!-- com.tests.DashboardTest -->
+      <class name="com.tests.ProfileTest">
+        <methods>
+          <include name="EditDeliveryAddress"/>
+          <include name="wrapUp"/>
+          <include name="DeleteDeliveryAddress"/>
+          <include name="AddDeliveryAddress"/>
+          <include name="wrapAllUp"/>
+          <include name="setup"/>
+          <include name="PasswordUpdate"/>
           <include name="globalSetup"/>
         </methods>
       </class> <!-- com.tests.ProfileTest -->
-      <class name="com.tests.AutoBidTest">
-        <methods>
-          <include name="AutoBidFromAllProductsDropdownandCODOption"/>
-          <include name="AutoBidFromSpecialityStoreandWalletPayment"/>
-          <include name="wrapUp"/>
-          <include name="wrapAllUp"/>
-          <include name="AutoBidFromMainCategoryandCardPayment"/>
-          <include name="setup"/>
-          <include name="globalSetup"/>
-        </methods>
-      </class> <!-- com.tests.AutoBidTest -->
     </classes>
   </test> <!-- Regression Test Part 1(failed) -->
 </suite> <!-- Failed suite [Suite] -->

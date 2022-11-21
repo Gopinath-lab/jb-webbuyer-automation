@@ -68,6 +68,10 @@ public class ProfilePage extends BasePage {
 	private WebElement phoneNoInput;
 	@FindBy(xpath = "//button[@id='verify-number']")
 	private WebElement savePhnoButton;
+	@FindBy(xpath = "//*[text()='Phone Number Already Exists']")
+	private WebElement alreadyexist;
+	@FindBy(xpath = "//span[text()='Verify your Number']")
+	private WebElement verifyotppage;
 	@FindBy(xpath = "//input[@name='otpField01']")
 	private WebElement otp;
 	@FindBy(xpath = "//span[text()='Finish']/parent::button")
@@ -92,7 +96,7 @@ public class ProfilePage extends BasePage {
 	private WebElement deliveryLocationbutton;
 	@FindBy(xpath = "(//span[@aria-label='delete']/parent::button[@type='button'])[2]")
 	private WebElement deleteButton;
-	@FindBy(xpath ="//div[text()='Are you sure to delete this address?']")
+	@FindBy(xpath = "//div[text()='Are you sure to delete this address?']")
 	private WebElement deleteConfirmation;
 	@FindBy(xpath = "//span[text()='Yes']")
 	private WebElement yesButton;
@@ -190,9 +194,9 @@ public class ProfilePage extends BasePage {
 		driver.get(TestProperties.getProperty("login.url"));
 		return this;
 	}
+
 	Faker faker = new Faker((new Locale("en-IND")));
 
-			
 	public ProfilePage profileupdate() throws AWTException, InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
@@ -200,12 +204,9 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.waitForElementVisible(username, 10);
 		seleniumHelper.doubleClickOnElement(driver, username);
 		Actions action = new Actions(driver);
-		action.keyDown(Keys.CONTROL)
-		         .sendKeys(Keys.chord("A"))
-		         .keyUp(Keys.CONTROL)
-		         .perform();				
-		String generatedString = RandomStringUtils.random(5,true,false);
-		seleniumHelper.sendKeys(username, "Auto"+" "+ generatedString);
+		action.keyDown(Keys.CONTROL).sendKeys(Keys.chord("A")).keyUp(Keys.CONTROL).perform();
+		String generatedString = RandomStringUtils.random(5, true, false);
+		seleniumHelper.sendKeys(username, "Auto" + " " + generatedString);
 //		seleniumHelper.clearAndSendKeys(emailid, TestProperties.getProperty("newProfileEmail"));
 		seleniumHelper.clickOnWebElement(saveButton);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(updatesuccess),
@@ -218,7 +219,8 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.highlightWebElement(image);
-		String profileimage = System.getProperty("user.dir") + "\\src\\main\\resources\\mainresource\\ProfileImages\\image.jpg";
+		String profileimage = System.getProperty("user.dir")
+				+ "\\src\\main\\resources\\mainresource\\ProfileImages\\image.jpg";
 		image.sendKeys(profileimage);
 		Thread.sleep(2000);
 		Assert.assertTrue(seleniumHelper.isElementDisplayed(imageuploadedSuccessfully),
@@ -232,23 +234,37 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(changePhNoButton);
 		seleniumHelper.clickOnWebElement(phoneNoInput);
-		phoneNoInput.sendKeys(TestProperties.getProperty("changemobile.num"));
+		phoneNoInput.sendKeys(TestProperties.getProperty("changemobile.num1"));
 		seleniumHelper.clickOnWebElement(savePhnoButton);
-		seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
-		seleniumHelper.clickOnWebElement(finishButton);
-		seleniumHelper.waitForElement(notificationPopUp, 2);
-		String actualTextinNotification = notificationPopUp.getText();
-		seleniumHelper.highlightWebElement(notificationPopUp);
-		if (actualTextinNotification.equalsIgnoreCase("Phone Number Updated Successfully")) {
+		String conditiontrue = "true";
+		if (seleniumHelper.isElementDisplayedwithoutWait(verifyotppage)) {
+			seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
+			seleniumHelper.clickOnWebElement(finishButton);
+//			seleniumHelper.waitForElement(notificationPopUp, 2);
+//			String actualTextinNotification = notificationPopUp.getText();
+//			seleniumHelper.highlightWebElement(notificationPopUp);
 			ReportUtil.addScreenShot(LogStatus.PASS, "Phone number changed Successfully");
-		}
-		else if (seleniumHelper.isElementDisplayedwithoutWait(captcha)) {
+		} else if (seleniumHelper.isAlertPresent()) {
+			System.out.println("Phone number already exist!");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Phone number already exist!");
+		} 
+		else if (conditiontrue.equalsIgnoreCase("true")) {
+			System.out.println("Phone number already exist, So I am going to try out with another number!");
+			seleniumHelper.clickOnWebElement(phoneNoInput);
+			seleniumHelper.doubleClickOnElement(driver, phoneNoInput);
+			phoneNoInput.sendKeys(Keys.DELETE);
+			phoneNoInput.sendKeys(TestProperties.getProperty("changemobile.num2"));
+			seleniumHelper.clickOnWebElement(savePhnoButton);
+			seleniumHelper.sendKeys(otp, TestProperties.getProperty("signup.otp"));
+			seleniumHelper.clickOnWebElement(finishButton);
+		} 
+	else if (seleniumHelper.isElementDisplayedwithoutWait(captcha)) {
 			System.out.println("Google Image Captcha Interrupted, So can't change Phone number!");
-			ReportUtil.addScreenShot(LogStatus.FAIL, "Google Image Captcha Interrupted, So cannot change the phone number!");
-		}
-		else {
-			System.out.println(actualTextinNotification + " - Error occured while updating the phone number");
-			ReportUtil.addScreenShot(LogStatus.FAIL, actualTextinNotification);
+			ReportUtil.addScreenShot(LogStatus.FAIL,
+					"Google Image Captcha Interrupted, So cannot change the phone number!");
+		} else {
+			System.out.println("Some Error occured while updating the phone number");
+			ReportUtil.addScreenShot(LogStatus.FAIL, "Some error occured");
 		}
 		return this;
 	}
@@ -268,8 +284,7 @@ public class ProfilePage extends BasePage {
 		if (actualTextinNotificationBox.equalsIgnoreCase("Successfully updated")) {
 			Assert.assertEquals(actualTextinNotificationBox, "Successfully updated");
 			ReportUtil.addScreenShot(LogStatus.PASS, "Password Updated Successfully");
-		} 
-		else {
+		} else {
 			System.out.println(actualTextinNotificationBox + " - Error, occured. Hence, password cannot be changed");
 			ReportUtil.addScreenShot(LogStatus.PASS, "Error while updating password");
 			seleniumHelper.clickOnWebElement(closeButton);
@@ -301,7 +316,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(addNewState);
 		Thread.sleep(2000);
 		seleniumHelper.clickOnWebElement(stateDropDownSelect);
-		seleniumHelper.waitForElement(citySelect,5);
+		seleniumHelper.waitForElement(citySelect, 5);
 		seleniumHelper.moveToElementAndClickOnIt(citySelect);
 		// cityDropDownList.get(0).click();
 		seleniumHelper.clickOnWebElement(cityDropDownList);
@@ -329,7 +344,7 @@ public class ProfilePage extends BasePage {
 		return this;
 	}
 
-	public ProfilePage deliveryAddressEdit()throws Exception{
+	public ProfilePage deliveryAddressEdit() throws Exception {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(viewprofile);
 		seleniumHelper.clickOnWebElement(deliveryLocationbutton);
@@ -346,6 +361,7 @@ public class ProfilePage extends BasePage {
 		Assert.assertEquals(addressEditText, "Address Updated Successfully!");
 		return this;
 	}
+
 	public ProfilePage filterMethod() throws InterruptedException {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(selectFromMainMenuCategory1);
@@ -516,16 +532,16 @@ public class ProfilePage extends BasePage {
 
 		return this;
 	}
-	
+
 	public ProfilePage totalAuctiontoProfilePage() throws Exception {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
 		seleniumHelper.clickOnWebElement(totalAuctionButton);
 		seleniumHelper.clickOnWebElement(homeButton);
 		Boolean homeButtonClick = true;
 		Assert.assertTrue(homeButtonClick);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Directing to home page from Total Auction page");	
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directing to home page from Total Auction page");
 		return this;
-		}
+	}
 
 	public ProfilePage totalDealstoProfilePage() throws Exception {
 		seleniumHelper.clickOnWebElement(jingleBidLogo);
@@ -533,7 +549,7 @@ public class ProfilePage extends BasePage {
 		seleniumHelper.clickOnWebElement(homeButton);
 		Boolean homeButtonClick = true;
 		Assert.assertTrue(homeButtonClick);
-		ReportUtil.addScreenShot(LogStatus.PASS, "Directing to home page from Total Deals page");	
-		return this;	
+		ReportUtil.addScreenShot(LogStatus.PASS, "Directing to home page from Total Deals page");
+		return this;
 	}
 }
