@@ -6,10 +6,11 @@ import com.factory.PageinstancesFactory;
 import com.pages.LoginPage;
 import com.pages.ProfilePage;
 
-@Test(testName = "5. View Profile", description = "Validating Profile Functionality", priority = 5)
+@Test(testName = "5. View Profile", description = "Validating Profile Functionality")
 public class ProfileTest extends BaseTest {
 
-	@Test(enabled = true, description = "1. Validating Profile Update Functionality!", priority = 1, invocationCount = 3)
+//	@Test(enabled = true, description = "1. Validating Profile Update Functionality!", priority = 1, invocationCount = 3)
+	@Test(enabled = true, description = "1. Validating Profile Update Functionality!", priority = 1)
 	public void PersonalInformationUpdate() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
@@ -25,15 +26,15 @@ public class ProfileTest extends BaseTest {
 		profilePage.profileImageUpload();
 	}
 
-	@Test(enabled = true, description = "3. Validating Phone Number Change!",  priority = 3)
+	@Test(enabled = true, description = "3. Validating Phone Number Change!", priority = 3)
 	public void PhonenumberUpdate() throws Exception {
-//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-//		loginPage.launchURL().emailpassLoginGeneral();
+		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.phoneNumberChange();
 	}
 
-	@Test(enabled = true, description = "4. Validating Password Change!",  priority = 4)
+	@Test(enabled = true, description = "4. Validating Password Change!", priority = 4)
 	public void PasswordUpdate() throws Exception {
 //		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 //		loginPage.launchURL().emailpassLoginGeneral();
@@ -41,7 +42,7 @@ public class ProfileTest extends BaseTest {
 		profilePage.changePassword();
 	}
 
-	@Test(enabled = true, description = "5. Validating Add New Delivery Address!",  priority = 5)
+	@Test(enabled = true, description = "5. Validating Add New Delivery Address!", priority = 5)
 	public void AddDeliveryAddress() throws Exception {
 //		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 //		loginPage.launchURL().emailpassLoginGeneral();
@@ -49,19 +50,19 @@ public class ProfileTest extends BaseTest {
 		profilePage.addNewAddress();
 	}
 
-	@Test(enabled = true, description = "6. Validating Edit Delivery Address!",  priority = 6)
+	@Test(enabled = true, description = "6. Validating Edit Delivery Address!", priority = 6)
 	public void EditDeliveryAddress() throws Exception {
 //		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 //		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.deliveryAddressEdit();
 	}
-	
-	@Test(enabled = true, description = "7. Validating Delete Delivery Address!",  priority = 7)
+
+	@Test(enabled = true, description = "7. Validating Delete Delivery Address!", priority = 7)
 	public void DeleteDeliveryAddress() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
 		ProfilePage profilePage = PageinstancesFactory.getInstance(ProfilePage.class);
 		profilePage.deliveryAddressDelete();
 	}
-	}
+}

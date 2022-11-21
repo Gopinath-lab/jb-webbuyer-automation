@@ -7,7 +7,7 @@ import com.pages.CouponsPage;
 import com.pages.LoginPage;
 import com.pages.PaymentMethodsPage;
 
-@Test(testName = "7. Coupon verification", priority = 6)
+@Test(testName = "7. Coupon verification", description = "Validating Coupon Functionalities!")
 
 public class CouponsTest extends BaseTest {
 
@@ -19,7 +19,7 @@ public class CouponsTest extends BaseTest {
 		coupon.referralpage();
 	}
 
-	@Test(priority = 0, description = "2. Couponapplyverfication Check!")
+	@Test(priority = 1, description = "2. Couponapplyverfication Check!")
 	public void Couponapplyverfication() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();

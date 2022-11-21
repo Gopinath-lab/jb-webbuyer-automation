@@ -6,7 +6,7 @@ import com.factory.PageinstancesFactory;
 import com.pages.LoginPage;
 import com.pages.SearchandFilterPage;
 
-@Test(testName = "8. Search and Filter", description = "Start Auction Functionality", priority = 7)
+@Test(testName = "8. Search and Filter", description = "Start Auction Functionality")
 
 public class SearchandFilterTest extends BaseTest{
 	

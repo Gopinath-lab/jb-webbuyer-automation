@@ -7,11 +7,11 @@ import com.pages.AutoBidPage;
 import com.pages.LoginPage;
 import com.pages.PaymentMethodsPage;
 
-@Test(testName = "3. AutoBid", description = "AutoBid and payment functionality", priority = 2)
+@Test(testName = "3. AutoBid", description = "AutoBid and payment functionality")
 
 public class AutoBidTest extends BaseTest {
 
-	@Test(priority = 0, testName = "Search Product by 'keywordsearch' and start AutoBid", description = "1.Search Product by 'keywordsearch' and start AutoBid with Netbanking payment - Functionality test")
+	@Test(enabled = true, priority = 0, testName = "Search Product by 'keywordsearch' and start AutoBid", description = "1.Search Product by 'keywordsearch' and start AutoBid with Netbanking payment - Functionality test")
 	public void AutoBidByKeywordSearchandNetBankingPayment() throws Exception {
 		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 		loginPage.launchURL().emailpassLoginGeneral();
@@ -23,8 +23,8 @@ public class AutoBidTest extends BaseTest {
 
 	@Test(enabled = true, priority = 1, testName = "Search Product from Main category and start AutoBid", description = "2.Search Product from Main category and start AutoBid with card payment - Functionality test")
 	public void AutoBidFromMainCategoryandCardPayment() throws Exception {
-//		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
-//		loginPage.launchURL().emailpassLoginGeneral();
+		LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
+		loginPage.launchURL().emailpassLoginGeneral();
 		AutoBidPage autoBidPage = PageinstancesFactory.getInstance(AutoBidPage.class);
 		autoBidPage.searchFromMainCategoryAndAutoBid();
 		PaymentMethodsPage paymentMethod = PageinstancesFactory.getInstance(PaymentMethodsPage.class);

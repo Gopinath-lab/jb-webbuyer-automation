@@ -7,7 +7,7 @@ import com.pages.DashBoardPage1;
 import com.pages.DashboardPage;
 import com.pages.LoginPage;
 
-@Test(testName = "6. Dashboard verification", priority = 5)
+@Test(testName = "6. Dashboard verification")
 
 public class DashboardTest extends BaseTest {
 

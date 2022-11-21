@@ -46,7 +46,7 @@ public class LoginPage extends BasePage {
 	SoftAssert softassert = new SoftAssert();
 
 	public LoginPage launchURL() {
-		driver.get(TestProperties.getProperty("login.url"));
+		driver.get(TestProperties.getProperty("login.qa.url"));
 		return this;
 	}
 	

@@ -15,9 +15,9 @@
 			<class name="com.tests.AutoBidTest">
 				<methods>
 					<include name="AutoBidByKeywordSearchandNetBankingPayment"/>
-					<include name="AutoBidFromMainCategoryandCardPayment"></include>
-					<include name="AutoBidFromSpecialityStoreandWalletPayment"></include>
-					<include name="AutoBidFromAllProductsDropdownandCODOption"></include>
+					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
+					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
+					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
 				</methods>
 			</class>
 			<class name="com.tests.BuyNowTest">
@@ -32,7 +32,7 @@
 				<methods>
 					<include name="PersonalInformationUpdate"></include>
 					<include name="Profileimageupload"></include>
-					<include name="PhonenumberUpdate"></include>
+					<exclude name="PhonenumberUpdate"></exclude>
 					<include name="PasswordUpdate"></include>
 					<include name="AddDeliveryAddress"></include>
 					<include name="EditDeliveryAddress"></include>
@@ -60,7 +60,7 @@
 					<include name="SearchandFiltercheck"></include>
 				</methods>
 			</class>
-			<class name="com.tests.SharablelinkTest">
+			<class name="com.tests.SharableLink">
 			<methods>
 				<include name="SharableLink"></include>
 				<include name="RelatedProduct"></include>			
@@ -68,12 +68,12 @@
 			</class>
 			<class name="com.tests.SignUpTest" >
 			<methods> 
-			<include name="SignUpPage"/>
+			<exclude name="SignUpPage"/>
 			</methods> 
 			</class>
 			<class name="com.tests.LoginOTPTest">
 			<methods> 
-			<include name="LoginwithOTP"/>
+			<exclude name="LoginwithOTP"/>
 			</methods> 
 			</class>
 		</classes>

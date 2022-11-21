@@ -5,14 +5,11 @@ import org.testng.annotations.Test;
 import com.factory.PageinstancesFactory;
 import com.pages.LoginPage;
 import com.pages.ShareableLink;
-
-public class SharablelinkTest {
 	
-	@Test(testName = "7. Product search and referral page and related product visibility", priority = 6)
-
+	@Test(testName = "9. Product search and referral page and related product visibility")
 	public class SharableLink extends BaseTest {
 
-		@Test(priority = 0, description = "1. Referral Page Check!")
+		@Test(priority = 0, description = "1. Sharable URL check!")
 		public void ReferralPage() throws Exception {
 			LoginPage loginPage = PageinstancesFactory.getInstance(LoginPage.class);
 			loginPage.launchURL().emailpassLoginGeneral();
@@ -26,4 +23,4 @@ public class SharablelinkTest {
 			ShareableLink link = PageinstancesFactory.getInstance(ShareableLink.class);
 			link.relatedProductSearch();
 		}
-	} }
+	} 
