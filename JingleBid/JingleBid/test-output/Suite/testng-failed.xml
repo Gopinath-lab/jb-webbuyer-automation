@@ -14,18 +14,24 @@
           <include name="globalSetup"/>
         </methods>
       </class> <!-- com.tests.DashboardTest -->
-      <class name="com.tests.ProfileTest">
+      <class name="com.tests.BuyNowTest">
         <methods>
-          <include name="EditDeliveryAddress"/>
           <include name="wrapUp"/>
-          <include name="DeleteDeliveryAddress"/>
-          <include name="AddDeliveryAddress"/>
           <include name="wrapAllUp"/>
           <include name="setup"/>
-          <include name="PasswordUpdate"/>
+          <include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
           <include name="globalSetup"/>
         </methods>
-      </class> <!-- com.tests.ProfileTest -->
+      </class> <!-- com.tests.BuyNowTest -->
+      <class name="com.tests.CouponsTest">
+        <methods>
+          <include name="wrapUp"/>
+          <include name="wrapAllUp"/>
+          <include name="setup"/>
+          <include name="Couponapplyverfication"/>
+          <include name="globalSetup"/>
+        </methods>
+      </class> <!-- com.tests.CouponsTest -->
     </classes>
   </test> <!-- Regression Test Part 1(failed) -->
 </suite> <!-- Failed suite [Suite] -->

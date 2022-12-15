@@ -6,7 +6,7 @@
 			<class name="com.tests.LoginTest"/>
 			<class name="com.tests.StartAuctionTest">
 				<methods>
-					<include name="StartAuctionWay0"/>
+					<exclude name="StartAuctionWay0"/>
 					<exclude name="StartAuctionWay1"/>
 					<exclude name="StartAuctionWay2"/>
 					<exclude name="StartAuctionWay3"/>
@@ -14,15 +14,15 @@
 			</class>
 			<class name="com.tests.AutoBidTest">
 				<methods>
-					<include name="AutoBidByKeywordSearchandNetBankingPayment"/>
-					<exclude name="AutoBidFromMainCategoryandCardPayment"></exclude>
-					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"></exclude>
-					<exclude name="AutoBidFromAllProductsDropdownandCODOption"></exclude>
+					<exclude name="AutoBidByKeywordSearchandNetBankingPayment"/>
+					<exclude name="AutoBidFromMainCategoryandCardPayment"/>
+					<exclude name="AutoBidFromSpecialityStoreandWalletPayment"/>
+					<exclude name="AutoBidFromAllProductsDropdownandCODOption"/>
 				</methods>
 			</class>
 			<class name="com.tests.BuyNowTest">
 				<methods>
-					<include name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
+					<exclude name="BuyNowSearchProducyUsingKeywordandNetBankingPayment"/>
 					<exclude name="BuyNowFromMainCategoryandCardPayment"/>
 					<exclude name="BuyNowFromSpecialityStoreandWalletPayment"/>
 					<exclude name="BuyNowFromAllProductsDropdownandCODOption"/>
@@ -30,40 +30,40 @@
 			</class>
 			<class name="com.tests.ProfileTest">
 				<methods>
-					<include name="PersonalInformationUpdate"></include>
-					<include name="Profileimageupload"></include>
-					<exclude name="PhonenumberUpdate"></exclude>
-					<include name="PasswordUpdate"></include>
-					<include name="AddDeliveryAddress"></include>
-					<include name="EditDeliveryAddress"></include>
-					<include name="DeleteDeliveryAddress"></include>
+					<exclude name="PersonalInformationUpdate"/>
+					<include name="Profileimageupload"/>
+					<exclude name="PhonenumberUpdate"/>
+					<include name="PasswordUpdate"/>
+					<include name="AddDeliveryAddress"/>
+					<include name="EditDeliveryAddress"/>
+					<include name="DeleteDeliveryAddress"/>
 				</methods>
 			</class>
 			<class name="com.tests.DashboardTest">
 				<methods>
-					<include name="DashboardTopBar"></include>
-					<include name="Productrequestcheck"></include>
-					<include name="DashboardBottomBanner"></include>
+					<include name="DashboardTopBar"/>
+					<include name="Productrequestcheck"/>
+					<include name="DashboardBottomBanner"/>
 					<include name="DashboardTotalAuctionandDeals"/>
 					<include name="FilterCheck"></include>
-					<include name="DealsAndAuctionRedirecting"></include>
+					<include name="DealsAndAuctionRedirecting"/>
 				</methods>
 			</class>
 			<class name="com.tests.CouponsTest">
 				<methods>
-					<include name="ReferralPage"></include>
-					<include name="Couponapplyverfication"></include>
+					<exclude name="ReferralPage"/>
+					<exclude name="Couponapplyverfication"/>
 				</methods>
 			</class>
 			<class name="com.tests.SearchandFilterTest">
 				<methods>
-					<include name="SearchandFiltercheck"></include>
+					<exclude name="SearchandFiltercheck"/>
 				</methods>
 			</class>
 			<class name="com.tests.SharableLink">
 			<methods>
-				<include name="SharableLink"></include>
-				<include name="RelatedProduct"></include>			
+				<include name="SharableLink"/>
+				<include name="RelatedProduct"/>			
 			</methods>	
 			</class>
 			<class name="com.tests.SignUpTest" >
